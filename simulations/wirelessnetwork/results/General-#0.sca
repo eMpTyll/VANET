@@ -1,0 +1,2207 @@
+version 3
+run General-0-20231128-19:06:05-45632
+attr configname General
+attr datetime 20231128-19:06:05
+attr datetimef 20231128-190605
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network WirelessNetwork
+attr processid 45632
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../../inet-4.3.5/inet-4.3.5/images;../../../../veins-5.2/veins-veins-5.2/images
+config description "Simple sim where two host comunicate wirelessly"
+config network WirelessNetwork
+config sim-time-limit 200s
+config *.host*.ipv4.arp.typename GlobalArp
+config *.hostA.numApps 1
+config *.hostA.app[0].typename UdpBasicApp
+config *.hostA.app[0].destAddresses "\"hostB\""
+config *.hostA.app[0].destPort 5000
+config *.hostA.app[0].messageLength 1000B
+config *.hostA.app[0].sendInterval exponential(12ms)
+config *.hostA.app[0].packetName "\"UDPData\""
+config *.hostB.numApps 1
+config *.hostB.app[0].typename UdpSink
+config *.hostB.app[0].localPort 5000
+config *.host*.wlan[0].typename AckingWirelessInterface
+config *.host*.wlan[0].mac.useAck false
+config *.host*.wlan[0].mac.fullDuplex false
+config *.host*.wlan[0].radio.transmitter.communicationRange 500m
+config *.host*.wlan[0].radio.receiver.ignoreInterference true
+config *.host*.wlan[0].mac.headerLength 23B
+config *.host*.**.bitrate 1Mbps
+config **.radio.displayCommunicationRange true
+config *.visualizer.mediumVisualizer.displaySignals true
+config *.visualizer.physicalLinkVisualizer.displayLinks true
+config *.visualizer.physicalLinkVisualizer.packetFilter "\"UDPData\""
+config *.visualizer.mobilityVisualizer.displayVelocities true
+config *.visualizer.mobilityVisualizer.displayMovementTrails true
+config *.hostA.mobility.typename LinearMobility
+config *.hostA.mobility.speed 12mps
+config *.hostA.mobility.initialMovementHeading 200deg
+
+par WirelessNetwork.visualizer.sceneVisualizer typename "\"inet.visualizer.canvas.scene.SceneCanvasVisualizer\""
+par WirelessNetwork.visualizer.sceneVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.sceneVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.sceneVisualizer tags "\"\""
+par WirelessNetwork.visualizer.sceneVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par WirelessNetwork.visualizer.sceneVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.sceneVisualizer axisLength "nan m"
+attr mutable ""
+attr unit m
+par WirelessNetwork.visualizer.sceneVisualizer animationSpeed 0
+par WirelessNetwork.visualizer.sceneVisualizer sceneMinX "nan m"
+attr unit m
+par WirelessNetwork.visualizer.sceneVisualizer sceneMinY "nan m"
+attr unit m
+par WirelessNetwork.visualizer.sceneVisualizer sceneMinZ "nan m"
+attr unit m
+par WirelessNetwork.visualizer.sceneVisualizer sceneMaxX "nan m"
+attr unit m
+par WirelessNetwork.visualizer.sceneVisualizer sceneMaxY "nan m"
+attr unit m
+par WirelessNetwork.visualizer.sceneVisualizer sceneMaxZ "nan m"
+attr unit m
+par WirelessNetwork.visualizer.sceneVisualizer zIndex 0
+par WirelessNetwork.visualizer.sceneVisualizer viewAngle "\"x right y down z out\""
+attr mutable ""
+par WirelessNetwork.visualizer.sceneVisualizer viewScale "\"1 1\""
+attr mutable ""
+par WirelessNetwork.visualizer.sceneVisualizer viewTranslation "\"0 0\""
+attr mutable ""
+par WirelessNetwork.visualizer.sceneVisualizer descriptionFigure "\"\""
+par WirelessNetwork.visualizer.physicalEnvironmentVisualizer typename "\"inet.visualizer.canvas.environment.PhysicalEnvironmentCanvasVisualizer\""
+par WirelessNetwork.visualizer.physicalEnvironmentVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.physicalEnvironmentVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.physicalEnvironmentVisualizer tags "\"\""
+par WirelessNetwork.visualizer.physicalEnvironmentVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par WirelessNetwork.visualizer.physicalEnvironmentVisualizer displayObjects true
+par WirelessNetwork.visualizer.physicalEnvironmentVisualizer zIndex 0
+par WirelessNetwork.visualizer.networkNodeVisualizer typename "\"inet.visualizer.canvas.scene.NetworkNodeCanvasVisualizer\""
+par WirelessNetwork.visualizer.networkNodeVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.networkNodeVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.networkNodeVisualizer tags "\"\""
+par WirelessNetwork.visualizer.networkNodeVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.networkNodeVisualizer annotationSpacing 4
+par WirelessNetwork.visualizer.networkNodeVisualizer placementPenalty 10
+par WirelessNetwork.visualizer.networkNodeVisualizer zIndex 0
+par WirelessNetwork.visualizer.networkConnectionVisualizer typename "\"inet.visualizer.canvas.scene.NetworkConnectionCanvasVisualizer\""
+par WirelessNetwork.visualizer.networkConnectionVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.networkConnectionVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.networkConnectionVisualizer tags "\"\""
+par WirelessNetwork.visualizer.networkConnectionVisualizer displayNetworkConnections true
+par WirelessNetwork.visualizer.networkConnectionVisualizer nodeFilter "\"\""
+attr mutable ""
+par WirelessNetwork.visualizer.networkConnectionVisualizer lineColor "\"black\""
+par WirelessNetwork.visualizer.networkConnectionVisualizer lineStyle "\"solid\""
+par WirelessNetwork.visualizer.networkConnectionVisualizer lineWidth 1
+par WirelessNetwork.visualizer.networkConnectionVisualizer zIndex 0
+par WirelessNetwork.visualizer.mobilityVisualizer typename "\"inet.visualizer.canvas.mobility.MobilityCanvasVisualizer\""
+par WirelessNetwork.visualizer.mobilityVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.mobilityVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.mobilityVisualizer tags "\"\""
+par WirelessNetwork.visualizer.mobilityVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.mobilityVisualizer displayMobility true
+par WirelessNetwork.visualizer.mobilityVisualizer animationSpeed 0
+par WirelessNetwork.visualizer.mobilityVisualizer moduleFilter "\"**.mobility\""
+attr mutable ""
+par WirelessNetwork.visualizer.mobilityVisualizer displayPositions false
+par WirelessNetwork.visualizer.mobilityVisualizer positionCircleRadius 4
+par WirelessNetwork.visualizer.mobilityVisualizer positionCircleLineWidth 1
+par WirelessNetwork.visualizer.mobilityVisualizer positionCircleLineColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.mobilityVisualizer positionCircleFillColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.mobilityVisualizer displayOrientations false
+par WirelessNetwork.visualizer.mobilityVisualizer orientationPieRadius 32
+par WirelessNetwork.visualizer.mobilityVisualizer orientationPieSize 0.2
+par WirelessNetwork.visualizer.mobilityVisualizer orientationPieOpacity 0.25
+par WirelessNetwork.visualizer.mobilityVisualizer orientationLineColor "\"black\""
+par WirelessNetwork.visualizer.mobilityVisualizer orientationLineStyle "\"solid\""
+par WirelessNetwork.visualizer.mobilityVisualizer orientationLineWidth 1
+par WirelessNetwork.visualizer.mobilityVisualizer orientationFillColor "\"blue\""
+par WirelessNetwork.visualizer.mobilityVisualizer displayVelocities true
+par WirelessNetwork.visualizer.mobilityVisualizer velocityArrowScale 1
+par WirelessNetwork.visualizer.mobilityVisualizer velocityLineColor "\"black\""
+par WirelessNetwork.visualizer.mobilityVisualizer velocityLineStyle "\"solid\""
+par WirelessNetwork.visualizer.mobilityVisualizer velocityLineWidth 1
+par WirelessNetwork.visualizer.mobilityVisualizer displayMovementTrails true
+par WirelessNetwork.visualizer.mobilityVisualizer movementTrailLineColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.mobilityVisualizer movementTrailLineStyle "\"solid\""
+par WirelessNetwork.visualizer.mobilityVisualizer movementTrailLineWidth 1
+par WirelessNetwork.visualizer.mobilityVisualizer trailLength 100
+par WirelessNetwork.visualizer.mobilityVisualizer zIndex 0
+par WirelessNetwork.visualizer.statisticVisualizer typename "\"inet.visualizer.canvas.common.StatisticCanvasVisualizer\""
+par WirelessNetwork.visualizer.statisticVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.statisticVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.statisticVisualizer tags "\"\""
+par WirelessNetwork.visualizer.statisticVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.statisticVisualizer displayStatistics true
+par WirelessNetwork.visualizer.statisticVisualizer signalName "\"\""
+par WirelessNetwork.visualizer.statisticVisualizer statisticName "\"\""
+par WirelessNetwork.visualizer.statisticVisualizer statisticUnit "\"\""
+par WirelessNetwork.visualizer.statisticVisualizer statisticExpression "\"\""
+par WirelessNetwork.visualizer.statisticVisualizer sourceFilter "\"**\""
+attr mutable ""
+par WirelessNetwork.visualizer.statisticVisualizer format "\"%n: %v %u\""
+attr mutable ""
+par WirelessNetwork.visualizer.statisticVisualizer unit "\"\""
+par WirelessNetwork.visualizer.statisticVisualizer font "\"<default>\""
+par WirelessNetwork.visualizer.statisticVisualizer textColor "\"black\""
+par WirelessNetwork.visualizer.statisticVisualizer backgroundColor "\"white\""
+par WirelessNetwork.visualizer.statisticVisualizer opacity 1
+par WirelessNetwork.visualizer.statisticVisualizer placementHint "\"top\""
+par WirelessNetwork.visualizer.statisticVisualizer placementPriority 0
+par WirelessNetwork.visualizer.statisticVisualizer zIndex 10
+par WirelessNetwork.visualizer.statisticVisualizer propertyName "\"\""
+par WirelessNetwork.visualizer.statisticVisualizer propertyIndex "\"\""
+par WirelessNetwork.visualizer.infoVisualizer typename "\"inet.visualizer.canvas.common.InfoCanvasVisualizer\""
+par WirelessNetwork.visualizer.infoVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.infoVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.infoVisualizer tags "\"\""
+par WirelessNetwork.visualizer.infoVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.infoVisualizer displayInfos true
+par WirelessNetwork.visualizer.infoVisualizer modules "\"\""
+attr mutable ""
+par WirelessNetwork.visualizer.infoVisualizer format "\"%t\""
+attr mutable ""
+par WirelessNetwork.visualizer.infoVisualizer font "\"<default>\""
+par WirelessNetwork.visualizer.infoVisualizer textColor "\"black\""
+par WirelessNetwork.visualizer.infoVisualizer backgroundColor "\"white\""
+par WirelessNetwork.visualizer.infoVisualizer opacity 1
+par WirelessNetwork.visualizer.infoVisualizer placementHint "\"top\""
+par WirelessNetwork.visualizer.infoVisualizer placementPriority 0
+par WirelessNetwork.visualizer.infoVisualizer zIndex 10
+par WirelessNetwork.visualizer.energyStorageVisualizer typename "\"inet.visualizer.canvas.power.EnergyStorageCanvasVisualizer\""
+par WirelessNetwork.visualizer.energyStorageVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.energyStorageVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.energyStorageVisualizer tags "\"\""
+par WirelessNetwork.visualizer.energyStorageVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.energyStorageVisualizer displayEnergyStorages false
+par WirelessNetwork.visualizer.energyStorageVisualizer energyStorageFilter "\"**\""
+par WirelessNetwork.visualizer.energyStorageVisualizer color "\"green\""
+par WirelessNetwork.visualizer.energyStorageVisualizer width 8
+par WirelessNetwork.visualizer.energyStorageVisualizer height 24
+par WirelessNetwork.visualizer.energyStorageVisualizer spacing 2
+par WirelessNetwork.visualizer.energyStorageVisualizer placementHint "\"right\""
+par WirelessNetwork.visualizer.energyStorageVisualizer placementPriority 0
+par WirelessNetwork.visualizer.energyStorageVisualizer zIndex 10
+par WirelessNetwork.visualizer.mediumVisualizer typename "\"inet.visualizer.canvas.physicallayer.MediumCanvasVisualizer\""
+par WirelessNetwork.visualizer.mediumVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.mediumVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.mediumVisualizer tags "\"\""
+par WirelessNetwork.visualizer.mediumVisualizer mediumModule "\"radioMedium\""
+par WirelessNetwork.visualizer.mediumVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.mediumVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.mediumVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.mediumVisualizer packetFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.mediumVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.mediumVisualizer displaySignals true
+par WirelessNetwork.visualizer.mediumVisualizer signalColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.mediumVisualizer signalPropagationAnimationSpeed "nan "
+attr mutable ""
+par WirelessNetwork.visualizer.mediumVisualizer signalPropagationAnimationTime 1s
+attr unit s
+par WirelessNetwork.visualizer.mediumVisualizer signalPropagationAdditionalTime 0s
+attr unit s
+par WirelessNetwork.visualizer.mediumVisualizer signalTransmissionAnimationSpeed "nan "
+attr mutable ""
+par WirelessNetwork.visualizer.mediumVisualizer signalTransmissionAnimationTime 1s
+attr unit s
+par WirelessNetwork.visualizer.mediumVisualizer signalAnimationSpeedChangeTimeMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.mediumVisualizer signalAnimationSpeedChangeTime 1s
+attr unit s
+par WirelessNetwork.visualizer.mediumVisualizer displaySignalDepartures false
+par WirelessNetwork.visualizer.mediumVisualizer signalDepartureImage "\"misc/signal_departure.png\""
+par WirelessNetwork.visualizer.mediumVisualizer signalDeparturePlacementHint "\"topCenter\""
+par WirelessNetwork.visualizer.mediumVisualizer signalDeparturePlacementPriority 1
+par WirelessNetwork.visualizer.mediumVisualizer displaySignalArrivals false
+par WirelessNetwork.visualizer.mediumVisualizer signalArrivalImage "\"misc/signal_arrival.png\""
+par WirelessNetwork.visualizer.mediumVisualizer signalArrivalPlacementHint "\"topCenter\""
+par WirelessNetwork.visualizer.mediumVisualizer signalArrivalPlacementPriority -1
+par WirelessNetwork.visualizer.mediumVisualizer displayCommunicationRanges false
+par WirelessNetwork.visualizer.mediumVisualizer communicationRangeLineColor "\"blue\""
+par WirelessNetwork.visualizer.mediumVisualizer communicationRangeLineStyle "\"solid\""
+par WirelessNetwork.visualizer.mediumVisualizer communicationRangeLineWidth 1
+par WirelessNetwork.visualizer.mediumVisualizer displayInterferenceRanges false
+par WirelessNetwork.visualizer.mediumVisualizer interferenceRangeLineColor "\"gray\""
+par WirelessNetwork.visualizer.mediumVisualizer interferenceRangeLineStyle "\"solid\""
+par WirelessNetwork.visualizer.mediumVisualizer interferenceRangeLineWidth 1
+par WirelessNetwork.visualizer.mediumVisualizer autoPowerAxis true
+par WirelessNetwork.visualizer.mediumVisualizer signalMinPower "inf dBmW"
+attr unit dBmW
+par WirelessNetwork.visualizer.mediumVisualizer signalMaxPower 0dBmW
+attr unit dBmW
+par WirelessNetwork.visualizer.mediumVisualizer signalMinPowerDensity "inf dBmWpMHz"
+attr unit dBmWpMHz
+par WirelessNetwork.visualizer.mediumVisualizer signalMaxPowerDensity "-inf dBmWpMHz"
+attr unit dBmWpMHz
+par WirelessNetwork.visualizer.mediumVisualizer autoTimeAxis true
+par WirelessNetwork.visualizer.mediumVisualizer signalMinTime 0s
+attr unit s
+par WirelessNetwork.visualizer.mediumVisualizer signalMaxTime 0s
+attr unit s
+par WirelessNetwork.visualizer.mediumVisualizer autoFrequencyAxis true
+par WirelessNetwork.visualizer.mediumVisualizer signalMinFrequency "inf Hz"
+attr unit Hz
+par WirelessNetwork.visualizer.mediumVisualizer signalMaxFrequency "-inf Hz"
+attr unit Hz
+par WirelessNetwork.visualizer.mediumVisualizer displayMainPowerDensityMap false
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapPixmapDensity 1
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapMinX 0
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapMaxX "nan "
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapMinY 0
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapMaxY "nan "
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapZ 0
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapFigureXTickCount 3
+par WirelessNetwork.visualizer.mediumVisualizer mainPowerDensityMapFigureYTickCount 3
+par WirelessNetwork.visualizer.mediumVisualizer displayPowerDensityMaps false
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapMode "\"auto\""
+attr enum total,signal,auto
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapPixelMode "\"mean\""
+attr enum sample,partition,mean
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapApproximationSize 10
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapCenterFrequency "nan Hz"
+attr mutable ""
+attr unit Hz
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapBandwidth 0Hz
+attr mutable ""
+attr unit Hz
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapFigureWidth 200
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapFigureHeight 120
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapPixmapWidth 200
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapPixmapHeight 120
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapZ 0
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapFigureXTickCount 3
+par WirelessNetwork.visualizer.mediumVisualizer powerDensityMapFigureYTickCount 3
+par WirelessNetwork.visualizer.mediumVisualizer displaySpectrums false
+par WirelessNetwork.visualizer.mediumVisualizer spectrumMode "\"auto\""
+attr enum total,signal,auto
+par WirelessNetwork.visualizer.mediumVisualizer spectrumFigureWidth 200
+par WirelessNetwork.visualizer.mediumVisualizer spectrumFigureHeight 120
+par WirelessNetwork.visualizer.mediumVisualizer spectrumFigureXTickCount 3
+par WirelessNetwork.visualizer.mediumVisualizer spectrumFigureYTickCount 5
+par WirelessNetwork.visualizer.mediumVisualizer spectrumFigureInterpolationSize 5
+par WirelessNetwork.visualizer.mediumVisualizer spectrumPlacementHint "\"bottomCenter\""
+par WirelessNetwork.visualizer.mediumVisualizer spectrumPlacementPriority -1
+par WirelessNetwork.visualizer.mediumVisualizer displaySpectrograms false
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramMode "\"auto\""
+attr enum total,signal,auto
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramPixelMode "\"mean\""
+attr enum sample,partition,mean
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramFigureWidth 200
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramFigureHeight 120
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramPixmapWidth 200
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramPixmapHeight 120
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramFigureXTickCount 3
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramFigureYTickCount 5
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramPlacementHint "\"bottomCenter\""
+par WirelessNetwork.visualizer.mediumVisualizer spectrogramPlacementPriority -1
+par WirelessNetwork.visualizer.mediumVisualizer zIndex 0
+par WirelessNetwork.visualizer.mediumVisualizer signalShape "\"ring\""
+attr enum ring,sphere
+par WirelessNetwork.visualizer.mediumVisualizer signalOpacity 0.5
+par WirelessNetwork.visualizer.mediumVisualizer signalRingCount 20
+par WirelessNetwork.visualizer.mediumVisualizer signalRingSize 50m
+attr unit m
+par WirelessNetwork.visualizer.mediumVisualizer signalFadingDistance 50m
+attr unit m
+par WirelessNetwork.visualizer.mediumVisualizer signalFadingFactor 1.2
+par WirelessNetwork.visualizer.mediumVisualizer signalWaveCount 20
+par WirelessNetwork.visualizer.mediumVisualizer signalWaveLength 50m
+attr unit m
+par WirelessNetwork.visualizer.mediumVisualizer signalWaveWidth 10m
+attr unit m
+par WirelessNetwork.visualizer.mediumVisualizer signalWaveFadingAnimationSpeedFactor 1
+par WirelessNetwork.visualizer.mediumVisualizer displayCommunicationHeat false
+par WirelessNetwork.visualizer.obstacleLossVisualizer typename "\"inet.visualizer.canvas.physicallayer.TracingObstacleLossCanvasVisualizer\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer tags "\"\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer displayIntersections false
+par WirelessNetwork.visualizer.obstacleLossVisualizer intersectionLineColor "\"red\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer intersectionLineStyle "\"solid\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer intersectionLineWidth 1
+par WirelessNetwork.visualizer.obstacleLossVisualizer displayFaceNormalVectors false
+par WirelessNetwork.visualizer.obstacleLossVisualizer faceNormalLineColor "\"grey\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer faceNormalLineStyle "\"solid\""
+par WirelessNetwork.visualizer.obstacleLossVisualizer faceNormalLineWidth 1
+par WirelessNetwork.visualizer.obstacleLossVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.obstacleLossVisualizer fadeOutTime 1s
+attr unit s
+par WirelessNetwork.visualizer.obstacleLossVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.obstacleLossVisualizer zIndex 0
+par WirelessNetwork.visualizer.packetDropVisualizer typename "\"inet.visualizer.canvas.common.PacketDropCanvasVisualizer\""
+par WirelessNetwork.visualizer.packetDropVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.packetDropVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.packetDropVisualizer tags "\"\""
+par WirelessNetwork.visualizer.packetDropVisualizer displayPacketDrops false
+par WirelessNetwork.visualizer.packetDropVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetDropVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetDropVisualizer packetFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetDropVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetDropVisualizer detailsFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetDropVisualizer icon "\"msg/packet_s\""
+par WirelessNetwork.visualizer.packetDropVisualizer iconTintAmount 1
+par WirelessNetwork.visualizer.packetDropVisualizer iconTintColor "\"dark\""
+par WirelessNetwork.visualizer.packetDropVisualizer labelFormat "\"%n\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetDropVisualizer labelFont "\"<default>\""
+par WirelessNetwork.visualizer.packetDropVisualizer labelColor "\"black\""
+par WirelessNetwork.visualizer.packetDropVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.packetDropVisualizer fadeOutTime 1s
+attr unit s
+par WirelessNetwork.visualizer.packetDropVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.packetDropVisualizer zIndex 10
+par WirelessNetwork.visualizer.packetDropVisualizer dx 32
+par WirelessNetwork.visualizer.packetDropVisualizer dy 64
+par WirelessNetwork.visualizer.packetFlowVisualizer typename "\"inet.visualizer.canvas.flow.PacketFlowCanvasVisualizer\""
+par WirelessNetwork.visualizer.packetFlowVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.packetFlowVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.packetFlowVisualizer tags "\"\""
+par WirelessNetwork.visualizer.packetFlowVisualizer displayRoutes false
+par WirelessNetwork.visualizer.packetFlowVisualizer startPathSignal "\"packetFlowStarted\""
+par WirelessNetwork.visualizer.packetFlowVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par WirelessNetwork.visualizer.packetFlowVisualizer endPathSignal "\"packetFlowEnded\""
+par WirelessNetwork.visualizer.packetFlowVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetFlowVisualizer packetFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetFlowVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.packetFlowVisualizer lineColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.packetFlowVisualizer lineStyle "\"dashed\""
+par WirelessNetwork.visualizer.packetFlowVisualizer lineWidth 3
+par WirelessNetwork.visualizer.packetFlowVisualizer lineSmooth false
+par WirelessNetwork.visualizer.packetFlowVisualizer lineShift 16
+par WirelessNetwork.visualizer.packetFlowVisualizer lineShiftMode "\"normal\""
+par WirelessNetwork.visualizer.packetFlowVisualizer lineContactSpacing 3
+par WirelessNetwork.visualizer.packetFlowVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par WirelessNetwork.visualizer.packetFlowVisualizer labelFormat "\"%L %p pk (%l)\""
+par WirelessNetwork.visualizer.packetFlowVisualizer labelFont "\"<default>, 8px\""
+par WirelessNetwork.visualizer.packetFlowVisualizer labelColor "\"\""
+par WirelessNetwork.visualizer.packetFlowVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.packetFlowVisualizer fadeOutTime 0s
+attr unit s
+par WirelessNetwork.visualizer.packetFlowVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.packetFlowVisualizer zIndex 4
+par WirelessNetwork.visualizer.queueVisualizer typename "\"inet.visualizer.canvas.common.QueueCanvasVisualizer\""
+par WirelessNetwork.visualizer.queueVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.queueVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.queueVisualizer tags "\"\""
+par WirelessNetwork.visualizer.queueVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.queueVisualizer displayQueues false
+par WirelessNetwork.visualizer.queueVisualizer queueFilter "\"**\""
+par WirelessNetwork.visualizer.queueVisualizer color "\"blue\""
+par WirelessNetwork.visualizer.queueVisualizer width 8
+par WirelessNetwork.visualizer.queueVisualizer height 24
+par WirelessNetwork.visualizer.queueVisualizer spacing 2
+par WirelessNetwork.visualizer.queueVisualizer placementHint "\"right\""
+par WirelessNetwork.visualizer.queueVisualizer placementPriority 0
+par WirelessNetwork.visualizer.queueVisualizer zIndex 10
+par WirelessNetwork.visualizer.radioVisualizer typename "\"inet.visualizer.canvas.physicallayer.RadioCanvasVisualizer\""
+par WirelessNetwork.visualizer.radioVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.radioVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.radioVisualizer tags "\"\""
+par WirelessNetwork.visualizer.radioVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.radioVisualizer displayRadios false
+par WirelessNetwork.visualizer.radioVisualizer displayRadioMode true
+par WirelessNetwork.visualizer.radioVisualizer displayReceptionState true
+par WirelessNetwork.visualizer.radioVisualizer displayTransmissionState true
+par WirelessNetwork.visualizer.radioVisualizer displayAntennaLobes false
+par WirelessNetwork.visualizer.radioVisualizer radioFilter "\"**\""
+attr mutable ""
+par WirelessNetwork.visualizer.radioVisualizer radioModeImages "\"block/process_vs block/timer_vs block/wrx_vs block/wtx_vs block/wrxtx_vs block/cogwheel_vs\""
+par WirelessNetwork.visualizer.radioVisualizer receptionStateImages "\"- - misc/receiving misc/receiving\""
+par WirelessNetwork.visualizer.radioVisualizer transmissionStateImages "\"- - misc/transmitting\""
+par WirelessNetwork.visualizer.radioVisualizer width 16
+par WirelessNetwork.visualizer.radioVisualizer height 16
+par WirelessNetwork.visualizer.radioVisualizer placementHint "\"bottomRight\""
+par WirelessNetwork.visualizer.radioVisualizer placementPriority 0
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeNormalize false
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeRelativeLabels false
+par WirelessNetwork.visualizer.radioVisualizer antennaLobePlaneGlobal true
+par WirelessNetwork.visualizer.radioVisualizer antennaLobePlane "\"view\""
+attr enum view,xy,xz,yz
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeMode "\"logarithmic\""
+attr enum logarithmic,linear
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeLogarithmicBase 10
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeLogarithmicScale 100
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeRadius 100
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeStep 10deg
+attr unit deg
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeOpacity 0.25
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeLineSmooth true
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeLineColor "\"black\""
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeLineStyle "\"solid\""
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeLineWidth 1
+par WirelessNetwork.visualizer.radioVisualizer antennaLobeFillColor "\"white\""
+par WirelessNetwork.visualizer.radioVisualizer zIndex 10
+par WirelessNetwork.visualizer.physicalLinkVisualizer typename "\"inet.visualizer.canvas.physicallayer.PhysicalLinkCanvasVisualizer\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer tags "\"\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer displayLinks true
+par WirelessNetwork.visualizer.physicalLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par WirelessNetwork.visualizer.physicalLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.physicalLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.physicalLinkVisualizer packetFilter "\"UDPData\""
+attr mutable ""
+par WirelessNetwork.visualizer.physicalLinkVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.physicalLinkVisualizer lineColor "\"olive\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer lineStyle "\"dotted\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer lineWidth 3
+par WirelessNetwork.visualizer.physicalLinkVisualizer lineShift 16
+par WirelessNetwork.visualizer.physicalLinkVisualizer lineShiftMode "\"normal\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer lineContactSpacing 3
+par WirelessNetwork.visualizer.physicalLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par WirelessNetwork.visualizer.physicalLinkVisualizer labelFormat "\"%n\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer labelFont "\"<default>, 8px\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer labelColor "\"olive\""
+par WirelessNetwork.visualizer.physicalLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.physicalLinkVisualizer fadeOutTime 1s
+attr unit s
+par WirelessNetwork.visualizer.physicalLinkVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.physicalLinkVisualizer holdAnimationTime 0s
+attr unit s
+par WirelessNetwork.visualizer.physicalLinkVisualizer zIndex 1
+par WirelessNetwork.visualizer.interfaceTableVisualizer typename "\"inet.visualizer.canvas.linklayer.InterfaceTableCanvasVisualizer\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer tags "\"\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer displayInterfaceTables false
+par WirelessNetwork.visualizer.interfaceTableVisualizer displayWiredInterfacesAtConnections true
+par WirelessNetwork.visualizer.interfaceTableVisualizer displayBackground false
+par WirelessNetwork.visualizer.interfaceTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.interfaceTableVisualizer interfaceFilter "\"not(lo*)\""
+attr mutable ""
+par WirelessNetwork.visualizer.interfaceTableVisualizer format "\"%N %\\\\%a/%l\""
+attr mutable ""
+par WirelessNetwork.visualizer.interfaceTableVisualizer placementHint "\"top\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer placementPriority 0
+par WirelessNetwork.visualizer.interfaceTableVisualizer font "\"<default>\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer textColor "\"#005030\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer backgroundColor "\"white\""
+par WirelessNetwork.visualizer.interfaceTableVisualizer opacity 1
+par WirelessNetwork.visualizer.interfaceTableVisualizer zIndex 10
+par WirelessNetwork.visualizer.dataLinkVisualizer typename "\"inet.visualizer.canvas.linklayer.DataLinkCanvasVisualizer\""
+par WirelessNetwork.visualizer.dataLinkVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.dataLinkVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.dataLinkVisualizer tags "\"\""
+par WirelessNetwork.visualizer.dataLinkVisualizer displayLinks false
+par WirelessNetwork.visualizer.dataLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par WirelessNetwork.visualizer.dataLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.dataLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.dataLinkVisualizer packetFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.dataLinkVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.dataLinkVisualizer lineColor "\"darkcyan\""
+par WirelessNetwork.visualizer.dataLinkVisualizer lineStyle "\"solid\""
+par WirelessNetwork.visualizer.dataLinkVisualizer lineWidth 3
+par WirelessNetwork.visualizer.dataLinkVisualizer lineShift 16
+par WirelessNetwork.visualizer.dataLinkVisualizer lineShiftMode "\"normal\""
+par WirelessNetwork.visualizer.dataLinkVisualizer lineContactSpacing 3
+par WirelessNetwork.visualizer.dataLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par WirelessNetwork.visualizer.dataLinkVisualizer labelFormat "\"%n\""
+par WirelessNetwork.visualizer.dataLinkVisualizer labelFont "\"<default>, 8px\""
+par WirelessNetwork.visualizer.dataLinkVisualizer labelColor "\"darkcyan\""
+par WirelessNetwork.visualizer.dataLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.dataLinkVisualizer fadeOutTime 1s
+attr unit s
+par WirelessNetwork.visualizer.dataLinkVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.dataLinkVisualizer holdAnimationTime 0s
+attr unit s
+par WirelessNetwork.visualizer.dataLinkVisualizer zIndex 2
+par WirelessNetwork.visualizer.linkBreakVisualizer typename "\"inet.visualizer.canvas.linklayer.LinkBreakCanvasVisualizer\""
+par WirelessNetwork.visualizer.linkBreakVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.linkBreakVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.linkBreakVisualizer tags "\"\""
+par WirelessNetwork.visualizer.linkBreakVisualizer displayLinkBreaks false
+par WirelessNetwork.visualizer.linkBreakVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.linkBreakVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.linkBreakVisualizer packetFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.linkBreakVisualizer packetDataFilter "\"*\""
+par WirelessNetwork.visualizer.linkBreakVisualizer icon "\"status/stop\""
+par WirelessNetwork.visualizer.linkBreakVisualizer iconTintAmount 0
+par WirelessNetwork.visualizer.linkBreakVisualizer iconTintColor "\"\""
+par WirelessNetwork.visualizer.linkBreakVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.linkBreakVisualizer fadeOutTime 1s
+attr unit s
+par WirelessNetwork.visualizer.linkBreakVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.linkBreakVisualizer zIndex 2
+par WirelessNetwork.visualizer.ieee80211Visualizer typename "\"inet.visualizer.canvas.linklayer.Ieee80211CanvasVisualizer\""
+par WirelessNetwork.visualizer.ieee80211Visualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.ieee80211Visualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.ieee80211Visualizer tags "\"\""
+par WirelessNetwork.visualizer.ieee80211Visualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.ieee80211Visualizer displayAssociations false
+par WirelessNetwork.visualizer.ieee80211Visualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.ieee80211Visualizer interfaceFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.ieee80211Visualizer minPower -85dBm
+attr unit dBm
+par WirelessNetwork.visualizer.ieee80211Visualizer maxPower -50dBm
+attr unit dBm
+par WirelessNetwork.visualizer.ieee80211Visualizer icons "\"misc/signal_power_0 misc/signal_power_1 misc/signal_power_2 misc/signal_power_3\""
+par WirelessNetwork.visualizer.ieee80211Visualizer iconColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.ieee80211Visualizer labelFont "\"<default>\""
+par WirelessNetwork.visualizer.ieee80211Visualizer labelColor "\"black\""
+par WirelessNetwork.visualizer.ieee80211Visualizer placementHint "\"top\""
+par WirelessNetwork.visualizer.ieee80211Visualizer placementPriority 0
+par WirelessNetwork.visualizer.ieee80211Visualizer zIndex 2
+par WirelessNetwork.visualizer.networkRouteVisualizer typename "\"inet.visualizer.canvas.networklayer.NetworkRouteCanvasVisualizer\""
+par WirelessNetwork.visualizer.networkRouteVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.networkRouteVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.networkRouteVisualizer tags "\"\""
+par WirelessNetwork.visualizer.networkRouteVisualizer displayRoutes false
+par WirelessNetwork.visualizer.networkRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par WirelessNetwork.visualizer.networkRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par WirelessNetwork.visualizer.networkRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par WirelessNetwork.visualizer.networkRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.networkRouteVisualizer packetFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.networkRouteVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.networkRouteVisualizer lineColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.networkRouteVisualizer lineStyle "\"solid\""
+par WirelessNetwork.visualizer.networkRouteVisualizer lineWidth 3
+par WirelessNetwork.visualizer.networkRouteVisualizer lineSmooth false
+par WirelessNetwork.visualizer.networkRouteVisualizer lineShift 16
+par WirelessNetwork.visualizer.networkRouteVisualizer lineShiftMode "\"normal\""
+par WirelessNetwork.visualizer.networkRouteVisualizer lineContactSpacing 3
+par WirelessNetwork.visualizer.networkRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par WirelessNetwork.visualizer.networkRouteVisualizer labelFormat "\"%n\""
+par WirelessNetwork.visualizer.networkRouteVisualizer labelFont "\"<default>, 8px\""
+par WirelessNetwork.visualizer.networkRouteVisualizer labelColor "\"\""
+par WirelessNetwork.visualizer.networkRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.networkRouteVisualizer fadeOutTime 1s
+attr unit s
+par WirelessNetwork.visualizer.networkRouteVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.networkRouteVisualizer zIndex 3
+par WirelessNetwork.visualizer.routingTableVisualizer typename "\"inet.visualizer.canvas.networklayer.RoutingTableCanvasVisualizer\""
+par WirelessNetwork.visualizer.routingTableVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.routingTableVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.routingTableVisualizer tags "\"\""
+par WirelessNetwork.visualizer.routingTableVisualizer displayRoutingTables false
+par WirelessNetwork.visualizer.routingTableVisualizer displayRoutesIndividually true
+par WirelessNetwork.visualizer.routingTableVisualizer displayLabels true
+par WirelessNetwork.visualizer.routingTableVisualizer destinationFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.routingTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.routingTableVisualizer lineColor "\"black\""
+par WirelessNetwork.visualizer.routingTableVisualizer lineStyle "\"solid\""
+par WirelessNetwork.visualizer.routingTableVisualizer lineWidth 2
+par WirelessNetwork.visualizer.routingTableVisualizer lineShift 16
+par WirelessNetwork.visualizer.routingTableVisualizer lineShiftMode "\"normal\""
+par WirelessNetwork.visualizer.routingTableVisualizer lineContactSpacing 3
+par WirelessNetwork.visualizer.routingTableVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par WirelessNetwork.visualizer.routingTableVisualizer labelFormat "\"%d/%m -> %g (%n)\""
+attr mutable ""
+par WirelessNetwork.visualizer.routingTableVisualizer labelFont "\"<default>, 8px\""
+par WirelessNetwork.visualizer.routingTableVisualizer labelColor "\"black\""
+par WirelessNetwork.visualizer.routingTableVisualizer zIndex 0
+par WirelessNetwork.visualizer.transportRouteVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportRouteCanvasVisualizer\""
+par WirelessNetwork.visualizer.transportRouteVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.transportRouteVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.transportRouteVisualizer tags "\"\""
+par WirelessNetwork.visualizer.transportRouteVisualizer displayRoutes false
+par WirelessNetwork.visualizer.transportRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par WirelessNetwork.visualizer.transportRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par WirelessNetwork.visualizer.transportRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par WirelessNetwork.visualizer.transportRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.transportRouteVisualizer packetFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.transportRouteVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.transportRouteVisualizer lineColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.transportRouteVisualizer lineStyle "\"solid\""
+par WirelessNetwork.visualizer.transportRouteVisualizer lineWidth 3
+par WirelessNetwork.visualizer.transportRouteVisualizer lineSmooth false
+par WirelessNetwork.visualizer.transportRouteVisualizer lineShift 16
+par WirelessNetwork.visualizer.transportRouteVisualizer lineShiftMode "\"normal\""
+par WirelessNetwork.visualizer.transportRouteVisualizer lineContactSpacing 3
+par WirelessNetwork.visualizer.transportRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par WirelessNetwork.visualizer.transportRouteVisualizer labelFormat "\"%n\""
+par WirelessNetwork.visualizer.transportRouteVisualizer labelFont "\"<default>, 8px\""
+par WirelessNetwork.visualizer.transportRouteVisualizer labelColor "\"\""
+par WirelessNetwork.visualizer.transportRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par WirelessNetwork.visualizer.transportRouteVisualizer fadeOutTime 1s
+attr unit s
+par WirelessNetwork.visualizer.transportRouteVisualizer fadeOutAnimationSpeed 0
+par WirelessNetwork.visualizer.transportRouteVisualizer zIndex 4
+par WirelessNetwork.visualizer.transportConnectionVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportConnectionCanvasVisualizer\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer visualizationTargetModule "\"^.^\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer visualizationSubjectModule "\"^.^\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer tags "\"\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer displayTransportConnections false
+par WirelessNetwork.visualizer.transportConnectionVisualizer sourceNodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.transportConnectionVisualizer sourcePortFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.transportConnectionVisualizer destinationNodeFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.transportConnectionVisualizer destinationPortFilter "\"*\""
+attr mutable ""
+par WirelessNetwork.visualizer.transportConnectionVisualizer icon "\"misc/marker_s\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer iconColor "\"dark\""
+attr enum light,dark
+par WirelessNetwork.visualizer.transportConnectionVisualizer labelFont "\"<default>\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer labelColor "\"black\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer placementHint "\"top\""
+par WirelessNetwork.visualizer.transportConnectionVisualizer placementPriority 0
+par WirelessNetwork.visualizer.transportConnectionVisualizer zIndex 4
+par WirelessNetwork.visualizer typename "\"inet.visualizer.canvas.integrated.IntegratedCanvasVisualizer\""
+par WirelessNetwork.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator\""
+par WirelessNetwork.configurator minLinkWeight 0.001
+par WirelessNetwork.configurator configureIsolatedNetworksSeparatly false
+par WirelessNetwork.configurator config "<config>...</config> at content:1"
+par WirelessNetwork.configurator assignAddresses true
+par WirelessNetwork.configurator assignUniqueAddresses true
+par WirelessNetwork.configurator assignDisjunctSubnetAddresses true
+par WirelessNetwork.configurator addStaticRoutes true
+par WirelessNetwork.configurator addDefaultRoutes true
+par WirelessNetwork.configurator addSubnetRoutes true
+par WirelessNetwork.configurator addDirectRoutes true
+par WirelessNetwork.configurator optimizeRoutes true
+par WirelessNetwork.configurator dumpTopology false
+par WirelessNetwork.configurator dumpLinks false
+par WirelessNetwork.configurator dumpAddresses false
+par WirelessNetwork.configurator dumpRoutes false
+par WirelessNetwork.configurator dumpConfig "\"\""
+par WirelessNetwork.radioMedium.propagation typename "\"inet.physicallayer.wireless.common.propagation.ConstantSpeedPropagation\""
+par WirelessNetwork.radioMedium.propagation propagationSpeed 2.99792e+08mps
+attr unit mps
+par WirelessNetwork.radioMedium.propagation ignoreMovementDuringTransmission true
+par WirelessNetwork.radioMedium.propagation ignoreMovementDuringPropagation true
+par WirelessNetwork.radioMedium.propagation ignoreMovementDuringReception true
+scalar WirelessNetwork.radioMedium.propagation "Arrival computation count" 7837
+par WirelessNetwork.radioMedium.analogModel typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskAnalogModel\""
+par WirelessNetwork.radioMedium.pathLoss typename "\"inet.physicallayer.wireless.common.pathloss.FreeSpacePathLoss\""
+par WirelessNetwork.radioMedium.pathLoss alpha 2
+par WirelessNetwork.radioMedium.pathLoss systemLoss 0dB
+attr unit dB
+par WirelessNetwork.radioMedium.mediumLimitCache typename "\"inet.physicallayer.wireless.common.medium.MediumLimitCache\""
+par WirelessNetwork.radioMedium.mediumLimitCache centerFrequency "nan Hz"
+attr unit Hz
+par WirelessNetwork.radioMedium.mediumLimitCache maxSpeed "nan mps"
+attr unit mps
+par WirelessNetwork.radioMedium.mediumLimitCache maxTransmissionPower "nan W"
+attr unit W
+par WirelessNetwork.radioMedium.mediumLimitCache minInterferencePower "nan dBm"
+attr unit dBm
+par WirelessNetwork.radioMedium.mediumLimitCache minReceptionPower "nan dBm"
+attr unit dBm
+par WirelessNetwork.radioMedium.mediumLimitCache maxAntennaGain 0dB
+attr unit dB
+par WirelessNetwork.radioMedium.mediumLimitCache minInterferenceTime 1e-12s
+attr unit s
+par WirelessNetwork.radioMedium.mediumLimitCache maxTransmissionDuration 0.01s
+attr unit s
+par WirelessNetwork.radioMedium.mediumLimitCache maxCommunicationRange "nan m"
+attr unit m
+par WirelessNetwork.radioMedium.mediumLimitCache maxInterferenceRange "nan m"
+attr unit m
+par WirelessNetwork.radioMedium.communicationCache typename "\"inet.physicallayer.wireless.common.communicationcache.VectorCommunicationCache\""
+par WirelessNetwork.radioMedium typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskRadioMedium\""
+par WirelessNetwork.radioMedium physicalEnvironmentModule "\"physicalEnvironment\""
+par WirelessNetwork.radioMedium signalAnalogRepresentation "\"unitDisk\""
+attr enum unitDisk,scalar,dimensional
+par WirelessNetwork.radioMedium rangeFilter "\"\""
+par WirelessNetwork.radioMedium radioModeFilter false
+par WirelessNetwork.radioMedium listeningFilter false
+par WirelessNetwork.radioMedium macAddressFilter false
+par WirelessNetwork.radioMedium recordTransmissionLog false
+par WirelessNetwork.radioMedium recordReceptionLog false
+scalar WirelessNetwork.radioMedium "transmission count" 7837
+scalar WirelessNetwork.radioMedium "signal send count" 7837
+scalar WirelessNetwork.radioMedium "reception computation count" 7837
+scalar WirelessNetwork.radioMedium "interference computation count" 31348
+scalar WirelessNetwork.radioMedium "reception decision computation count" 724
+scalar WirelessNetwork.radioMedium "listening decision computation count" 22787
+scalar WirelessNetwork.radioMedium "reception cache hit" 76.619928400955
+attr unit %
+scalar WirelessNetwork.radioMedium "interference cache hit" 66.666666666667
+attr unit %
+scalar WirelessNetwork.radioMedium "noise cache hit" 0
+attr unit %
+scalar WirelessNetwork.radioMedium "snir cache hit" 50
+attr unit %
+scalar WirelessNetwork.radioMedium "reception decision cache hit" 50
+attr unit %
+scalar WirelessNetwork.radioMedium "reception result cache hit" 0
+attr unit %
+par WirelessNetwork.hostA.radioIn[0].channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.mobility typename "\"inet.mobility.single.LinearMobility\""
+par WirelessNetwork.hostA.mobility subjectModule "\"^\""
+par WirelessNetwork.hostA.mobility coordinateSystemModule "\"\""
+par WirelessNetwork.hostA.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par WirelessNetwork.hostA.mobility updateDisplayString true
+par WirelessNetwork.hostA.mobility constraintAreaMinX "-inf m"
+attr unit m
+par WirelessNetwork.hostA.mobility constraintAreaMinY "-inf m"
+attr unit m
+par WirelessNetwork.hostA.mobility constraintAreaMinZ "-inf m"
+attr unit m
+par WirelessNetwork.hostA.mobility constraintAreaMaxX "inf m"
+attr unit m
+par WirelessNetwork.hostA.mobility constraintAreaMaxY "inf m"
+attr unit m
+par WirelessNetwork.hostA.mobility constraintAreaMaxZ "inf m"
+attr unit m
+par WirelessNetwork.hostA.mobility updateInterval 0.1s
+attr unit s
+par WirelessNetwork.hostA.mobility faceForward true
+par WirelessNetwork.hostA.mobility initialX "nan m"
+attr unit m
+par WirelessNetwork.hostA.mobility initialY "nan m"
+attr unit m
+par WirelessNetwork.hostA.mobility initialZ 0m
+attr unit m
+par WirelessNetwork.hostA.mobility initFromDisplayString true
+par WirelessNetwork.hostA.mobility speed 12mps
+attr unit mps
+par WirelessNetwork.hostA.mobility initialMovementHeading 200deg
+attr unit deg
+par WirelessNetwork.hostA.mobility initialMovementElevation 0deg
+attr unit deg
+par WirelessNetwork.hostA.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par WirelessNetwork.hostA.interfaceTable displayAddresses false
+par WirelessNetwork.hostA.li typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostA.li displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostA.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par WirelessNetwork.hostA.lo[0].lo interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.lo[0].lo mtu 4470B
+attr unit B
+scalar WirelessNetwork.hostA.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WirelessNetwork.hostA.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WirelessNetwork.hostA.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WirelessNetwork.hostA.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par WirelessNetwork.hostA.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par WirelessNetwork.hostA.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WirelessNetwork.hostA.lo[0] recordPcap false
+par WirelessNetwork.hostA.lo[0] numPcapRecorders 0
+par WirelessNetwork.hostA.lo[0] interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.wlan[0].radioIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.wlan[0].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.wlan[0].mac.queue typename "\"inet.queueing.queue.DropTailQueue\""
+par WirelessNetwork.hostA.wlan[0].mac.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WirelessNetwork.hostA.wlan[0].mac.queue packetCapacity 100
+par WirelessNetwork.hostA.wlan[0].mac.queue dataCapacity -1b
+attr unit b
+par WirelessNetwork.hostA.wlan[0].mac.queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WirelessNetwork.hostA.wlan[0].mac.queue comparatorClass "\"\""
+par WirelessNetwork.hostA.wlan[0].mac.queue bufferModule "\"\""
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetPulled:count 7837
+attr interpolationmode none
+attr title "packet pulled, count"
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetPulled:sum(packetBytes) 8056436
+attr interpolationmode none
+attr title "packet pulled, sum(packetBytes)"
+statistic WirelessNetwork.hostA.wlan[0].mac.queue queueingTime:histogram
+field count 7837
+field mean 0.011166670497271
+field stddev 0.013910428689197
+field min 0
+field max 0.092550436407
+field sum 87.513196687113
+field sqrsum 2.4934972377896
+attr interpolationmode none
+attr source queueingTime(packetPulled)
+attr title "queueing times, histogram"
+attr unit s
+bin	-inf	0
+bin	0	2625
+bin	0.002	449
+bin	0.004	566
+bin	0.006	676
+bin	0.008	472
+bin	0.01	391
+bin	0.012	338
+bin	0.014	332
+bin	0.016	266
+bin	0.018	262
+bin	0.02	177
+bin	0.022	170
+bin	0.024	129
+bin	0.026	133
+bin	0.028	99
+bin	0.03	86
+bin	0.032	96
+bin	0.034	80
+bin	0.036	64
+bin	0.038	44
+bin	0.04	47
+bin	0.042	37
+bin	0.044	31
+bin	0.046	26
+bin	0.048	39
+bin	0.05	24
+bin	0.052	13
+bin	0.054	25
+bin	0.056	15
+bin	0.058	21
+bin	0.06	15
+bin	0.062	19
+bin	0.064	8
+bin	0.066	14
+bin	0.068	4
+bin	0.07	6
+bin	0.072	5
+bin	0.074	4
+bin	0.076	5
+bin	0.078	2
+bin	0.08	5
+bin	0.082	5
+bin	0.084	6
+bin	0.086	3
+bin	0.088	0
+bin	0.09	2
+bin	0.092	1
+bin	0.094	0
+scalar WirelessNetwork.hostA.wlan[0].mac.queue queueLength:max 11
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, max"
+attr type int
+scalar WirelessNetwork.hostA.wlan[0].mac.queue queueLength:timeavg 0.93847498613598
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, timeavg"
+attr type int
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetPushed:count 7837
+attr interpolationmode none
+attr title "packet pushed, count"
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetPushed:sum(packetBytes) 8056436
+attr interpolationmode none
+attr title "packet pushed, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetRemoved:count 0
+attr interpolationmode none
+attr title "packets removed, count"
+scalar WirelessNetwork.hostA.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packets removed, sum(packetBytes)"
+par WirelessNetwork.hostA.wlan[0].mac typename "\"inet.linklayer.acking.AckingMac\""
+par WirelessNetwork.hostA.wlan[0].mac interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.wlan[0].mac address "\"auto\""
+attr mutable ""
+par WirelessNetwork.hostA.wlan[0].mac bitrate 1e+06bps
+attr unit bps
+par WirelessNetwork.hostA.wlan[0].mac mtu 4470B
+attr unit B
+par WirelessNetwork.hostA.wlan[0].mac headerLength 23B
+attr unit B
+par WirelessNetwork.hostA.wlan[0].mac promiscuous false
+par WirelessNetwork.hostA.wlan[0].mac fullDuplex false
+par WirelessNetwork.hostA.wlan[0].mac useAck false
+par WirelessNetwork.hostA.wlan[0].mac ackTimeout 0.1s
+attr unit s
+scalar WirelessNetwork.hostA.wlan[0].mac rcvdPkFromLl:count 0
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, count"
+scalar WirelessNetwork.hostA.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac sentDownPk:count 7837
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, count"
+scalar WirelessNetwork.hostA.wlan[0].mac sentDownPk:sum(packetBytes) 8236687
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac rcvdPkFromHl:count 7837
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WirelessNetwork.hostA.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 8056436
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WirelessNetwork.hostA.wlan[0].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WirelessNetwork.hostA.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WirelessNetwork.hostA.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WirelessNetwork.hostA.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar WirelessNetwork.hostA.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr source linkBroken
+attr title "link break, count"
+par WirelessNetwork.hostA.wlan[0].radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par WirelessNetwork.hostA.wlan[0].radio.antenna mobilityModule "\"^.^.^.mobility\""
+par WirelessNetwork.hostA.wlan[0].radio.antenna numAntennas 1
+par WirelessNetwork.hostA.wlan[0].radio.transmitter typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskTransmitter\""
+par WirelessNetwork.hostA.wlan[0].radio.transmitter preambleDuration 0s
+attr unit s
+par WirelessNetwork.hostA.wlan[0].radio.transmitter headerLength 96b
+attr unit b
+par WirelessNetwork.hostA.wlan[0].radio.transmitter bitrate 1e+06bps
+attr unit bps
+par WirelessNetwork.hostA.wlan[0].radio.transmitter communicationRange 500m
+attr unit m
+par WirelessNetwork.hostA.wlan[0].radio.transmitter interferenceRange 500m
+attr unit m
+par WirelessNetwork.hostA.wlan[0].radio.transmitter detectionRange 500m
+attr unit m
+par WirelessNetwork.hostA.wlan[0].radio.receiver typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskReceiver\""
+par WirelessNetwork.hostA.wlan[0].radio.receiver ignoreInterference true
+par WirelessNetwork.hostA.wlan[0].radio typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskRadio\""
+par WirelessNetwork.hostA.wlan[0].radio radioMediumModule "\"radioMedium\""
+par WirelessNetwork.hostA.wlan[0].radio energySourceModule "\"\""
+par WirelessNetwork.hostA.wlan[0].radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par WirelessNetwork.hostA.wlan[0].radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par WirelessNetwork.hostA.wlan[0].radio sendRawBytes false
+par WirelessNetwork.hostA.wlan[0].radio separateTransmissionParts false
+par WirelessNetwork.hostA.wlan[0].radio separateReceptionParts false
+par WirelessNetwork.hostA.wlan[0].radio displayCommunicationRange true
+par WirelessNetwork.hostA.wlan[0].radio displayInterferenceRange false
+statistic WirelessNetwork.hostA.wlan[0].radio minSnir:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic WirelessNetwork.hostA.wlan[0].radio packetErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic WirelessNetwork.hostA.wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic WirelessNetwork.hostA.wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WirelessNetwork.hostA.wlan[0].radio transmissionState:count 31346
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+scalar WirelessNetwork.hostA.wlan[0].radio receptionState:count 15674
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar WirelessNetwork.hostA.wlan[0].radio radioMode:count 15676
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, count"
+par WirelessNetwork.hostA.wlan[0] typename "\"inet.linklayer.acking.AckingWirelessInterface\""
+par WirelessNetwork.hostA.wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WirelessNetwork.hostA.wlan[0] recordPcap false
+par WirelessNetwork.hostA.wlan[0] numPcapRecorders 0
+par WirelessNetwork.hostA.wlan[0] interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.wlan[0] energySourceModule "\"\""
+par WirelessNetwork.hostA.wlan[0] bitrate 1e+06bps
+attr unit bps
+par WirelessNetwork.hostA.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostA.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par WirelessNetwork.hostA.ipv4.configurator interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.ipv4.configurator routingTableModule "\"WirelessNetwork.hostA.ipv4.routingTable\""
+par WirelessNetwork.hostA.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par WirelessNetwork.hostA.ipv4.configurator configureRoutingTable true
+par WirelessNetwork.hostA.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par WirelessNetwork.hostA.ipv4.routingTable interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.ipv4.routingTable routerId "\"auto\""
+par WirelessNetwork.hostA.ipv4.routingTable netmaskRoutes "\"*\""
+par WirelessNetwork.hostA.ipv4.routingTable forwarding false
+par WirelessNetwork.hostA.ipv4.routingTable multicastForwarding false
+par WirelessNetwork.hostA.ipv4.routingTable useAdminDist false
+par WirelessNetwork.hostA.ipv4.routingTable routingFile "\"\""
+par WirelessNetwork.hostA.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par WirelessNetwork.hostA.ipv4.natTable networkProtocolModule "\"^.ip\""
+par WirelessNetwork.hostA.ipv4.natTable config "<config/> at content:1"
+par WirelessNetwork.hostA.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostA.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostA.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par WirelessNetwork.hostA.ipv4.igmp interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.ipv4.igmp routingTableModule "\"WirelessNetwork.hostA.ipv4.routingTable\""
+par WirelessNetwork.hostA.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par WirelessNetwork.hostA.ipv4.igmp enabled true
+par WirelessNetwork.hostA.ipv4.igmp robustnessVariable 2
+par WirelessNetwork.hostA.ipv4.igmp queryInterval 125s
+attr unit s
+par WirelessNetwork.hostA.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par WirelessNetwork.hostA.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par WirelessNetwork.hostA.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par WirelessNetwork.hostA.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par WirelessNetwork.hostA.ipv4.igmp startupQueryCount 2
+par WirelessNetwork.hostA.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par WirelessNetwork.hostA.ipv4.igmp lastMemberQueryCount 2
+par WirelessNetwork.hostA.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par WirelessNetwork.hostA.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par WirelessNetwork.hostA.ipv4.icmp interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.ipv4.icmp routingTableModule "\"WirelessNetwork.hostA.ipv4.routingTable\""
+par WirelessNetwork.hostA.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par WirelessNetwork.hostA.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par WirelessNetwork.hostA.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostA.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostA.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par WirelessNetwork.hostA.ipv4.ip interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.ipv4.ip routingTableModule "\"WirelessNetwork.hostA.ipv4.routingTable\""
+par WirelessNetwork.hostA.ipv4.ip arpModule "\"WirelessNetwork.hostA.ipv4.arp\""
+par WirelessNetwork.hostA.ipv4.ip icmpModule "\"WirelessNetwork.hostA.ipv4.icmp\""
+par WirelessNetwork.hostA.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par WirelessNetwork.hostA.ipv4.ip timeToLive 32
+par WirelessNetwork.hostA.ipv4.ip multicastTimeToLive 32
+par WirelessNetwork.hostA.ipv4.ip fragmentTimeout 60s
+attr unit s
+par WirelessNetwork.hostA.ipv4.ip limitedBroadcast false
+par WirelessNetwork.hostA.ipv4.ip directBroadcastInterfaces "\"\""
+scalar WirelessNetwork.hostA.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar WirelessNetwork.hostA.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par WirelessNetwork.hostA.ipv4.arp typename "\"inet.networklayer.arp.ipv4.GlobalArp\""
+par WirelessNetwork.hostA.ipv4.arp interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.ipv4.arp addressType "\"ipv4\""
+attr enum ipv4,ipv6,mac,moduleid,modulepath
+par WirelessNetwork.hostA.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostA.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostA.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par WirelessNetwork.hostA.ipv4 forwarding false
+par WirelessNetwork.hostA.ipv4 multicastForwarding false
+par WirelessNetwork.hostA.ipv4 interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.ipv4 displayStringTextFormat "\"%i\""
+par WirelessNetwork.hostA.nl typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostA.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostA.udp typename "\"inet.transportlayer.udp.Udp\""
+par WirelessNetwork.hostA.udp interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.udp icmpModule "\"^.ipv4.icmp\""
+par WirelessNetwork.hostA.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par WirelessNetwork.hostA.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+scalar WirelessNetwork.hostA.udp packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar WirelessNetwork.hostA.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar WirelessNetwork.hostA.udp packetSent:count 7837
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar WirelessNetwork.hostA.udp packetSent:sum(packetBytes) 7899696
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar WirelessNetwork.hostA.udp passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar WirelessNetwork.hostA.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar WirelessNetwork.hostA.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par WirelessNetwork.hostA.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par WirelessNetwork.hostA.tcp crcMode "\"declared\""
+attr enum declared,computed
+par WirelessNetwork.hostA.tcp advertisedWindow 7504
+par WirelessNetwork.hostA.tcp delayedAcksEnabled false
+par WirelessNetwork.hostA.tcp nagleEnabled true
+par WirelessNetwork.hostA.tcp limitedTransmitEnabled false
+par WirelessNetwork.hostA.tcp increasedIWEnabled false
+par WirelessNetwork.hostA.tcp sackSupport false
+par WirelessNetwork.hostA.tcp windowScalingSupport false
+par WirelessNetwork.hostA.tcp windowScalingFactor -1
+par WirelessNetwork.hostA.tcp timestampSupport false
+par WirelessNetwork.hostA.tcp mss 536
+par WirelessNetwork.hostA.tcp msl 120s
+attr unit s
+par WirelessNetwork.hostA.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par WirelessNetwork.hostA.tcp useDataNotification false
+par WirelessNetwork.hostA.tcp dupthresh 3
+par WirelessNetwork.hostA.tcp initialSsthresh 4294967295
+par WirelessNetwork.hostA.tcp stopOperationExtraTime 0s
+attr unit s
+par WirelessNetwork.hostA.tcp stopOperationTimeout 2s
+attr unit s
+par WirelessNetwork.hostA.tcp ecnWillingness false
+par WirelessNetwork.hostA.tcp dctcpGamma 0.0625
+par WirelessNetwork.hostA.tn typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostA.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostA.app[0] typename "\"inet.applications.udpapp.UdpBasicApp\""
+par WirelessNetwork.hostA.app[0] interfaceTableModule "\"WirelessNetwork.hostA.interfaceTable\""
+par WirelessNetwork.hostA.app[0] clockModule "\"\""
+par WirelessNetwork.hostA.app[0] localPort -1
+par WirelessNetwork.hostA.app[0] destAddresses "\"hostB\""
+par WirelessNetwork.hostA.app[0] localAddress "\"\""
+par WirelessNetwork.hostA.app[0] packetName "\"UDPData\""
+par WirelessNetwork.hostA.app[0] destPort 5000
+par WirelessNetwork.hostA.app[0] messageLength 1000B
+attr unit B
+par WirelessNetwork.hostA.app[0] startTime 0.0223153s
+attr unit s
+par WirelessNetwork.hostA.app[0] stopTime -1s
+attr unit s
+par WirelessNetwork.hostA.app[0] sendInterval exponential(12ms)
+attr unit s
+par WirelessNetwork.hostA.app[0] timeToLive -1
+par WirelessNetwork.hostA.app[0] dontFragment false
+par WirelessNetwork.hostA.app[0] dscp -1
+par WirelessNetwork.hostA.app[0] tos -1
+par WirelessNetwork.hostA.app[0] multicastInterface "\"\""
+par WirelessNetwork.hostA.app[0] receiveBroadcast false
+par WirelessNetwork.hostA.app[0] joinLocalMulticastGroups false
+par WirelessNetwork.hostA.app[0] stopOperationExtraTime -1s
+attr unit s
+par WirelessNetwork.hostA.app[0] stopOperationTimeout 2s
+attr unit s
+scalar WirelessNetwork.hostA.app[0] "packets sent" 7837
+scalar WirelessNetwork.hostA.app[0] "packets received" 0
+scalar WirelessNetwork.hostA.app[0] packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar WirelessNetwork.hostA.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic WirelessNetwork.hostA.app[0] rcvdPkLifetime:stats
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "received packet lifetime, stats"
+attr unit s
+scalar WirelessNetwork.hostA.app[0] packetSent:count 7837
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar WirelessNetwork.hostA.app[0] packetSent:sum(packetBytes) 7837000
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+par WirelessNetwork.hostA.at typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostA.at displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostA typename "\"inet.node.inet.WirelessHost\""
+par WirelessNetwork.hostA hasStatus false
+par WirelessNetwork.hostA osgModel "\"\""
+par WirelessNetwork.hostA osgModelColor "\"\""
+par WirelessNetwork.hostA canvasImage "\"\""
+par WirelessNetwork.hostA canvasImageColor "\"\""
+par WirelessNetwork.hostA recordPcap false
+par WirelessNetwork.hostA numPcapRecorders 0
+par WirelessNetwork.hostA numLoInterfaces 1
+par WirelessNetwork.hostA numWlanInterfaces 1
+par WirelessNetwork.hostA numEthInterfaces 0
+par WirelessNetwork.hostA numPppInterfaces 0
+par WirelessNetwork.hostA numTunInterfaces 0
+par WirelessNetwork.hostA numVirtInterfaces 0
+par WirelessNetwork.hostA hasIpv4 true
+par WirelessNetwork.hostA hasIpv6 false
+par WirelessNetwork.hostA hasGn false
+par WirelessNetwork.hostA forwarding false
+par WirelessNetwork.hostA multicastForwarding false
+par WirelessNetwork.hostA hasUdp true
+par WirelessNetwork.hostA hasTcp true
+par WirelessNetwork.hostA hasSctp false
+par WirelessNetwork.hostA numApps 1
+par WirelessNetwork.hostB.radioIn[0].channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.mobility typename "\"inet.mobility.static.StationaryMobility\""
+par WirelessNetwork.hostB.mobility subjectModule "\"^\""
+par WirelessNetwork.hostB.mobility coordinateSystemModule "\"\""
+par WirelessNetwork.hostB.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par WirelessNetwork.hostB.mobility updateDisplayString true
+par WirelessNetwork.hostB.mobility constraintAreaMinX "-inf m"
+attr unit m
+par WirelessNetwork.hostB.mobility constraintAreaMinY "-inf m"
+attr unit m
+par WirelessNetwork.hostB.mobility constraintAreaMinZ "-inf m"
+attr unit m
+par WirelessNetwork.hostB.mobility constraintAreaMaxX "inf m"
+attr unit m
+par WirelessNetwork.hostB.mobility constraintAreaMaxY "inf m"
+attr unit m
+par WirelessNetwork.hostB.mobility constraintAreaMaxZ "inf m"
+attr unit m
+par WirelessNetwork.hostB.mobility initialX "nan m"
+attr unit m
+par WirelessNetwork.hostB.mobility initialY "nan m"
+attr unit m
+par WirelessNetwork.hostB.mobility initialZ 0m
+attr unit m
+par WirelessNetwork.hostB.mobility initialLatitude "nan deg"
+attr unit deg
+par WirelessNetwork.hostB.mobility initialLongitude "nan deg"
+attr unit deg
+par WirelessNetwork.hostB.mobility initialAltitude 0m
+attr unit m
+par WirelessNetwork.hostB.mobility initialHeading 0deg
+attr unit deg
+par WirelessNetwork.hostB.mobility initialElevation 0deg
+attr unit deg
+par WirelessNetwork.hostB.mobility initialBank 0deg
+attr unit deg
+par WirelessNetwork.hostB.mobility initFromDisplayString true
+par WirelessNetwork.hostB.mobility updateFromDisplayString true
+par WirelessNetwork.hostB.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par WirelessNetwork.hostB.interfaceTable displayAddresses false
+par WirelessNetwork.hostB.li typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostB.li displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostB.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par WirelessNetwork.hostB.lo[0].lo interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.lo[0].lo mtu 4470B
+attr unit B
+scalar WirelessNetwork.hostB.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WirelessNetwork.hostB.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WirelessNetwork.hostB.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WirelessNetwork.hostB.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par WirelessNetwork.hostB.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par WirelessNetwork.hostB.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WirelessNetwork.hostB.lo[0] recordPcap false
+par WirelessNetwork.hostB.lo[0] numPcapRecorders 0
+par WirelessNetwork.hostB.lo[0] interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.wlan[0].radioIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.wlan[0].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.wlan[0].mac.queue typename "\"inet.queueing.queue.DropTailQueue\""
+par WirelessNetwork.hostB.wlan[0].mac.queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par WirelessNetwork.hostB.wlan[0].mac.queue packetCapacity 100
+par WirelessNetwork.hostB.wlan[0].mac.queue dataCapacity -1b
+attr unit b
+par WirelessNetwork.hostB.wlan[0].mac.queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par WirelessNetwork.hostB.wlan[0].mac.queue comparatorClass "\"\""
+par WirelessNetwork.hostB.wlan[0].mac.queue bufferModule "\"\""
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetPulled:count 0
+attr interpolationmode none
+attr title "packet pulled, count"
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetPulled:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packet pulled, sum(packetBytes)"
+statistic WirelessNetwork.hostB.wlan[0].mac.queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source queueingTime(packetPulled)
+attr title "queueing times, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar WirelessNetwork.hostB.wlan[0].mac.queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, max"
+attr type int
+scalar WirelessNetwork.hostB.wlan[0].mac.queue queueLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, timeavg"
+attr type int
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetPushed:count 0
+attr interpolationmode none
+attr title "packet pushed, count"
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetPushed:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packet pushed, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetRemoved:count 0
+attr interpolationmode none
+attr title "packets removed, count"
+scalar WirelessNetwork.hostB.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packets removed, sum(packetBytes)"
+par WirelessNetwork.hostB.wlan[0].mac typename "\"inet.linklayer.acking.AckingMac\""
+par WirelessNetwork.hostB.wlan[0].mac interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.wlan[0].mac address "\"auto\""
+attr mutable ""
+par WirelessNetwork.hostB.wlan[0].mac bitrate 1e+06bps
+attr unit bps
+par WirelessNetwork.hostB.wlan[0].mac mtu 4470B
+attr unit B
+par WirelessNetwork.hostB.wlan[0].mac headerLength 23B
+attr unit B
+par WirelessNetwork.hostB.wlan[0].mac promiscuous false
+par WirelessNetwork.hostB.wlan[0].mac fullDuplex false
+par WirelessNetwork.hostB.wlan[0].mac useAck false
+par WirelessNetwork.hostB.wlan[0].mac ackTimeout 0.1s
+attr unit s
+scalar WirelessNetwork.hostB.wlan[0].mac rcvdPkFromLl:count 724
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, count"
+scalar WirelessNetwork.hostB.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 760924
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac sentDownPk:count 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, count"
+scalar WirelessNetwork.hostB.wlan[0].mac sentDownPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar WirelessNetwork.hostB.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac passedUpPk:count 724
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar WirelessNetwork.hostB.wlan[0].mac passedUpPk:sum(packetBytes) 744272
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar WirelessNetwork.hostB.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar WirelessNetwork.hostB.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar WirelessNetwork.hostB.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar WirelessNetwork.hostB.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr source linkBroken
+attr title "link break, count"
+par WirelessNetwork.hostB.wlan[0].radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par WirelessNetwork.hostB.wlan[0].radio.antenna mobilityModule "\"^.^.^.mobility\""
+par WirelessNetwork.hostB.wlan[0].radio.antenna numAntennas 1
+par WirelessNetwork.hostB.wlan[0].radio.transmitter typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskTransmitter\""
+par WirelessNetwork.hostB.wlan[0].radio.transmitter preambleDuration 0s
+attr unit s
+par WirelessNetwork.hostB.wlan[0].radio.transmitter headerLength 96b
+attr unit b
+par WirelessNetwork.hostB.wlan[0].radio.transmitter bitrate 1e+06bps
+attr unit bps
+par WirelessNetwork.hostB.wlan[0].radio.transmitter communicationRange 500m
+attr unit m
+par WirelessNetwork.hostB.wlan[0].radio.transmitter interferenceRange 500m
+attr unit m
+par WirelessNetwork.hostB.wlan[0].radio.transmitter detectionRange 500m
+attr unit m
+par WirelessNetwork.hostB.wlan[0].radio.receiver typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskReceiver\""
+par WirelessNetwork.hostB.wlan[0].radio.receiver ignoreInterference true
+par WirelessNetwork.hostB.wlan[0].radio typename "\"inet.physicallayer.wireless.unitdisk.UnitDiskRadio\""
+par WirelessNetwork.hostB.wlan[0].radio radioMediumModule "\"radioMedium\""
+par WirelessNetwork.hostB.wlan[0].radio energySourceModule "\"\""
+par WirelessNetwork.hostB.wlan[0].radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par WirelessNetwork.hostB.wlan[0].radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par WirelessNetwork.hostB.wlan[0].radio sendRawBytes false
+par WirelessNetwork.hostB.wlan[0].radio separateTransmissionParts false
+par WirelessNetwork.hostB.wlan[0].radio separateReceptionParts false
+par WirelessNetwork.hostB.wlan[0].radio displayCommunicationRange true
+par WirelessNetwork.hostB.wlan[0].radio displayInterferenceRange false
+statistic WirelessNetwork.hostB.wlan[0].radio minSnir:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic WirelessNetwork.hostB.wlan[0].radio packetErrorRate:histogram
+field count 724
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	724
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic WirelessNetwork.hostB.wlan[0].radio bitErrorRate:histogram
+field count 724
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	724
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic WirelessNetwork.hostB.wlan[0].radio symbolErrorRate:histogram
+field count 724
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	724
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar WirelessNetwork.hostB.wlan[0].radio transmissionState:count 0
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+scalar WirelessNetwork.hostB.wlan[0].radio receptionState:count 1449
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar WirelessNetwork.hostB.wlan[0].radio radioMode:count 3
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, count"
+par WirelessNetwork.hostB.wlan[0] typename "\"inet.linklayer.acking.AckingWirelessInterface\""
+par WirelessNetwork.hostB.wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par WirelessNetwork.hostB.wlan[0] recordPcap false
+par WirelessNetwork.hostB.wlan[0] numPcapRecorders 0
+par WirelessNetwork.hostB.wlan[0] interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.wlan[0] energySourceModule "\"\""
+par WirelessNetwork.hostB.wlan[0] bitrate 1e+06bps
+attr unit bps
+par WirelessNetwork.hostB.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par WirelessNetwork.hostB.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par WirelessNetwork.hostB.ipv4.configurator interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.ipv4.configurator routingTableModule "\"WirelessNetwork.hostB.ipv4.routingTable\""
+par WirelessNetwork.hostB.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par WirelessNetwork.hostB.ipv4.configurator configureRoutingTable true
+par WirelessNetwork.hostB.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par WirelessNetwork.hostB.ipv4.routingTable interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.ipv4.routingTable routerId "\"auto\""
+par WirelessNetwork.hostB.ipv4.routingTable netmaskRoutes "\"*\""
+par WirelessNetwork.hostB.ipv4.routingTable forwarding false
+par WirelessNetwork.hostB.ipv4.routingTable multicastForwarding false
+par WirelessNetwork.hostB.ipv4.routingTable useAdminDist false
+par WirelessNetwork.hostB.ipv4.routingTable routingFile "\"\""
+par WirelessNetwork.hostB.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par WirelessNetwork.hostB.ipv4.natTable networkProtocolModule "\"^.ip\""
+par WirelessNetwork.hostB.ipv4.natTable config "<config/> at content:1"
+par WirelessNetwork.hostB.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostB.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostB.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par WirelessNetwork.hostB.ipv4.igmp interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.ipv4.igmp routingTableModule "\"WirelessNetwork.hostB.ipv4.routingTable\""
+par WirelessNetwork.hostB.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par WirelessNetwork.hostB.ipv4.igmp enabled true
+par WirelessNetwork.hostB.ipv4.igmp robustnessVariable 2
+par WirelessNetwork.hostB.ipv4.igmp queryInterval 125s
+attr unit s
+par WirelessNetwork.hostB.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par WirelessNetwork.hostB.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par WirelessNetwork.hostB.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par WirelessNetwork.hostB.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par WirelessNetwork.hostB.ipv4.igmp startupQueryCount 2
+par WirelessNetwork.hostB.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par WirelessNetwork.hostB.ipv4.igmp lastMemberQueryCount 2
+par WirelessNetwork.hostB.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par WirelessNetwork.hostB.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par WirelessNetwork.hostB.ipv4.icmp interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.ipv4.icmp routingTableModule "\"WirelessNetwork.hostB.ipv4.routingTable\""
+par WirelessNetwork.hostB.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par WirelessNetwork.hostB.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par WirelessNetwork.hostB.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostB.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostB.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par WirelessNetwork.hostB.ipv4.ip interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.ipv4.ip routingTableModule "\"WirelessNetwork.hostB.ipv4.routingTable\""
+par WirelessNetwork.hostB.ipv4.ip arpModule "\"WirelessNetwork.hostB.ipv4.arp\""
+par WirelessNetwork.hostB.ipv4.ip icmpModule "\"WirelessNetwork.hostB.ipv4.icmp\""
+par WirelessNetwork.hostB.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par WirelessNetwork.hostB.ipv4.ip timeToLive 32
+par WirelessNetwork.hostB.ipv4.ip multicastTimeToLive 32
+par WirelessNetwork.hostB.ipv4.ip fragmentTimeout 60s
+attr unit s
+par WirelessNetwork.hostB.ipv4.ip limitedBroadcast false
+par WirelessNetwork.hostB.ipv4.ip directBroadcastInterfaces "\"\""
+scalar WirelessNetwork.hostB.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar WirelessNetwork.hostB.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par WirelessNetwork.hostB.ipv4.arp typename "\"inet.networklayer.arp.ipv4.GlobalArp\""
+par WirelessNetwork.hostB.ipv4.arp interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.ipv4.arp addressType "\"ipv4\""
+attr enum ipv4,ipv6,mac,moduleid,modulepath
+par WirelessNetwork.hostB.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostB.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostB.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par WirelessNetwork.hostB.ipv4 forwarding false
+par WirelessNetwork.hostB.ipv4 multicastForwarding false
+par WirelessNetwork.hostB.ipv4 interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.ipv4 displayStringTextFormat "\"%i\""
+par WirelessNetwork.hostB.nl typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostB.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostB.udp typename "\"inet.transportlayer.udp.Udp\""
+par WirelessNetwork.hostB.udp interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.udp icmpModule "\"^.ipv4.icmp\""
+par WirelessNetwork.hostB.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par WirelessNetwork.hostB.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+scalar WirelessNetwork.hostB.udp packetReceived:count 724
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar WirelessNetwork.hostB.udp packetReceived:sum(packetBytes) 729792
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar WirelessNetwork.hostB.udp packetSent:count 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar WirelessNetwork.hostB.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar WirelessNetwork.hostB.udp passedUpPk:count 724
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar WirelessNetwork.hostB.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar WirelessNetwork.hostB.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par WirelessNetwork.hostB.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par WirelessNetwork.hostB.tcp crcMode "\"declared\""
+attr enum declared,computed
+par WirelessNetwork.hostB.tcp advertisedWindow 7504
+par WirelessNetwork.hostB.tcp delayedAcksEnabled false
+par WirelessNetwork.hostB.tcp nagleEnabled true
+par WirelessNetwork.hostB.tcp limitedTransmitEnabled false
+par WirelessNetwork.hostB.tcp increasedIWEnabled false
+par WirelessNetwork.hostB.tcp sackSupport false
+par WirelessNetwork.hostB.tcp windowScalingSupport false
+par WirelessNetwork.hostB.tcp windowScalingFactor -1
+par WirelessNetwork.hostB.tcp timestampSupport false
+par WirelessNetwork.hostB.tcp mss 536
+par WirelessNetwork.hostB.tcp msl 120s
+attr unit s
+par WirelessNetwork.hostB.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par WirelessNetwork.hostB.tcp useDataNotification false
+par WirelessNetwork.hostB.tcp dupthresh 3
+par WirelessNetwork.hostB.tcp initialSsthresh 4294967295
+par WirelessNetwork.hostB.tcp stopOperationExtraTime 0s
+attr unit s
+par WirelessNetwork.hostB.tcp stopOperationTimeout 2s
+attr unit s
+par WirelessNetwork.hostB.tcp ecnWillingness false
+par WirelessNetwork.hostB.tcp dctcpGamma 0.0625
+par WirelessNetwork.hostB.tn typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostB.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostB.app[0] typename "\"inet.applications.udpapp.UdpSink\""
+par WirelessNetwork.hostB.app[0] interfaceTableModule "\"WirelessNetwork.hostB.interfaceTable\""
+par WirelessNetwork.hostB.app[0] startTime 0s
+attr unit s
+par WirelessNetwork.hostB.app[0] stopTime -1s
+attr unit s
+par WirelessNetwork.hostB.app[0] localPort 5000
+par WirelessNetwork.hostB.app[0] receiveBroadcast false
+par WirelessNetwork.hostB.app[0] multicastGroup "\"\""
+par WirelessNetwork.hostB.app[0] multicastSources "\"\""
+par WirelessNetwork.hostB.app[0] stopOperationExtraTime -1s
+attr unit s
+par WirelessNetwork.hostB.app[0] stopOperationTimeout 2s
+attr unit s
+scalar WirelessNetwork.hostB.app[0] packetReceived:count 724
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar WirelessNetwork.hostB.app[0] packetReceived:sum(packetBytes) 724000
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic WirelessNetwork.hostB.app[0] endToEndDelay:histogram
+field count 724
+field mean 0.022348556383326
+field stddev 0.015868444243714
+field min 0.008505335096
+field max 0.079484714231
+field sum 16.180354821528
+field sqrsum 0.5436644109547
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	0.001	0
+bin	0.002	0
+bin	0.003	0
+bin	0.004	0
+bin	0.005	0
+bin	0.006	0
+bin	0.007	0
+bin	0.008	190
+bin	0.009	20
+bin	0.01	22
+bin	0.011	16
+bin	0.012	21
+bin	0.013	28
+bin	0.014	27
+bin	0.015	25
+bin	0.016	23
+bin	0.017	11
+bin	0.018	27
+bin	0.019	16
+bin	0.02	19
+bin	0.021	13
+bin	0.022	14
+bin	0.023	11
+bin	0.024	10
+bin	0.025	9
+bin	0.026	17
+bin	0.027	9
+bin	0.028	10
+bin	0.029	10
+bin	0.03	3
+bin	0.031	10
+bin	0.032	12
+bin	0.033	5
+bin	0.034	9
+bin	0.035	8
+bin	0.036	6
+bin	0.037	4
+bin	0.038	4
+bin	0.039	5
+bin	0.04	6
+bin	0.041	9
+bin	0.042	3
+bin	0.043	8
+bin	0.044	4
+bin	0.045	3
+bin	0.046	5
+bin	0.047	5
+bin	0.048	5
+bin	0.049	4
+bin	0.05	4
+bin	0.051	1
+bin	0.052	4
+bin	0.053	1
+bin	0.054	1
+bin	0.055	3
+bin	0.056	4
+bin	0.057	7
+bin	0.058	4
+bin	0.059	3
+bin	0.06	1
+bin	0.061	0
+bin	0.062	3
+bin	0.063	4
+bin	0.064	1
+bin	0.065	1
+bin	0.066	3
+bin	0.067	3
+bin	0.068	0
+bin	0.069	2
+bin	0.07	0
+bin	0.071	1
+bin	0.072	1
+bin	0.073	2
+bin	0.074	0
+bin	0.075	0
+bin	0.076	2
+bin	0.077	1
+bin	0.078	0
+bin	0.079	1
+bin	0.08	0
+par WirelessNetwork.hostB.at typename "\"inet.common.MessageDispatcher\""
+par WirelessNetwork.hostB.at displayStringTextFormat "\"processed %p pk (%l)\""
+par WirelessNetwork.hostB typename "\"inet.node.inet.WirelessHost\""
+par WirelessNetwork.hostB hasStatus false
+par WirelessNetwork.hostB osgModel "\"\""
+par WirelessNetwork.hostB osgModelColor "\"\""
+par WirelessNetwork.hostB canvasImage "\"\""
+par WirelessNetwork.hostB canvasImageColor "\"\""
+par WirelessNetwork.hostB recordPcap false
+par WirelessNetwork.hostB numPcapRecorders 0
+par WirelessNetwork.hostB numLoInterfaces 1
+par WirelessNetwork.hostB numWlanInterfaces 1
+par WirelessNetwork.hostB numEthInterfaces 0
+par WirelessNetwork.hostB numPppInterfaces 0
+par WirelessNetwork.hostB numTunInterfaces 0
+par WirelessNetwork.hostB numVirtInterfaces 0
+par WirelessNetwork.hostB hasIpv4 true
+par WirelessNetwork.hostB hasIpv6 false
+par WirelessNetwork.hostB hasGn false
+par WirelessNetwork.hostB forwarding false
+par WirelessNetwork.hostB multicastForwarding false
+par WirelessNetwork.hostB hasUdp true
+par WirelessNetwork.hostB hasTcp true
+par WirelessNetwork.hostB hasSctp false
+par WirelessNetwork.hostB numApps 1
+par WirelessNetwork typename "\"test.simulations.wirelessnetwork.WirelessNetwork\""
+

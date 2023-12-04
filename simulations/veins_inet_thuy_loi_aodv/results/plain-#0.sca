@@ -1,0 +1,3514 @@
+version 3
+run plain-0-20231204-20:25:11-17352
+attr configname plain
+attr datetime 20231204-20:25:11
+attr datetimef 20231204-202511
+attr experiment plain
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Scenario
+attr processid 17352
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../../inet-4.3.5/inet-4.3.5/images;../../../../veins-5.2/veins-veins-5.2/images
+config network Scenario
+config sim-time-limit 600s
+config debug-on-errors true
+config cmdenv-express-mode true
+config image-path ../../../../images
+config *.node[*].numApps 1
+config *.node[*].app[0].typename UdpBasicApp
+config *.node[*].app[0].destAddresses "\"node[*]\""
+config *.node[*].app[0].destPort 5000
+config *.node[*].app[0].messageLength 10000B
+config *.node[*].app[0].sendInterval exponential(12ms)
+config *.node[*].app[0].packetName "\"UDPData\""
+config *.node[*].wlan[0].opMode "\"p\""
+config *.node[*].wlan[0].radio.typename Ieee80211DimensionalRadio
+config *.node[*].wlan[0].radio.bandName "\"5.9 GHz\""
+config *.node[*].wlan[0].radio.channelNumber 3
+config *.node[*].wlan[0].radio.transmitter.power 20mW
+config *.node[*].wlan[0].radio.bandwidth "10 MHz"
+config *.node[*].wlan[*].radio.antenna.mobility.typename AttachedMobility
+config *.node[*].wlan[*].radio.antenna.mobility.mobilityModule "\"^.^.^.^.mobility\""
+config *.node[*].wlan[*].radio.antenna.mobility.offsetX -2.5m
+config *.node[*].wlan[*].radio.antenna.mobility.offsetZ 1.5m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinZ 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxZ 0m
+config *.node[*].ipv4.configurator.typename HostAutoConfigurator
+config *.node[*].ipv4.configurator.interfaces "\"wlan0\""
+config *.node[*].ipv4.configurator.mcastGroups "\"224.0.0.1\""
+config *.node[*].mobility.typename VeinsInetMobility
+config *.manager.updateInterval 0.1s
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.autoShutdown true
+config *.manager.launchConfig "xmldoc(\"thuyloi.launchd.xml\")"
+config *.manager.moduleType "\"test.veins_inet.VeinsInetRoutingCar\""
+config *.physicalEnvironment.config "xmldoc(\"obstacles.xml\")"
+config *.radioMedium.obstacleLoss.typename IdealObstacleLoss
+config **.vector-recording true
+config **.router "\"Aodv\""
+
+par Scenario.radioMedium.propagation typename "\"inet.physicallayer.wireless.common.propagation.ConstantSpeedPropagation\""
+par Scenario.radioMedium.propagation propagationSpeed 2.99792e+08mps
+attr unit mps
+par Scenario.radioMedium.propagation ignoreMovementDuringTransmission true
+par Scenario.radioMedium.propagation ignoreMovementDuringPropagation true
+par Scenario.radioMedium.propagation ignoreMovementDuringReception true
+scalar Scenario.radioMedium.propagation "Arrival computation count" 11
+par Scenario.radioMedium.analogModel typename "\"inet.physicallayer.wireless.common.analogmodel.packetlevel.DimensionalAnalogModel\""
+par Scenario.radioMedium.analogModel attenuateWithCenterFrequency true
+par Scenario.radioMedium.backgroundNoise typename "\"inet.physicallayer.wireless.common.backgroundnoise.IsotropicDimensionalBackgroundNoise\""
+par Scenario.radioMedium.backgroundNoise powerSpectralDensity "nan dBmWpMHz"
+attr unit dBmWpMHz
+par Scenario.radioMedium.backgroundNoise power -110dBm
+attr unit dBm
+par Scenario.radioMedium.backgroundNoise bandwidth "nan Hz"
+attr unit Hz
+par Scenario.radioMedium.pathLoss typename "\"inet.physicallayer.wireless.common.pathloss.FreeSpacePathLoss\""
+par Scenario.radioMedium.pathLoss alpha 2
+par Scenario.radioMedium.pathLoss systemLoss 0dB
+attr unit dB
+par Scenario.radioMedium.obstacleLoss typename "\"inet.physicallayer.wireless.common.obstacleloss.IdealObstacleLoss\""
+par Scenario.radioMedium.obstacleLoss physicalEnvironmentModule "\"physicalEnvironment\""
+par Scenario.radioMedium.mediumLimitCache typename "\"inet.physicallayer.wireless.common.medium.MediumLimitCache\""
+par Scenario.radioMedium.mediumLimitCache centerFrequency 2.4e+09Hz
+attr unit Hz
+par Scenario.radioMedium.mediumLimitCache maxSpeed "nan mps"
+attr unit mps
+par Scenario.radioMedium.mediumLimitCache maxTransmissionPower "nan W"
+attr unit W
+par Scenario.radioMedium.mediumLimitCache minInterferencePower -110dBm
+attr unit dBm
+par Scenario.radioMedium.mediumLimitCache minReceptionPower -85dBm
+attr unit dBm
+par Scenario.radioMedium.mediumLimitCache maxAntennaGain 0dB
+attr unit dB
+par Scenario.radioMedium.mediumLimitCache minInterferenceTime 1e-12s
+attr unit s
+par Scenario.radioMedium.mediumLimitCache maxTransmissionDuration 0.01s
+attr unit s
+par Scenario.radioMedium.mediumLimitCache maxCommunicationRange "nan m"
+attr unit m
+par Scenario.radioMedium.mediumLimitCache maxInterferenceRange "nan m"
+attr unit m
+par Scenario.radioMedium.communicationCache typename "\"inet.physicallayer.wireless.common.communicationcache.VectorCommunicationCache\""
+par Scenario.radioMedium typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalRadioMedium\""
+par Scenario.radioMedium physicalEnvironmentModule "\"physicalEnvironment\""
+par Scenario.radioMedium signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Scenario.radioMedium rangeFilter "\"\""
+par Scenario.radioMedium radioModeFilter false
+par Scenario.radioMedium listeningFilter false
+par Scenario.radioMedium macAddressFilter false
+par Scenario.radioMedium recordTransmissionLog false
+par Scenario.radioMedium recordReceptionLog false
+scalar Scenario.radioMedium "transmission count" 11
+scalar Scenario.radioMedium "signal send count" 11
+scalar Scenario.radioMedium "reception computation count" 11
+scalar Scenario.radioMedium "interference computation count" 43
+scalar Scenario.radioMedium "reception decision computation count" 10
+scalar Scenario.radioMedium "listening decision computation count" 22
+scalar Scenario.radioMedium "reception cache hit" 99.383062254627
+attr unit %
+scalar Scenario.radioMedium "interference cache hit" 66.666666666667
+attr unit %
+scalar Scenario.radioMedium "noise cache hit" 0
+attr unit %
+scalar Scenario.radioMedium "snir cache hit" 50
+attr unit %
+scalar Scenario.radioMedium "reception decision cache hit" 50
+attr unit %
+scalar Scenario.radioMedium "reception result cache hit" 0
+attr unit %
+par Scenario.manager typename "\"test.veins_inet.VeinsInetManager\""
+par Scenario.manager connectAt 0s
+attr unit s
+par Scenario.manager firstStepAt -1s
+attr unit s
+par Scenario.manager updateInterval 0.1s
+attr unit s
+par Scenario.manager moduleType "\"test.veins_inet.VeinsInetRoutingCar\""
+par Scenario.manager moduleName "\"node\""
+par Scenario.manager moduleDisplayString "\"*='i=veins/node/car;is=vs'\""
+par Scenario.manager trafficLightModuleType "\"\""
+par Scenario.manager trafficLightModuleName "\"tls\""
+par Scenario.manager trafficLightFilter "\"\""
+par Scenario.manager trafficLightModuleDisplayString "\"i=misc/node2;is=vs;r=0,,#707070,1\""
+par Scenario.manager host "\"localhost\""
+par Scenario.manager port 9999
+par Scenario.manager seed -1
+par Scenario.manager autoShutdown true
+par Scenario.manager margin 25
+par Scenario.manager roiRoads "\"\""
+par Scenario.manager roiRects "\"\""
+par Scenario.manager penetrationRate 1
+par Scenario.manager ignoreGuiCommands false
+par Scenario.manager launchConfig "<launch>...</launch> at D:/NCKH/VANET/Test/test/simulations/veins_inet_thuy_loi_aodv/\\thuyloi.launchd.xml:34"
+scalar Scenario.manager roiArea 0
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer typename "\"inet.visualizer.canvas.scene.SceneCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer axisLength "nan m"
+attr mutable ""
+attr unit m
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer animationSpeed 0
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer sceneMinX "nan m"
+attr unit m
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer sceneMinY "nan m"
+attr unit m
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer sceneMinZ "nan m"
+attr unit m
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer sceneMaxX "nan m"
+attr unit m
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer sceneMaxY "nan m"
+attr unit m
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer sceneMaxZ "nan m"
+attr unit m
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer viewAngle "\"x right y down z out\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer viewScale "\"1 1\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer viewTranslation "\"0 0\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.sceneVisualizer descriptionFigure "\"\""
+par Scenario.visualizer.canvasVisualizer.physicalEnvironmentVisualizer typename "\"inet.visualizer.canvas.environment.PhysicalEnvironmentCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.physicalEnvironmentVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.physicalEnvironmentVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.physicalEnvironmentVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.physicalEnvironmentVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par Scenario.visualizer.canvasVisualizer.physicalEnvironmentVisualizer displayObjects true
+par Scenario.visualizer.canvasVisualizer.physicalEnvironmentVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer typename "\"inet.visualizer.canvas.scene.NetworkNodeCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer annotationSpacing 4
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer placementPenalty 10
+par Scenario.visualizer.canvasVisualizer.networkNodeVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer typename "\"inet.visualizer.canvas.scene.NetworkConnectionCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer displayNetworkConnections true
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer nodeFilter "\"\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer lineColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer lineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer lineWidth 1
+par Scenario.visualizer.canvasVisualizer.networkConnectionVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer typename "\"inet.visualizer.canvas.mobility.MobilityCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer displayMobility true
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer animationSpeed 0
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer moduleFilter "\"**.mobility\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer displayPositions false
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer positionCircleRadius 4
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer positionCircleLineWidth 1
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer positionCircleLineColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer positionCircleFillColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer displayOrientations false
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer orientationPieRadius 32
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer orientationPieSize 0.2
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer orientationPieOpacity 0.25
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer orientationLineColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer orientationLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer orientationLineWidth 1
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer orientationFillColor "\"blue\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer displayVelocities false
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer velocityArrowScale 1
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer velocityLineColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer velocityLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer velocityLineWidth 1
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer displayMovementTrails false
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer movementTrailLineColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer movementTrailLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer movementTrailLineWidth 1
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer trailLength 100
+par Scenario.visualizer.canvasVisualizer.mobilityVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer typename "\"inet.visualizer.canvas.common.StatisticCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer displayStatistics true
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer signalName "\"\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer statisticName "\"\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer statisticUnit "\"\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer statisticExpression "\"\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer sourceFilter "\"**\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer format "\"%n: %v %u\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer unit "\"\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer font "\"<default>\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer textColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer backgroundColor "\"white\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer opacity 1
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer placementHint "\"top\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer zIndex 10
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer propertyName "\"\""
+par Scenario.visualizer.canvasVisualizer.statisticVisualizer propertyIndex "\"\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer typename "\"inet.visualizer.canvas.common.InfoCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer displayInfos true
+par Scenario.visualizer.canvasVisualizer.infoVisualizer modules "\"\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer format "\"%t\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer font "\"<default>\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer textColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer backgroundColor "\"white\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer opacity 1
+par Scenario.visualizer.canvasVisualizer.infoVisualizer placementHint "\"top\""
+par Scenario.visualizer.canvasVisualizer.infoVisualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.infoVisualizer zIndex 10
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer typename "\"inet.visualizer.canvas.power.EnergyStorageCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer displayEnergyStorages false
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer energyStorageFilter "\"**\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer color "\"green\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer width 8
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer height 24
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer spacing 2
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer placementHint "\"right\""
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.energyStorageVisualizer zIndex 10
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer typename "\"inet.visualizer.canvas.physicallayer.MediumCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mediumModule "\"radioMedium\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displaySignals false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalPropagationAnimationSpeed "nan "
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalPropagationAnimationTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalPropagationAdditionalTime 0s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalTransmissionAnimationSpeed "nan "
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalTransmissionAnimationTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalAnimationSpeedChangeTimeMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalAnimationSpeedChangeTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displaySignalDepartures false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalDepartureImage "\"misc/signal_departure.png\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalDeparturePlacementHint "\"topCenter\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalDeparturePlacementPriority 1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displaySignalArrivals false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalArrivalImage "\"misc/signal_arrival.png\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalArrivalPlacementHint "\"topCenter\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalArrivalPlacementPriority -1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displayCommunicationRanges false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer communicationRangeLineColor "\"blue\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer communicationRangeLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer communicationRangeLineWidth 1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displayInterferenceRanges false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer interferenceRangeLineColor "\"gray\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer interferenceRangeLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer interferenceRangeLineWidth 1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer autoPowerAxis true
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMinPower "inf dBmW"
+attr unit dBmW
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMaxPower 0dBmW
+attr unit dBmW
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMinPowerDensity "inf dBmWpMHz"
+attr unit dBmWpMHz
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMaxPowerDensity "-inf dBmWpMHz"
+attr unit dBmWpMHz
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer autoTimeAxis true
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMinTime 0s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMaxTime 0s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer autoFrequencyAxis true
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMinFrequency "inf Hz"
+attr unit Hz
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalMaxFrequency "-inf Hz"
+attr unit Hz
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displayMainPowerDensityMap false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapPixmapDensity 1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapMinX 0
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapMaxX "nan "
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapMinY 0
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapMaxY "nan "
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapZ 0
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapFigureXTickCount 3
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer mainPowerDensityMapFigureYTickCount 3
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displayPowerDensityMaps false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapMode "\"auto\""
+attr enum total,signal,auto
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapPixelMode "\"mean\""
+attr enum sample,partition,mean
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapApproximationSize 10
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapCenterFrequency "nan Hz"
+attr mutable ""
+attr unit Hz
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapBandwidth 0Hz
+attr mutable ""
+attr unit Hz
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapFigureWidth 200
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapFigureHeight 120
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapPixmapWidth 200
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapPixmapHeight 120
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapZ 0
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapFigureXTickCount 3
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer powerDensityMapFigureYTickCount 3
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displaySpectrums false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumMode "\"auto\""
+attr enum total,signal,auto
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumFigureWidth 200
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumFigureHeight 120
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumFigureXTickCount 3
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumFigureYTickCount 5
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumFigureInterpolationSize 5
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumPlacementHint "\"bottomCenter\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrumPlacementPriority -1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displaySpectrograms false
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramMode "\"auto\""
+attr enum total,signal,auto
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramPixelMode "\"mean\""
+attr enum sample,partition,mean
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramFigureWidth 200
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramFigureHeight 120
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramPixmapWidth 200
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramPixmapHeight 120
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramFigureXTickCount 3
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramFigureYTickCount 5
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramPlacementHint "\"bottomCenter\""
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer spectrogramPlacementPriority -1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalShape "\"ring\""
+attr enum ring,sphere
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalOpacity 0.5
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalRingCount 20
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalRingSize 50m
+attr unit m
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalFadingDistance 50m
+attr unit m
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalFadingFactor 1.2
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalWaveCount 20
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalWaveLength 50m
+attr unit m
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalWaveWidth 10m
+attr unit m
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer signalWaveFadingAnimationSpeedFactor 1
+par Scenario.visualizer.canvasVisualizer.mediumVisualizer displayCommunicationHeat false
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer typename "\"inet.visualizer.canvas.physicallayer.TracingObstacleLossCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer displayIntersections false
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer intersectionLineColor "\"red\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer intersectionLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer intersectionLineWidth 1
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer displayFaceNormalVectors false
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer faceNormalLineColor "\"grey\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer faceNormalLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer faceNormalLineWidth 1
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer fadeOutTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.obstacleLossVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer typename "\"inet.visualizer.canvas.common.PacketDropCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer displayPacketDrops false
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer detailsFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer icon "\"msg/packet_s\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer iconTintAmount 1
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer iconTintColor "\"dark\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer labelFormat "\"%n\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer labelFont "\"<default>\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer labelColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer fadeOutTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer zIndex 10
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer dx 32
+par Scenario.visualizer.canvasVisualizer.packetDropVisualizer dy 64
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer typename "\"inet.visualizer.canvas.flow.PacketFlowCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer displayRoutes false
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer startPathSignal "\"packetFlowStarted\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer endPathSignal "\"packetFlowEnded\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineStyle "\"dashed\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineWidth 3
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineSmooth false
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineShift 16
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineShiftMode "\"normal\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineContactSpacing 3
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer labelFormat "\"%L %p pk (%l)\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer labelFont "\"<default>, 8px\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer labelColor "\"\""
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer fadeOutTime 0s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.packetFlowVisualizer zIndex 4
+par Scenario.visualizer.canvasVisualizer.queueVisualizer typename "\"inet.visualizer.canvas.common.QueueCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer displayQueues false
+par Scenario.visualizer.canvasVisualizer.queueVisualizer queueFilter "\"**\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer color "\"blue\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer width 8
+par Scenario.visualizer.canvasVisualizer.queueVisualizer height 24
+par Scenario.visualizer.canvasVisualizer.queueVisualizer spacing 2
+par Scenario.visualizer.canvasVisualizer.queueVisualizer placementHint "\"right\""
+par Scenario.visualizer.canvasVisualizer.queueVisualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.queueVisualizer zIndex 10
+par Scenario.visualizer.canvasVisualizer.radioVisualizer typename "\"inet.visualizer.canvas.physicallayer.RadioCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer displayRadios false
+par Scenario.visualizer.canvasVisualizer.radioVisualizer displayRadioMode true
+par Scenario.visualizer.canvasVisualizer.radioVisualizer displayReceptionState true
+par Scenario.visualizer.canvasVisualizer.radioVisualizer displayTransmissionState true
+par Scenario.visualizer.canvasVisualizer.radioVisualizer displayAntennaLobes false
+par Scenario.visualizer.canvasVisualizer.radioVisualizer radioFilter "\"**\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer radioModeImages "\"block/process_vs block/timer_vs block/wrx_vs block/wtx_vs block/wrxtx_vs block/cogwheel_vs\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer receptionStateImages "\"- - misc/receiving misc/receiving\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer transmissionStateImages "\"- - misc/transmitting\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer width 16
+par Scenario.visualizer.canvasVisualizer.radioVisualizer height 16
+par Scenario.visualizer.canvasVisualizer.radioVisualizer placementHint "\"bottomRight\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeNormalize false
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeRelativeLabels false
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobePlaneGlobal true
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobePlane "\"view\""
+attr enum view,xy,xz,yz
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeMode "\"logarithmic\""
+attr enum logarithmic,linear
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeLogarithmicBase 10
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeLogarithmicScale 100
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeRadius 100
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeStep 10deg
+attr unit deg
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeOpacity 0.25
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeLineSmooth true
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeLineColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeLineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeLineWidth 1
+par Scenario.visualizer.canvasVisualizer.radioVisualizer antennaLobeFillColor "\"white\""
+par Scenario.visualizer.canvasVisualizer.radioVisualizer zIndex 10
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer typename "\"inet.visualizer.canvas.physicallayer.PhysicalLinkCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer displayLinks false
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer lineColor "\"olive\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer lineStyle "\"dotted\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer lineWidth 3
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer lineShift 16
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer lineShiftMode "\"normal\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer lineContactSpacing 3
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer labelFormat "\"%n\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer labelFont "\"<default>, 8px\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer labelColor "\"olive\""
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer fadeOutTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer holdAnimationTime 0s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.physicalLinkVisualizer zIndex 1
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer typename "\"inet.visualizer.canvas.linklayer.InterfaceTableCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer displayInterfaceTables false
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer displayWiredInterfacesAtConnections true
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer displayBackground false
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer interfaceFilter "\"not(lo*)\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer format "\"%N %\\\\%a/%l\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer placementHint "\"top\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer font "\"<default>\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer textColor "\"#005030\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer backgroundColor "\"white\""
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer opacity 1
+par Scenario.visualizer.canvasVisualizer.interfaceTableVisualizer zIndex 10
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer typename "\"inet.visualizer.canvas.linklayer.DataLinkCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer displayLinks false
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer lineColor "\"darkcyan\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer lineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer lineWidth 3
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer lineShift 16
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer lineShiftMode "\"normal\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer lineContactSpacing 3
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer labelFormat "\"%n\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer labelFont "\"<default>, 8px\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer labelColor "\"darkcyan\""
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer fadeOutTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer holdAnimationTime 0s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.dataLinkVisualizer zIndex 2
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer typename "\"inet.visualizer.canvas.linklayer.LinkBreakCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer displayLinkBreaks false
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer packetDataFilter "\"*\""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer icon "\"status/stop\""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer iconTintAmount 0
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer iconTintColor "\"\""
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer fadeOutTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.linkBreakVisualizer zIndex 2
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer typename "\"inet.visualizer.canvas.linklayer.Ieee80211CanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer displayAssociations false
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer interfaceFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer minPower -85dBm
+attr unit dBm
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer maxPower -50dBm
+attr unit dBm
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer icons "\"misc/signal_power_0 misc/signal_power_1 misc/signal_power_2 misc/signal_power_3\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer iconColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer labelFont "\"<default>\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer labelColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer placementHint "\"top\""
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.ieee80211Visualizer zIndex 2
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer typename "\"inet.visualizer.canvas.networklayer.NetworkRouteCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer displayRoutes false
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineWidth 3
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineSmooth false
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineShift 16
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineShiftMode "\"normal\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineContactSpacing 3
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer labelFormat "\"%n\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer labelFont "\"<default>, 8px\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer labelColor "\"\""
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer fadeOutTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.networkRouteVisualizer zIndex 3
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer typename "\"inet.visualizer.canvas.networklayer.RoutingTableCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer displayRoutingTables false
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer displayRoutesIndividually true
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer displayLabels true
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer destinationFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer lineColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer lineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer lineWidth 2
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer lineShift 16
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer lineShiftMode "\"normal\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer lineContactSpacing 3
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer labelFormat "\"%d/%m -> %g (%n)\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer labelFont "\"<default>, 8px\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer labelColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.routingTableVisualizer zIndex 0
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportRouteCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer displayRoutes false
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer packetFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer packetDataFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineStyle "\"solid\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineWidth 3
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineSmooth false
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineShift 16
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineShiftMode "\"normal\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineContactSpacing 3
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer labelFormat "\"%n\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer labelFont "\"<default>, 8px\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer labelColor "\"\""
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer fadeOutTime 1s
+attr unit s
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer fadeOutAnimationSpeed 0
+par Scenario.visualizer.canvasVisualizer.transportRouteVisualizer zIndex 4
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportConnectionCanvasVisualizer\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer visualizationTargetModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer visualizationSubjectModule "\"^.^.^\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer tags "\"\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer displayTransportConnections false
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer sourceNodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer sourcePortFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer destinationNodeFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer destinationPortFilter "\"*\""
+attr mutable ""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer icon "\"misc/marker_s\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer iconColor "\"dark\""
+attr enum light,dark
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer labelFont "\"<default>\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer labelColor "\"black\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer placementHint "\"top\""
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer placementPriority 0
+par Scenario.visualizer.canvasVisualizer.transportConnectionVisualizer zIndex 4
+par Scenario.visualizer.canvasVisualizer typename "\"inet.visualizer.canvas.integrated.IntegratedCanvasVisualizer\""
+par Scenario.visualizer typename "\"inet.visualizer.common.IntegratedVisualizer\""
+par Scenario.physicalEnvironment typename "\"inet.environment.common.PhysicalEnvironment\""
+par Scenario.physicalEnvironment coordinateSystemModule "\"\""
+par Scenario.physicalEnvironment temperature 293K
+attr unit K
+par Scenario.physicalEnvironment spaceMinX "nan m"
+attr unit m
+par Scenario.physicalEnvironment spaceMinY "nan m"
+attr unit m
+par Scenario.physicalEnvironment spaceMinZ "nan m"
+attr unit m
+par Scenario.physicalEnvironment spaceMaxX "nan m"
+attr unit m
+par Scenario.physicalEnvironment spaceMaxY "nan m"
+attr unit m
+par Scenario.physicalEnvironment spaceMaxZ "nan m"
+attr unit m
+par Scenario.physicalEnvironment config "<environment>...</environment> at D:/NCKH/VANET/Test/test/simulations/veins_inet_thuy_loi_aodv/\\obstacles.xml:34"
+par Scenario.roadsCanvasVisualizer typename "\"org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer\""
+par Scenario.roadsCanvasVisualizer enabled true
+par Scenario.roadsCanvasVisualizer lineZIndex -1
+par Scenario.roadsCanvasVisualizer lineColor "\"firebrick4\""
+par Scenario.roadsCanvasVisualizer lineWidth 1
+par Scenario.roadsCanvasVisualizer lineWidthZoom false
+par Scenario.node[0].radioIn[0].channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].mobility typename "\"test.veins_inet.VeinsInetMobility\""
+par Scenario.node[0].mobility subjectModule "\"^\""
+par Scenario.node[0].mobility coordinateSystemModule "\"\""
+par Scenario.node[0].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par Scenario.node[0].mobility updateDisplayString true
+par Scenario.node[0].mobility constraintAreaMinX "-inf m"
+attr unit m
+par Scenario.node[0].mobility constraintAreaMinY "-inf m"
+attr unit m
+par Scenario.node[0].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par Scenario.node[0].mobility constraintAreaMaxX "inf m"
+attr unit m
+par Scenario.node[0].mobility constraintAreaMaxY "inf m"
+attr unit m
+par Scenario.node[0].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par Scenario.node[0].mobility initFromDisplayString true
+par Scenario.node[0].interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par Scenario.node[0].interfaceTable displayAddresses false
+par Scenario.node[0].li typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[0].li displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[0].lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par Scenario.node[0].lo[0].lo interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].lo[0].lo mtu 4470B
+attr unit B
+scalar Scenario.node[0].lo[0].lo rcvdPkFromHl:count 237
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar Scenario.node[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 795372
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar Scenario.node[0].lo[0].lo passedUpPk:count 237
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Scenario.node[0].lo[0].lo passedUpPk:sum(packetBytes) 795372
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par Scenario.node[0].lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par Scenario.node[0].lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Scenario.node[0].lo[0] recordPcap false
+par Scenario.node[0].lo[0] numPcapRecorders 0
+par Scenario.node[0].lo[0] interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].wlan[0].radioIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].wlan[0].llc.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].wlan[0].mib typename "\"inet.linklayer.ieee80211.mib.Ieee80211Mib\""
+par Scenario.node[0].wlan[0].llc typename "\"inet.linklayer.ieee80211.llc.Ieee80211LlcEpd\""
+par Scenario.node[0].wlan[0].mgmt typename "\"inet.linklayer.ieee80211.mgmt.Ieee80211MgmtAdhoc\""
+par Scenario.node[0].wlan[0].mgmt mibModule "\"Scenario.node[0].wlan[0].mib\""
+par Scenario.node[0].wlan[0].mgmt macModule "\"Scenario.node[0].wlan[0].mac\""
+par Scenario.node[0].wlan[0].mgmt interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue typename "\"inet.linklayer.ieee80211.mac.queue.PendingQueue\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetCapacity 100
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue dataCapacity -1b
+attr unit b
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue comparatorClass "\"inet::ieee80211::MgmtOverDataComparator\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue bufferModule "\"\""
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetPulled:count 2
+attr interpolationmode none
+attr title "packet pulled, count"
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetPulled:sum(packetBytes) 136
+attr interpolationmode none
+attr title "packet pulled, sum(packetBytes)"
+statistic Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 2
+field mean 0.00018
+field stddev 0.00015414927829867
+field min 7.1e-05
+field max 0.000289
+field sum 0.00036
+field sqrsum 8.8562e-08
+attr interpolationmode none
+attr source queueingTime(packetPulled)
+attr title "queueing times, histogram"
+attr unit s
+bin	-inf	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	1
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+bin	0.000275	0
+bin	0.00028	0
+bin	0.000285	1
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	0
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	0
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, max"
+attr type int
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 0.09337800214975
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, timeavg"
+attr type int
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:count 2
+attr interpolationmode none
+attr title "packet pushed, count"
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:sum(packetBytes) 136
+attr interpolationmode none
+attr title "packet pushed, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetRemoved:count 0
+attr interpolationmode none
+attr title "packets removed, count"
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetRemoved:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packets removed, sum(packetBytes)"
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames typename "\"inet.linklayer.ieee80211.mac.queue.InProgressFrames\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames pendingQueueModule "\"^.pendingQueue\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames originatorMacDataServiceModule "\"^.^.originatorMacDataService\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames ackHandlerModule "\"^.^.ackHandler\""
+statistic Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 2
+field mean 0.000137008555
+field stddev 6.9308563153308e-05
+field min 8.8e-05
+field max 0.00018601711
+field sum 0.00027401711
+field sqrsum 4.2346365212752e-08
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, histogram"
+bin	-inf	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	0
+bin	8.6e-05	1
+bin	8.8e-05	0
+bin	9e-05	0
+bin	9.2e-05	0
+bin	9.4e-05	0
+bin	9.6e-05	0
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
+bin	0.000104	0
+bin	0.000106	0
+bin	0.000108	0
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	0
+bin	0.000116	0
+bin	0.000118	0
+bin	0.00012	0
+bin	0.000122	0
+bin	0.000124	0
+bin	0.000126	0
+bin	0.000128	0
+bin	0.00013	0
+bin	0.000132	0
+bin	0.000134	0
+bin	0.000136	0
+bin	0.000138	0
+bin	0.00014	0
+bin	0.000142	0
+bin	0.000144	0
+bin	0.000146	0
+bin	0.000148	0
+bin	0.00015	0
+bin	0.000152	0
+bin	0.000154	0
+bin	0.000156	0
+bin	0.000158	0
+bin	0.00016	0
+bin	0.000162	0
+bin	0.000164	0
+bin	0.000166	0
+bin	0.000168	0
+bin	0.00017	0
+bin	0.000172	0
+bin	0.000174	0
+bin	0.000176	0
+bin	0.000178	0
+bin	0.00018	0
+bin	0.000182	0
+bin	0.000184	0
+bin	0.000186	1
+bin	0.000188	0
+bin	0.00019	0
+bin	0.000192	0
+bin	0.000194	0
+bin	0.000196	0
+bin	0.000198	0
+bin	0.0002	0
+bin	0.000202	0
+bin	0.000204	0
+bin	0.000206	0
+bin	0.000208	0
+bin	0.00021	0
+bin	0.000212	0
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0.072408972372999
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention typename "\"inet.linklayer.ieee80211.mac.contention.Contention\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention initialChannelBusy true
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention backoffOptimization true
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention stateChanged:count 40
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr title "contention state changed, count"
+attr type enum
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 2
+attr title "channel access granted, count"
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess typename "\"inet.linklayer.ieee80211.mac.channelaccess.Dcaf\""
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess difsn -1
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess cwMin -1
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess cwMax -1
+par Scenario.node[0].wlan[0].mac.dcf.channelAccess rxModule "\"^.^.rx\""
+scalar Scenario.node[0].wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 4
+attr interpolationmode sample-hold
+attr title "channel ownership, count"
+par Scenario.node[0].wlan[0].mac.dcf.originatorMacDataService.fragmentationPolicy typename "\"inet.linklayer.ieee80211.mac.fragmentation.BasicFragmentationPolicy\""
+par Scenario.node[0].wlan[0].mac.dcf.originatorMacDataService.fragmentationPolicy fragmentationThreshold 1500B
+attr unit B
+par Scenario.node[0].wlan[0].mac.dcf.originatorMacDataService typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorMacDataService\""
+scalar Scenario.node[0].wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr title "packets aggregated, count"
+scalar Scenario.node[0].wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr title "packets fragmented, count"
+par Scenario.node[0].wlan[0].mac.dcf.recipientMacDataService typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientMacDataService\""
+scalar Scenario.node[0].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Scenario.node[0].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr title "packets deaggregated, count"
+scalar Scenario.node[0].wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 3
+attr title "packets defragmented, count"
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection typename "\"inet.linklayer.ieee80211.mac.rateselection.RateSelection\""
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection rateControlModule "\"^.rateControl\""
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection multicastFrameBitrate -1bps
+attr unit bps
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection responseAckFrameBitrate -1bps
+attr unit bps
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection responseCtsFrameBitrate -1bps
+attr unit bps
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection dataFrameBitrate -1bps
+attr unit bps
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection dataFrameBandwidth "nan Hz"
+attr unit Hz
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection dataFrameNumSpatialStreams -1
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection mgmtFrameBitrate -1bps
+attr unit bps
+par Scenario.node[0].wlan[0].mac.dcf.rateSelection controlFrameBitrate -1bps
+attr unit bps
+par Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure typename "\"inet.linklayer.ieee80211.mac.originator.NonQosRecoveryProcedure\""
+par Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure cwCalculatorModule "\"^.channelAccess\""
+par Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure rtsPolicyModule "\"^.rtsPolicy\""
+par Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure shortRetryLimit 7
+par Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure longRetryLimit 4
+scalar Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr title "retry limit reached, count"
+par Scenario.node[0].wlan[0].mac.dcf.originatorProtectionMechanism typename "\"inet.linklayer.ieee80211.mac.protectionmechanism.OriginatorProtectionMechanism\""
+par Scenario.node[0].wlan[0].mac.dcf.originatorProtectionMechanism rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[0].wlan[0].mac.dcf.ackHandler typename "\"inet.linklayer.ieee80211.mac.originator.AckHandler\""
+par Scenario.node[0].wlan[0].mac.dcf.originatorAckPolicy typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorAckPolicy\""
+par Scenario.node[0].wlan[0].mac.dcf.originatorAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[0].wlan[0].mac.dcf.originatorAckPolicy ackTimeout -1s
+attr unit s
+par Scenario.node[0].wlan[0].mac.dcf.recipientAckPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientAckPolicy\""
+par Scenario.node[0].wlan[0].mac.dcf.recipientAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[0].wlan[0].mac.dcf.rtsPolicy typename "\"inet.linklayer.ieee80211.mac.originator.RtsPolicy\""
+par Scenario.node[0].wlan[0].mac.dcf.rtsPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[0].wlan[0].mac.dcf.rtsPolicy ctsTimeout -1s
+attr unit s
+par Scenario.node[0].wlan[0].mac.dcf.rtsPolicy rtsThreshold 2346B
+attr unit B
+par Scenario.node[0].wlan[0].mac.dcf.ctsPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.CtsPolicy\""
+par Scenario.node[0].wlan[0].mac.dcf.ctsPolicy rxModule "\"^.^.rx\""
+par Scenario.node[0].wlan[0].mac.dcf.ctsPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[0].wlan[0].mac.dcf typename "\"inet.linklayer.ieee80211.mac.coordinationfunction.Dcf\""
+par Scenario.node[0].wlan[0].mac.dcf rxModule "\"^.rx\""
+par Scenario.node[0].wlan[0].mac.dcf txModule "\"^.tx\""
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeer:count 5
+attr interpolationmode none
+attr title "packets received, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 2512
+attr interpolationmode none
+attr title "packets received, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 4
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 2430
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 1
+attr interpolationmode none
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 82
+attr interpolationmode none
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 1
+attr interpolationmode none
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 82
+attr interpolationmode none
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 5
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 2512
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeer:count 5
+attr interpolationmode none
+attr title "packets sent, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 178
+attr interpolationmode none
+attr title "packets sent, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerUnicast:count 4
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 120
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerMulticast:count 1
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 58
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerBroadcast:count 1
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 58
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 5
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 178
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Scenario.node[0].wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr title "link breaks, count"
+scalar Scenario.node[0].wlan[0].mac.dcf frameSequenceFinished:count 2
+attr title "finished frame sequences, count"
+statistic Scenario.node[0].wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 2
+field mean 0.000137008555
+field stddev 6.9308563153308e-05
+field min 8.8e-05
+field max 0.00018601711
+field sum 0.00027401711
+field sqrsum 4.2346365212752e-08
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations, histogram"
+bin	-inf	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	0
+bin	8.6e-05	1
+bin	8.8e-05	0
+bin	9e-05	0
+bin	9.2e-05	0
+bin	9.4e-05	0
+bin	9.6e-05	0
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
+bin	0.000104	0
+bin	0.000106	0
+bin	0.000108	0
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	0
+bin	0.000116	0
+bin	0.000118	0
+bin	0.00012	0
+bin	0.000122	0
+bin	0.000124	0
+bin	0.000126	0
+bin	0.000128	0
+bin	0.00013	0
+bin	0.000132	0
+bin	0.000134	0
+bin	0.000136	0
+bin	0.000138	0
+bin	0.00014	0
+bin	0.000142	0
+bin	0.000144	0
+bin	0.000146	0
+bin	0.000148	0
+bin	0.00015	0
+bin	0.000152	0
+bin	0.000154	0
+bin	0.000156	0
+bin	0.000158	0
+bin	0.00016	0
+bin	0.000162	0
+bin	0.000164	0
+bin	0.000166	0
+bin	0.000168	0
+bin	0.00017	0
+bin	0.000172	0
+bin	0.000174	0
+bin	0.000176	0
+bin	0.000178	0
+bin	0.00018	0
+bin	0.000182	0
+bin	0.000184	0
+bin	0.000186	1
+bin	0.000188	0
+bin	0.00019	0
+bin	0.000192	0
+bin	0.000194	0
+bin	0.000196	0
+bin	0.000198	0
+bin	0.0002	0
+bin	0.000202	0
+bin	0.000204	0
+bin	0.000206	0
+bin	0.000208	0
+bin	0.00021	0
+bin	0.000212	0
+statistic Scenario.node[0].wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 2
+field mean 1.5
+field stddev 0.70710678118655
+field min 1
+field max 2
+field sum 3
+field sqrsum 5
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	1
+bin	2	1
+bin	3	0
+par Scenario.node[0].wlan[0].mac.ds typename "\"inet.linklayer.ieee80211.mac.Ds\""
+par Scenario.node[0].wlan[0].mac.ds mibModule "\"Scenario.node[0].wlan[0].mib\""
+par Scenario.node[0].wlan[0].mac.rx typename "\"inet.linklayer.ieee80211.mac.Rx\""
+par Scenario.node[0].wlan[0].mac.tx typename "\"inet.linklayer.ieee80211.mac.Tx\""
+par Scenario.node[0].wlan[0].mac.tx rxModule "\"^.rx\""
+par Scenario.node[0].wlan[0].mac typename "\"inet.linklayer.ieee80211.mac.Ieee80211Mac\""
+par Scenario.node[0].wlan[0].mac interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].wlan[0].mac mibModule "\"Scenario.node[0].wlan[0].mib\""
+par Scenario.node[0].wlan[0].mac modeSet "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[0].wlan[0].mac fcsMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[0].wlan[0].mac initialRadioMode "\"receiver\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Scenario.node[0].wlan[0].mac mtu 2304B
+attr unit B
+par Scenario.node[0].wlan[0].mac qosStation false
+scalar Scenario.node[0].wlan[0].mac packetReceivedFromLower:count 5
+attr interpolationmode none
+attr title "packets received from lower layer, count"
+scalar Scenario.node[0].wlan[0].mac packetReceivedFromLower:sum(packetBytes) 2512
+attr interpolationmode none
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetSentToLower:count 5
+attr interpolationmode none
+attr title "packets sent to lower layer, count"
+scalar Scenario.node[0].wlan[0].mac packetSentToLower:sum(packetBytes) 178
+attr interpolationmode none
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetReceivedFromUpper:count 2
+attr interpolationmode none
+attr title "packets received from upper layer, count"
+scalar Scenario.node[0].wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 80
+attr interpolationmode none
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetSentToUpper:count 3
+attr interpolationmode none
+attr title "packets sent to upper layer, count"
+scalar Scenario.node[0].wlan[0].mac packetSentToUpper:sum(packetBytes) 2386
+attr interpolationmode none
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetDrop:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, count"
+scalar Scenario.node[0].wlan[0].mac packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar Scenario.node[0].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Scenario.node[0].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Scenario.node[0].wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Scenario.node[0].wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Scenario.node[0].wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar Scenario.node[0].wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar Scenario.node[0].wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr title "link breaks, count"
+par Scenario.node[0].wlan[0].radio.antenna.mobility typename "\"inet.mobility.single.AttachedMobility\""
+par Scenario.node[0].wlan[0].radio.antenna.mobility subjectModule "\"\""
+par Scenario.node[0].wlan[0].radio.antenna.mobility coordinateSystemModule "\"\""
+par Scenario.node[0].wlan[0].radio.antenna.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par Scenario.node[0].wlan[0].radio.antenna.mobility updateDisplayString true
+par Scenario.node[0].wlan[0].radio.antenna.mobility constraintAreaMinX 0m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility constraintAreaMinY 0m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility constraintAreaMinZ 0m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility constraintAreaMaxX 0m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility constraintAreaMaxY 0m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility constraintAreaMaxZ 0m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility mobilityModule "\"^.^.^.^.mobility\""
+par Scenario.node[0].wlan[0].radio.antenna.mobility offsetX -2.5m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility offsetY 0m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility offsetZ 1.5m
+attr unit m
+par Scenario.node[0].wlan[0].radio.antenna.mobility offsetHeading 0deg
+attr unit deg
+par Scenario.node[0].wlan[0].radio.antenna.mobility offsetElevation 0deg
+attr unit deg
+par Scenario.node[0].wlan[0].radio.antenna.mobility offsetBank 0deg
+attr unit deg
+par Scenario.node[0].wlan[0].radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par Scenario.node[0].wlan[0].radio.antenna mobilityModule "\"^.^.^.mobility\""
+par Scenario.node[0].wlan[0].radio.antenna numAntennas 1
+par Scenario.node[0].wlan[0].radio.transmitter typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalTransmitter\""
+par Scenario.node[0].wlan[0].radio.transmitter preambleDuration "nan s"
+attr unit s
+par Scenario.node[0].wlan[0].radio.transmitter headerLength 192b
+attr unit b
+par Scenario.node[0].wlan[0].radio.transmitter bitrate -1bps
+attr unit bps
+par Scenario.node[0].wlan[0].radio.transmitter power 0.02W
+attr unit W
+par Scenario.node[0].wlan[0].radio.transmitter centerFrequency 2.412e+09Hz
+attr unit Hz
+par Scenario.node[0].wlan[0].radio.transmitter bandwidth 1e+07Hz
+attr unit Hz
+par Scenario.node[0].wlan[0].radio.transmitter modulation "\"BPSK\""
+par Scenario.node[0].wlan[0].radio.transmitter gainFunctionCacheLimit 0
+par Scenario.node[0].wlan[0].radio.transmitter timeGains "\"left s 0dB either e 0dB right\""
+par Scenario.node[0].wlan[0].radio.transmitter timeGainsNormalization "\"\""
+attr enum ,maximum,integral
+par Scenario.node[0].wlan[0].radio.transmitter frequencyGains "\"left s 0dB either e 0dB right\""
+par Scenario.node[0].wlan[0].radio.transmitter frequencyGainsNormalization "\"integral\""
+attr enum ,maximum,integral
+par Scenario.node[0].wlan[0].radio.transmitter opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[0].wlan[0].radio.transmitter bandName "\"5.9 GHz\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Scenario.node[0].wlan[0].radio.transmitter channelNumber 3
+par Scenario.node[0].wlan[0].radio.receiver.errorModel typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.errormodel.Ieee80211NistErrorModel\""
+par Scenario.node[0].wlan[0].radio.receiver.errorModel corruptionMode "\"packet\""
+attr enum packet,chunk,byte,bit
+par Scenario.node[0].wlan[0].radio.receiver.errorModel snirMode "\"min\""
+attr unit min,mean
+par Scenario.node[0].wlan[0].radio.receiver.errorModel snirOffset 0dB
+attr unit dB
+par Scenario.node[0].wlan[0].radio.receiver typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalReceiver\""
+par Scenario.node[0].wlan[0].radio.receiver snirThreshold 4dB
+attr unit dB
+par Scenario.node[0].wlan[0].radio.receiver snirThresholdMode "\"min\""
+attr unit min,mean
+par Scenario.node[0].wlan[0].radio.receiver energyDetection -85dBm
+attr unit dBm
+par Scenario.node[0].wlan[0].radio.receiver sensitivity -85dBm
+attr unit dBm
+par Scenario.node[0].wlan[0].radio.receiver centerFrequency 2.412e+09Hz
+attr unit Hz
+par Scenario.node[0].wlan[0].radio.receiver bandwidth 2.2e+07Hz
+attr unit Hz
+par Scenario.node[0].wlan[0].radio.receiver modulation "\"BPSK\""
+par Scenario.node[0].wlan[0].radio.receiver opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[0].wlan[0].radio.receiver bandName "\"5.9 GHz\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Scenario.node[0].wlan[0].radio.receiver channelNumber 3
+par Scenario.node[0].wlan[0].radio typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalRadio\""
+par Scenario.node[0].wlan[0].radio radioMediumModule "\"radioMedium\""
+par Scenario.node[0].wlan[0].radio energySourceModule "\"\""
+par Scenario.node[0].wlan[0].radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Scenario.node[0].wlan[0].radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par Scenario.node[0].wlan[0].radio sendRawBytes false
+par Scenario.node[0].wlan[0].radio separateTransmissionParts false
+par Scenario.node[0].wlan[0].radio separateReceptionParts false
+par Scenario.node[0].wlan[0].radio displayCommunicationRange false
+par Scenario.node[0].wlan[0].radio displayInterferenceRange false
+par Scenario.node[0].wlan[0].radio centerFrequency 2.412e+09Hz
+attr unit Hz
+par Scenario.node[0].wlan[0].radio bandwidth 1e+07Hz
+attr unit Hz
+par Scenario.node[0].wlan[0].radio signalAnalogRepresentation "\"scalar\""
+attr enum scalar,dimensional
+par Scenario.node[0].wlan[0].radio opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[0].wlan[0].radio bandName "\"5.9 GHz\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Scenario.node[0].wlan[0].radio channelNumber 3
+par Scenario.node[0].wlan[0].radio crcMode "\"declared\""
+attr enum declared,computed
+statistic Scenario.node[0].wlan[0].radio minSnir:histogram
+field count 5
+field mean 394.79667718205
+field stddev 0
+field min 394.79667718205
+field max 394.79667718205
+field sum 1973.9833859103
+field sqrsum 779322.08156995
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR, histogram"
+bin	-inf	0
+bin	394.28	0
+bin	394.3	0
+bin	394.32	0
+bin	394.34	0
+bin	394.36	0
+bin	394.38	0
+bin	394.4	0
+bin	394.42	0
+bin	394.44	0
+bin	394.46	0
+bin	394.48	0
+bin	394.5	0
+bin	394.52	0
+bin	394.54	0
+bin	394.56	0
+bin	394.58	0
+bin	394.6	0
+bin	394.62	0
+bin	394.64	0
+bin	394.66	0
+bin	394.68	0
+bin	394.7	0
+bin	394.72	0
+bin	394.74	0
+bin	394.76	0
+bin	394.78	5
+bin	394.8	0
+bin	394.82	0
+bin	394.84	0
+bin	394.86	0
+bin	394.88	0
+bin	394.9	0
+bin	394.92	0
+bin	394.94	0
+bin	394.96	0
+bin	394.98	0
+bin	395	0
+bin	395.02	0
+bin	395.04	0
+bin	395.06	0
+bin	395.08	0
+bin	395.1	0
+bin	395.12	0
+bin	395.14	0
+bin	395.16	0
+bin	395.18	0
+bin	395.2	0
+bin	395.22	0
+bin	395.24	0
+bin	395.26	0
+bin	395.28	0
+bin	395.3	0
+statistic Scenario.node[0].wlan[0].radio packetErrorRate:histogram
+field count 5
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	5
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic Scenario.node[0].wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Scenario.node[0].wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Scenario.node[0].wlan[0].radio transmissionState:count 20
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+scalar Scenario.node[0].wlan[0].radio receptionState:count 22
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar Scenario.node[0].wlan[0].radio radioMode:count 13
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, count"
+statistic Scenario.node[0].wlan[0].radio radioChannel:histogram
+field count 1
+field mean 3
+field stddev nan
+field min 3
+field max 3
+field sum 3
+field sqrsum 9
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, histogram"
+bin	-inf	0
+bin	2	0
+bin	3	1
+bin	4	0
+par Scenario.node[0].wlan[0] typename "\"inet.linklayer.ieee80211.Ieee80211Interface\""
+par Scenario.node[0].wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Scenario.node[0].wlan[0] recordPcap false
+par Scenario.node[0].wlan[0] numPcapRecorders 0
+par Scenario.node[0].wlan[0] interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].wlan[0] energySourceModule "\"\""
+par Scenario.node[0].wlan[0] opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[0].wlan[0] address "\"0A-AA-00-00-00-01\""
+attr mutable ""
+par Scenario.node[0].wlan[0] bitrate -1bps
+attr unit bps
+par Scenario.node[0].ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[0].ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.HostAutoConfigurator\""
+par Scenario.node[0].ipv4.configurator interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].ipv4.configurator interfaces "\"wlan0\""
+par Scenario.node[0].ipv4.configurator addressBase "\"10.0.0.0\""
+par Scenario.node[0].ipv4.configurator netmask "\"255.0.0.0\""
+par Scenario.node[0].ipv4.configurator mcastGroups "\"224.0.0.1\""
+par Scenario.node[0].ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par Scenario.node[0].ipv4.routingTable interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].ipv4.routingTable routerId "\"auto\""
+par Scenario.node[0].ipv4.routingTable netmaskRoutes "\"*\""
+par Scenario.node[0].ipv4.routingTable forwarding true
+par Scenario.node[0].ipv4.routingTable multicastForwarding false
+par Scenario.node[0].ipv4.routingTable useAdminDist false
+par Scenario.node[0].ipv4.routingTable routingFile "\"\""
+par Scenario.node[0].ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par Scenario.node[0].ipv4.natTable networkProtocolModule "\"^.ip\""
+par Scenario.node[0].ipv4.natTable config "<config/> at content:1"
+par Scenario.node[0].ipv4.up typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[0].ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[0].ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par Scenario.node[0].ipv4.igmp interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].ipv4.igmp routingTableModule "\"Scenario.node[0].ipv4.routingTable\""
+par Scenario.node[0].ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[0].ipv4.igmp enabled true
+par Scenario.node[0].ipv4.igmp robustnessVariable 2
+par Scenario.node[0].ipv4.igmp queryInterval 125s
+attr unit s
+par Scenario.node[0].ipv4.igmp queryResponseInterval 10s
+attr unit s
+par Scenario.node[0].ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par Scenario.node[0].ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par Scenario.node[0].ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par Scenario.node[0].ipv4.igmp startupQueryCount 2
+par Scenario.node[0].ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par Scenario.node[0].ipv4.igmp lastMemberQueryCount 2
+par Scenario.node[0].ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par Scenario.node[0].ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par Scenario.node[0].ipv4.icmp interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].ipv4.icmp routingTableModule "\"Scenario.node[0].ipv4.routingTable\""
+par Scenario.node[0].ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par Scenario.node[0].ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par Scenario.node[0].ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[0].ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[0].ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par Scenario.node[0].ipv4.ip interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].ipv4.ip routingTableModule "\"Scenario.node[0].ipv4.routingTable\""
+par Scenario.node[0].ipv4.ip arpModule "\"Scenario.node[0].ipv4.arp\""
+par Scenario.node[0].ipv4.ip icmpModule "\"Scenario.node[0].ipv4.icmp\""
+par Scenario.node[0].ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[0].ipv4.ip timeToLive 32
+par Scenario.node[0].ipv4.ip multicastTimeToLive 32
+par Scenario.node[0].ipv4.ip fragmentTimeout 60s
+attr unit s
+par Scenario.node[0].ipv4.ip limitedBroadcast false
+par Scenario.node[0].ipv4.ip directBroadcastInterfaces "\"\""
+scalar Scenario.node[0].ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar Scenario.node[0].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar Scenario.node[0].ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar Scenario.node[0].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar Scenario.node[0].ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar Scenario.node[0].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar Scenario.node[0].ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar Scenario.node[0].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar Scenario.node[0].ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar Scenario.node[0].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar Scenario.node[0].ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar Scenario.node[0].ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par Scenario.node[0].ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par Scenario.node[0].ipv4.arp interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].ipv4.arp routingTableModule "\"Scenario.node[0].ipv4.routingTable\""
+par Scenario.node[0].ipv4.arp retryTimeout 1s
+attr unit s
+par Scenario.node[0].ipv4.arp retryCount 3
+par Scenario.node[0].ipv4.arp cacheTimeout 120s
+attr unit s
+par Scenario.node[0].ipv4.arp proxyArpInterfaces "\"\""
+scalar Scenario.node[0].ipv4.arp arpReplySent:count 0
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar Scenario.node[0].ipv4.arp arpReplySent:sum(packetBytes) 0
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar Scenario.node[0].ipv4.arp arpRequestSent:count 1
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar Scenario.node[0].ipv4.arp arpRequestSent:sum(packetBytes) 28
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar Scenario.node[0].ipv4.arp arpResolutionFailed:count 0
+attr title "ARP failed resolutions, count"
+scalar Scenario.node[0].ipv4.arp arpResolutionCompleted:count 1
+attr title "ARP completed resolutions, count"
+scalar Scenario.node[0].ipv4.arp arpResolutionInitiated:count 1
+attr title "ARP initiated resolutions, count"
+par Scenario.node[0].ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[0].ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[0].ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par Scenario.node[0].ipv4 forwarding true
+par Scenario.node[0].ipv4 multicastForwarding false
+par Scenario.node[0].ipv4 interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].ipv4 displayStringTextFormat "\"%i\""
+par Scenario.node[0].nl typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[0].nl displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[0].udp typename "\"inet.transportlayer.udp.Udp\""
+par Scenario.node[0].udp interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].udp icmpModule "\"^.ipv4.icmp\""
+par Scenario.node[0].udp icmpv6Module "\"^.ipv6.icmpv6\""
+par Scenario.node[0].udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+scalar Scenario.node[0].udp packetReceived:count 80
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar Scenario.node[0].udp packetReceived:sum(packetBytes) 790664
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar Scenario.node[0].udp packetSent:count 80
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar Scenario.node[0].udp packetSent:sum(packetBytes) 790660
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar Scenario.node[0].udp passedUpPk:count 1
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar Scenario.node[0].udp droppedPkWrongPort:count 79
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar Scenario.node[0].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par Scenario.node[0].tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par Scenario.node[0].tcp crcMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[0].tcp advertisedWindow 7504
+par Scenario.node[0].tcp delayedAcksEnabled false
+par Scenario.node[0].tcp nagleEnabled true
+par Scenario.node[0].tcp limitedTransmitEnabled false
+par Scenario.node[0].tcp increasedIWEnabled false
+par Scenario.node[0].tcp sackSupport false
+par Scenario.node[0].tcp windowScalingSupport false
+par Scenario.node[0].tcp windowScalingFactor -1
+par Scenario.node[0].tcp timestampSupport false
+par Scenario.node[0].tcp mss 536
+par Scenario.node[0].tcp msl 120s
+attr unit s
+par Scenario.node[0].tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par Scenario.node[0].tcp useDataNotification false
+par Scenario.node[0].tcp dupthresh 3
+par Scenario.node[0].tcp initialSsthresh 4294967295
+par Scenario.node[0].tcp stopOperationExtraTime 0s
+attr unit s
+par Scenario.node[0].tcp stopOperationTimeout 2s
+attr unit s
+par Scenario.node[0].tcp ecnWillingness false
+par Scenario.node[0].tcp dctcpGamma 0.0625
+par Scenario.node[0].tn typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[0].tn displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[0].app[0] typename "\"inet.applications.udpapp.UdpBasicApp\""
+par Scenario.node[0].app[0] interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].app[0] clockModule "\"\""
+par Scenario.node[0].app[0] localPort -1
+par Scenario.node[0].app[0] destAddresses "\"node[*]\""
+par Scenario.node[0].app[0] localAddress "\"\""
+par Scenario.node[0].app[0] packetName "\"UDPData\""
+par Scenario.node[0].app[0] destPort 5000
+par Scenario.node[0].app[0] messageLength 10000B
+attr unit B
+par Scenario.node[0].app[0] startTime 0.00955049s
+attr unit s
+par Scenario.node[0].app[0] stopTime -1s
+attr unit s
+par Scenario.node[0].app[0] sendInterval exponential(12ms)
+attr unit s
+par Scenario.node[0].app[0] timeToLive -1
+par Scenario.node[0].app[0] dontFragment false
+par Scenario.node[0].app[0] dscp -1
+par Scenario.node[0].app[0] tos -1
+par Scenario.node[0].app[0] multicastInterface "\"\""
+par Scenario.node[0].app[0] receiveBroadcast false
+par Scenario.node[0].app[0] joinLocalMulticastGroups false
+par Scenario.node[0].app[0] stopOperationExtraTime -1s
+attr unit s
+par Scenario.node[0].app[0] stopOperationTimeout 2s
+attr unit s
+scalar Scenario.node[0].app[0] "packets sent" 79
+scalar Scenario.node[0].app[0] "packets received" 0
+scalar Scenario.node[0].app[0] packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar Scenario.node[0].app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic Scenario.node[0].app[0] rcvdPkLifetime:stats
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "received packet lifetime, stats"
+attr unit s
+scalar Scenario.node[0].app[0] packetSent:count 79
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar Scenario.node[0].app[0] packetSent:sum(packetBytes) 790000
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+par Scenario.node[0].at typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[0].at displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[0].routing typename "\"inet.routing.aodv.Aodv\""
+par Scenario.node[0].routing routingTableModule "\"^.ipv4.routingTable\""
+par Scenario.node[0].routing interfaceTableModule "\"Scenario.node[0].interfaceTable\""
+par Scenario.node[0].routing networkProtocolModule "\"^.ipv4.ip\""
+par Scenario.node[0].routing askGratuitousRREP false
+par Scenario.node[0].routing useHelloMessages false
+par Scenario.node[0].routing useLocalRepair false
+par Scenario.node[0].routing destinationOnlyFlag false
+par Scenario.node[0].routing udpPort 654
+par Scenario.node[0].routing interface "\"wlan0\""
+par Scenario.node[0].routing maxPeriodicJitter 0.25s
+attr unit s
+par Scenario.node[0].routing periodicJitter "uniform(0s, maxPeriodicJitter)"
+attr unit s
+par Scenario.node[0].routing maxJitter 0.005s
+attr unit s
+par Scenario.node[0].routing jitter "uniform(0ms, maxJitter)"
+attr unit s
+par Scenario.node[0].routing helloInterval 1s
+attr unit s
+par Scenario.node[0].routing allowedHelloLoss 2
+par Scenario.node[0].routing activeRouteTimeout 3s
+attr unit s
+par Scenario.node[0].routing netDiameter 35
+par Scenario.node[0].routing nodeTraversalTime 0.04s
+attr unit s
+par Scenario.node[0].routing rerrRatelimit 10
+par Scenario.node[0].routing rreqRetries 2
+par Scenario.node[0].routing rreqRatelimit 10
+par Scenario.node[0].routing timeoutBuffer 2
+par Scenario.node[0].routing ttlStart 2
+par Scenario.node[0].routing ttlIncrement 2
+par Scenario.node[0].routing ttlThreshold 7
+par Scenario.node[0].routing localAddTTL 2
+par Scenario.node[0].routing myRouteTimeout 6s
+attr unit s
+par Scenario.node[0].routing deletePeriod 15s
+attr unit s
+par Scenario.node[0].routing blacklistTimeout 5.6s
+attr unit s
+par Scenario.node[0].routing netTraversalTime 2.8s
+attr unit s
+par Scenario.node[0].routing nextHopWait 0.05s
+attr unit s
+par Scenario.node[0].routing pathDiscoveryTime 5.6s
+attr unit s
+par Scenario.node[0] typename "\"test.veins_inet.VeinsInetRoutingCar\""
+par Scenario.node[0] hasStatus false
+par Scenario.node[0] osgModel "\"\""
+par Scenario.node[0] osgModelColor "\"\""
+par Scenario.node[0] canvasImage "\"\""
+par Scenario.node[0] canvasImageColor "\"\""
+par Scenario.node[0] recordPcap false
+par Scenario.node[0] numPcapRecorders 0
+par Scenario.node[0] numLoInterfaces 1
+par Scenario.node[0] numWlanInterfaces 1
+par Scenario.node[0] numEthInterfaces 0
+par Scenario.node[0] numPppInterfaces 0
+par Scenario.node[0] numTunInterfaces 0
+par Scenario.node[0] numVirtInterfaces 0
+par Scenario.node[0] hasIpv4 true
+par Scenario.node[0] hasIpv6 false
+par Scenario.node[0] hasGn false
+par Scenario.node[0] forwarding true
+par Scenario.node[0] multicastForwarding false
+par Scenario.node[0] hasUdp true
+par Scenario.node[0] hasTcp true
+par Scenario.node[0] hasSctp false
+par Scenario.node[0] numApps 1
+par Scenario.node[0] router "\"Aodv\""
+par Scenario.node[1].radioIn[0].channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].mobility typename "\"test.veins_inet.VeinsInetMobility\""
+par Scenario.node[1].mobility subjectModule "\"^\""
+par Scenario.node[1].mobility coordinateSystemModule "\"\""
+par Scenario.node[1].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par Scenario.node[1].mobility updateDisplayString true
+par Scenario.node[1].mobility constraintAreaMinX "-inf m"
+attr unit m
+par Scenario.node[1].mobility constraintAreaMinY "-inf m"
+attr unit m
+par Scenario.node[1].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par Scenario.node[1].mobility constraintAreaMaxX "inf m"
+attr unit m
+par Scenario.node[1].mobility constraintAreaMaxY "inf m"
+attr unit m
+par Scenario.node[1].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par Scenario.node[1].mobility initFromDisplayString true
+par Scenario.node[1].interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par Scenario.node[1].interfaceTable displayAddresses false
+par Scenario.node[1].li typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[1].li displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[1].lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par Scenario.node[1].lo[0].lo interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].lo[0].lo mtu 4470B
+attr unit B
+scalar Scenario.node[1].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar Scenario.node[1].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar Scenario.node[1].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Scenario.node[1].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par Scenario.node[1].lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par Scenario.node[1].lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Scenario.node[1].lo[0] recordPcap false
+par Scenario.node[1].lo[0] numPcapRecorders 0
+par Scenario.node[1].lo[0] interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].wlan[0].radioIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].wlan[0].llc.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].wlan[0].mib typename "\"inet.linklayer.ieee80211.mib.Ieee80211Mib\""
+par Scenario.node[1].wlan[0].llc typename "\"inet.linklayer.ieee80211.llc.Ieee80211LlcEpd\""
+par Scenario.node[1].wlan[0].mgmt typename "\"inet.linklayer.ieee80211.mgmt.Ieee80211MgmtAdhoc\""
+par Scenario.node[1].wlan[0].mgmt mibModule "\"Scenario.node[1].wlan[0].mib\""
+par Scenario.node[1].wlan[0].mgmt macModule "\"Scenario.node[1].wlan[0].mac\""
+par Scenario.node[1].wlan[0].mgmt interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue typename "\"inet.linklayer.ieee80211.mac.queue.PendingQueue\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetCapacity 100
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue dataCapacity -1b
+attr unit b
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue comparatorClass "\"inet::ieee80211::MgmtOverDataComparator\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue bufferModule "\"\""
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPulled:count 4
+attr interpolationmode none
+attr title "packet pulled, count"
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPulled:sum(packetBytes) 4800
+attr interpolationmode none
+attr title "packet pulled, sum(packetBytes)"
+statistic Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 4
+field mean 0.0004695042775
+field stddev 0.00067875108359633
+field min 0
+field max 0.00146601711
+field sum 0.00187801711
+field sqrsum 2.2638461668128e-06
+attr interpolationmode none
+attr source queueingTime(packetPulled)
+attr title "queueing times, histogram"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	2e-05	0
+bin	4e-05	0
+bin	6e-05	0
+bin	8e-05	1
+bin	0.0001	0
+bin	0.00012	0
+bin	0.00014	0
+bin	0.00016	0
+bin	0.00018	0
+bin	0.0002	0
+bin	0.00022	0
+bin	0.00024	0
+bin	0.00026	0
+bin	0.00028	0
+bin	0.0003	0
+bin	0.00032	1
+bin	0.00034	0
+bin	0.00036	0
+bin	0.00038	0
+bin	0.0004	0
+bin	0.00042	0
+bin	0.00044	0
+bin	0.00046	0
+bin	0.00048	0
+bin	0.0005	0
+bin	0.00052	0
+bin	0.00054	0
+bin	0.00056	0
+bin	0.00058	0
+bin	0.0006	0
+bin	0.00062	0
+bin	0.00064	0
+bin	0.00066	0
+bin	0.00068	0
+bin	0.0007	0
+bin	0.00072	0
+bin	0.00074	0
+bin	0.00076	0
+bin	0.00078	0
+bin	0.0008	0
+bin	0.00082	0
+bin	0.00084	0
+bin	0.00086	0
+bin	0.00088	0
+bin	0.0009	0
+bin	0.00092	0
+bin	0.00094	0
+bin	0.00096	0
+bin	0.00098	0
+bin	0.001	0
+bin	0.00102	0
+bin	0.00104	0
+bin	0.00106	0
+bin	0.00108	0
+bin	0.0011	0
+bin	0.00112	0
+bin	0.00114	0
+bin	0.00116	0
+bin	0.00118	0
+bin	0.0012	0
+bin	0.00122	0
+bin	0.00124	0
+bin	0.00126	0
+bin	0.00128	0
+bin	0.0013	0
+bin	0.00132	0
+bin	0.00134	0
+bin	0.00136	0
+bin	0.00138	0
+bin	0.0014	0
+bin	0.00142	0
+bin	0.00144	0
+bin	0.00146	1
+bin	0.00148	0
+bin	0.0015	0
+bin	0.00152	0
+bin	0.00154	0
+bin	0.00156	0
+bin	0.00158	0
+bin	0.0016	0
+bin	0.00162	0
+bin	0.00164	0
+bin	0.00166	0
+bin	0.00168	0
+bin	0.0017	0
+bin	0.00172	0
+bin	0.00174	0
+bin	0.00176	0
+bin	0.00178	0
+bin	0.0018	0
+bin	0.00182	0
+bin	0.00184	0
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max 5
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, max"
+attr type int
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 2.8499899990564
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, timeavg"
+attr type int
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:count 7
+attr interpolationmode none
+attr title "packet pushed, count"
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:sum(packetBytes) 10398
+attr interpolationmode none
+attr title "packet pushed, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetRemoved:count 0
+attr interpolationmode none
+attr title "packets removed, count"
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetRemoved:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packets removed, sum(packetBytes)"
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames typename "\"inet.linklayer.ieee80211.mac.queue.InProgressFrames\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames pendingQueueModule "\"^.pendingQueue\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames originatorMacDataServiceModule "\"^.^.originatorMacDataService\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames ackHandlerModule "\"^.^.ackHandler\""
+statistic Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 4
+field mean 0.00082401711
+field stddev 0.00084480306155251
+field min 0.000104
+field max 0.00187603422
+field sum 0.00329606844
+field sqrsum 4.8570934287165e-06
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, histogram"
+bin	-inf	0
+bin	0	0
+bin	5e-05	0
+bin	0.0001	1
+bin	0.00015	1
+bin	0.0002	0
+bin	0.00025	0
+bin	0.0003	0
+bin	0.00035	0
+bin	0.0004	0
+bin	0.00045	0
+bin	0.0005	0
+bin	0.00055	0
+bin	0.0006	0
+bin	0.00065	0
+bin	0.0007	0
+bin	0.00075	0
+bin	0.0008	0
+bin	0.00085	0
+bin	0.0009	0
+bin	0.00095	0
+bin	0.001	0
+bin	0.00105	0
+bin	0.0011	1
+bin	0.00115	0
+bin	0.0012	0
+bin	0.00125	0
+bin	0.0013	0
+bin	0.00135	0
+bin	0.0014	0
+bin	0.00145	0
+bin	0.0015	0
+bin	0.00155	0
+bin	0.0016	0
+bin	0.00165	0
+bin	0.0017	0
+bin	0.00175	0
+bin	0.0018	0
+bin	0.00185	1
+bin	0.0019	0
+bin	0.00195	0
+bin	0.002	0
+bin	0.00205	0
+bin	0.0021	0
+bin	0.00215	0
+bin	0.0022	0
+bin	0.00225	0
+bin	0.0023	0
+bin	0.00235	0
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 3
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 1.6757740117499
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention typename "\"inet.linklayer.ieee80211.mac.contention.Contention\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention initialChannelBusy true
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention backoffOptimization true
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention stateChanged:count 44
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr title "contention state changed, count"
+attr type enum
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 4
+attr title "channel access granted, count"
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess typename "\"inet.linklayer.ieee80211.mac.channelaccess.Dcaf\""
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess difsn -1
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess cwMin -1
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess cwMax -1
+par Scenario.node[1].wlan[0].mac.dcf.channelAccess rxModule "\"^.^.rx\""
+scalar Scenario.node[1].wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 7
+attr interpolationmode sample-hold
+attr title "channel ownership, count"
+par Scenario.node[1].wlan[0].mac.dcf.originatorMacDataService.fragmentationPolicy typename "\"inet.linklayer.ieee80211.mac.fragmentation.BasicFragmentationPolicy\""
+par Scenario.node[1].wlan[0].mac.dcf.originatorMacDataService.fragmentationPolicy fragmentationThreshold 1500B
+attr unit B
+par Scenario.node[1].wlan[0].mac.dcf.originatorMacDataService typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorMacDataService\""
+scalar Scenario.node[1].wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr title "packets aggregated, count"
+scalar Scenario.node[1].wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 2
+attr title "packets fragmented, count"
+par Scenario.node[1].wlan[0].mac.dcf.recipientMacDataService typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientMacDataService\""
+scalar Scenario.node[1].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Scenario.node[1].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr title "packets deaggregated, count"
+scalar Scenario.node[1].wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 2
+attr title "packets defragmented, count"
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection typename "\"inet.linklayer.ieee80211.mac.rateselection.RateSelection\""
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection rateControlModule "\"^.rateControl\""
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection multicastFrameBitrate -1bps
+attr unit bps
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection responseAckFrameBitrate -1bps
+attr unit bps
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection responseCtsFrameBitrate -1bps
+attr unit bps
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection dataFrameBitrate -1bps
+attr unit bps
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection dataFrameBandwidth "nan Hz"
+attr unit Hz
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection dataFrameNumSpatialStreams -1
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection mgmtFrameBitrate -1bps
+attr unit bps
+par Scenario.node[1].wlan[0].mac.dcf.rateSelection controlFrameBitrate -1bps
+attr unit bps
+par Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure typename "\"inet.linklayer.ieee80211.mac.originator.NonQosRecoveryProcedure\""
+par Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure cwCalculatorModule "\"^.channelAccess\""
+par Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure rtsPolicyModule "\"^.rtsPolicy\""
+par Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure shortRetryLimit 7
+par Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure longRetryLimit 4
+scalar Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr title "retry limit reached, count"
+par Scenario.node[1].wlan[0].mac.dcf.originatorProtectionMechanism typename "\"inet.linklayer.ieee80211.mac.protectionmechanism.OriginatorProtectionMechanism\""
+par Scenario.node[1].wlan[0].mac.dcf.originatorProtectionMechanism rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[1].wlan[0].mac.dcf.ackHandler typename "\"inet.linklayer.ieee80211.mac.originator.AckHandler\""
+par Scenario.node[1].wlan[0].mac.dcf.originatorAckPolicy typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorAckPolicy\""
+par Scenario.node[1].wlan[0].mac.dcf.originatorAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[1].wlan[0].mac.dcf.originatorAckPolicy ackTimeout -1s
+attr unit s
+par Scenario.node[1].wlan[0].mac.dcf.recipientAckPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientAckPolicy\""
+par Scenario.node[1].wlan[0].mac.dcf.recipientAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[1].wlan[0].mac.dcf.rtsPolicy typename "\"inet.linklayer.ieee80211.mac.originator.RtsPolicy\""
+par Scenario.node[1].wlan[0].mac.dcf.rtsPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[1].wlan[0].mac.dcf.rtsPolicy ctsTimeout -1s
+attr unit s
+par Scenario.node[1].wlan[0].mac.dcf.rtsPolicy rtsThreshold 2346B
+attr unit B
+par Scenario.node[1].wlan[0].mac.dcf.ctsPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.CtsPolicy\""
+par Scenario.node[1].wlan[0].mac.dcf.ctsPolicy rxModule "\"^.^.rx\""
+par Scenario.node[1].wlan[0].mac.dcf.ctsPolicy rateSelectionModule "\"^.rateSelection\""
+par Scenario.node[1].wlan[0].mac.dcf typename "\"inet.linklayer.ieee80211.mac.coordinationfunction.Dcf\""
+par Scenario.node[1].wlan[0].mac.dcf rxModule "\"^.rx\""
+par Scenario.node[1].wlan[0].mac.dcf txModule "\"^.tx\""
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeer:count 5
+attr interpolationmode none
+attr title "packets received, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 178
+attr interpolationmode none
+attr title "packets received, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 4
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 120
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 1
+attr interpolationmode none
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 58
+attr interpolationmode none
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 1
+attr interpolationmode none
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 58
+attr interpolationmode none
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 5
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 178
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeer:count 5
+attr interpolationmode none
+attr title "packets sent, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 2512
+attr interpolationmode none
+attr title "packets sent, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerUnicast:count 4
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 2430
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerMulticast:count 1
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 82
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerBroadcast:count 1
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 82
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 5
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 2512
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Scenario.node[1].wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr title "link breaks, count"
+scalar Scenario.node[1].wlan[0].mac.dcf frameSequenceFinished:count 3
+attr title "finished frame sequences, count"
+statistic Scenario.node[1].wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 3
+field mean 0.00071935044333333
+field stddev 0.001002400944007
+field min 0.000104
+field max 0.00187603422
+field sum 0.00215805133
+field sqrsum 3.5620104860638e-06
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations, histogram"
+bin	-inf	0
+bin	0	0
+bin	5e-05	0
+bin	0.0001	1
+bin	0.00015	1
+bin	0.0002	0
+bin	0.00025	0
+bin	0.0003	0
+bin	0.00035	0
+bin	0.0004	0
+bin	0.00045	0
+bin	0.0005	0
+bin	0.00055	0
+bin	0.0006	0
+bin	0.00065	0
+bin	0.0007	0
+bin	0.00075	0
+bin	0.0008	0
+bin	0.00085	0
+bin	0.0009	0
+bin	0.00095	0
+bin	0.001	0
+bin	0.00105	0
+bin	0.0011	0
+bin	0.00115	0
+bin	0.0012	0
+bin	0.00125	0
+bin	0.0013	0
+bin	0.00135	0
+bin	0.0014	0
+bin	0.00145	0
+bin	0.0015	0
+bin	0.00155	0
+bin	0.0016	0
+bin	0.00165	0
+bin	0.0017	0
+bin	0.00175	0
+bin	0.0018	0
+bin	0.00185	1
+bin	0.0019	0
+bin	0.00195	0
+bin	0.002	0
+bin	0.00205	0
+bin	0.0021	0
+bin	0.00215	0
+bin	0.0022	0
+bin	0.00225	0
+bin	0.0023	0
+bin	0.00235	0
+statistic Scenario.node[1].wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 3
+field mean 2.3333333333333
+field stddev 1.5275252316519
+field min 1
+field max 4
+field sum 7
+field sqrsum 21
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	1
+bin	2	1
+bin	3	0
+bin	4	1
+bin	5	0
+par Scenario.node[1].wlan[0].mac.ds typename "\"inet.linklayer.ieee80211.mac.Ds\""
+par Scenario.node[1].wlan[0].mac.ds mibModule "\"Scenario.node[1].wlan[0].mib\""
+par Scenario.node[1].wlan[0].mac.rx typename "\"inet.linklayer.ieee80211.mac.Rx\""
+par Scenario.node[1].wlan[0].mac.tx typename "\"inet.linklayer.ieee80211.mac.Tx\""
+par Scenario.node[1].wlan[0].mac.tx rxModule "\"^.rx\""
+par Scenario.node[1].wlan[0].mac typename "\"inet.linklayer.ieee80211.mac.Ieee80211Mac\""
+par Scenario.node[1].wlan[0].mac interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].wlan[0].mac mibModule "\"Scenario.node[1].wlan[0].mib\""
+par Scenario.node[1].wlan[0].mac modeSet "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[1].wlan[0].mac fcsMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[1].wlan[0].mac initialRadioMode "\"receiver\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Scenario.node[1].wlan[0].mac mtu 2304B
+attr unit B
+par Scenario.node[1].wlan[0].mac qosStation false
+scalar Scenario.node[1].wlan[0].mac packetReceivedFromLower:count 5
+attr interpolationmode none
+attr title "packets received from lower layer, count"
+scalar Scenario.node[1].wlan[0].mac packetReceivedFromLower:sum(packetBytes) 178
+attr interpolationmode none
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetSentToLower:count 6
+attr interpolationmode none
+attr title "packets sent to lower layer, count"
+scalar Scenario.node[1].wlan[0].mac packetSentToLower:sum(packetBytes) 4012
+attr interpolationmode none
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetReceivedFromUpper:count 7
+attr interpolationmode none
+attr title "packets received from upper layer, count"
+scalar Scenario.node[1].wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 10202
+attr interpolationmode none
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetSentToUpper:count 2
+attr interpolationmode none
+attr title "packets sent to upper layer, count"
+scalar Scenario.node[1].wlan[0].mac packetSentToUpper:sum(packetBytes) 80
+attr interpolationmode none
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetDrop:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, count"
+scalar Scenario.node[1].wlan[0].mac packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar Scenario.node[1].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Scenario.node[1].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Scenario.node[1].wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Scenario.node[1].wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Scenario.node[1].wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar Scenario.node[1].wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar Scenario.node[1].wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr title "link breaks, count"
+par Scenario.node[1].wlan[0].radio.antenna.mobility typename "\"inet.mobility.single.AttachedMobility\""
+par Scenario.node[1].wlan[0].radio.antenna.mobility subjectModule "\"\""
+par Scenario.node[1].wlan[0].radio.antenna.mobility coordinateSystemModule "\"\""
+par Scenario.node[1].wlan[0].radio.antenna.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par Scenario.node[1].wlan[0].radio.antenna.mobility updateDisplayString true
+par Scenario.node[1].wlan[0].radio.antenna.mobility constraintAreaMinX 0m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility constraintAreaMinY 0m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility constraintAreaMinZ 0m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility constraintAreaMaxX 0m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility constraintAreaMaxY 0m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility constraintAreaMaxZ 0m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility mobilityModule "\"^.^.^.^.mobility\""
+par Scenario.node[1].wlan[0].radio.antenna.mobility offsetX -2.5m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility offsetY 0m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility offsetZ 1.5m
+attr unit m
+par Scenario.node[1].wlan[0].radio.antenna.mobility offsetHeading 0deg
+attr unit deg
+par Scenario.node[1].wlan[0].radio.antenna.mobility offsetElevation 0deg
+attr unit deg
+par Scenario.node[1].wlan[0].radio.antenna.mobility offsetBank 0deg
+attr unit deg
+par Scenario.node[1].wlan[0].radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par Scenario.node[1].wlan[0].radio.antenna mobilityModule "\"^.^.^.mobility\""
+par Scenario.node[1].wlan[0].radio.antenna numAntennas 1
+par Scenario.node[1].wlan[0].radio.transmitter typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalTransmitter\""
+par Scenario.node[1].wlan[0].radio.transmitter preambleDuration "nan s"
+attr unit s
+par Scenario.node[1].wlan[0].radio.transmitter headerLength 192b
+attr unit b
+par Scenario.node[1].wlan[0].radio.transmitter bitrate -1bps
+attr unit bps
+par Scenario.node[1].wlan[0].radio.transmitter power 0.02W
+attr unit W
+par Scenario.node[1].wlan[0].radio.transmitter centerFrequency 2.412e+09Hz
+attr unit Hz
+par Scenario.node[1].wlan[0].radio.transmitter bandwidth 1e+07Hz
+attr unit Hz
+par Scenario.node[1].wlan[0].radio.transmitter modulation "\"BPSK\""
+par Scenario.node[1].wlan[0].radio.transmitter gainFunctionCacheLimit 0
+par Scenario.node[1].wlan[0].radio.transmitter timeGains "\"left s 0dB either e 0dB right\""
+par Scenario.node[1].wlan[0].radio.transmitter timeGainsNormalization "\"\""
+attr enum ,maximum,integral
+par Scenario.node[1].wlan[0].radio.transmitter frequencyGains "\"left s 0dB either e 0dB right\""
+par Scenario.node[1].wlan[0].radio.transmitter frequencyGainsNormalization "\"integral\""
+attr enum ,maximum,integral
+par Scenario.node[1].wlan[0].radio.transmitter opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[1].wlan[0].radio.transmitter bandName "\"5.9 GHz\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Scenario.node[1].wlan[0].radio.transmitter channelNumber 3
+par Scenario.node[1].wlan[0].radio.receiver.errorModel typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.errormodel.Ieee80211NistErrorModel\""
+par Scenario.node[1].wlan[0].radio.receiver.errorModel corruptionMode "\"packet\""
+attr enum packet,chunk,byte,bit
+par Scenario.node[1].wlan[0].radio.receiver.errorModel snirMode "\"min\""
+attr unit min,mean
+par Scenario.node[1].wlan[0].radio.receiver.errorModel snirOffset 0dB
+attr unit dB
+par Scenario.node[1].wlan[0].radio.receiver typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalReceiver\""
+par Scenario.node[1].wlan[0].radio.receiver snirThreshold 4dB
+attr unit dB
+par Scenario.node[1].wlan[0].radio.receiver snirThresholdMode "\"min\""
+attr unit min,mean
+par Scenario.node[1].wlan[0].radio.receiver energyDetection -85dBm
+attr unit dBm
+par Scenario.node[1].wlan[0].radio.receiver sensitivity -85dBm
+attr unit dBm
+par Scenario.node[1].wlan[0].radio.receiver centerFrequency 2.412e+09Hz
+attr unit Hz
+par Scenario.node[1].wlan[0].radio.receiver bandwidth 2.2e+07Hz
+attr unit Hz
+par Scenario.node[1].wlan[0].radio.receiver modulation "\"BPSK\""
+par Scenario.node[1].wlan[0].radio.receiver opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[1].wlan[0].radio.receiver bandName "\"5.9 GHz\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Scenario.node[1].wlan[0].radio.receiver channelNumber 3
+par Scenario.node[1].wlan[0].radio typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalRadio\""
+par Scenario.node[1].wlan[0].radio radioMediumModule "\"radioMedium\""
+par Scenario.node[1].wlan[0].radio energySourceModule "\"\""
+par Scenario.node[1].wlan[0].radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Scenario.node[1].wlan[0].radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par Scenario.node[1].wlan[0].radio sendRawBytes false
+par Scenario.node[1].wlan[0].radio separateTransmissionParts false
+par Scenario.node[1].wlan[0].radio separateReceptionParts false
+par Scenario.node[1].wlan[0].radio displayCommunicationRange false
+par Scenario.node[1].wlan[0].radio displayInterferenceRange false
+par Scenario.node[1].wlan[0].radio centerFrequency 2.412e+09Hz
+attr unit Hz
+par Scenario.node[1].wlan[0].radio bandwidth 1e+07Hz
+attr unit Hz
+par Scenario.node[1].wlan[0].radio signalAnalogRepresentation "\"scalar\""
+attr enum scalar,dimensional
+par Scenario.node[1].wlan[0].radio opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[1].wlan[0].radio bandName "\"5.9 GHz\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Scenario.node[1].wlan[0].radio channelNumber 3
+par Scenario.node[1].wlan[0].radio crcMode "\"declared\""
+attr enum declared,computed
+statistic Scenario.node[1].wlan[0].radio minSnir:histogram
+field count 5
+field mean 394.79667718205
+field stddev 0
+field min 394.79667718205
+field max 394.79667718205
+field sum 1973.9833859103
+field sqrsum 779322.08156995
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR, histogram"
+bin	-inf	0
+bin	394.28	0
+bin	394.3	0
+bin	394.32	0
+bin	394.34	0
+bin	394.36	0
+bin	394.38	0
+bin	394.4	0
+bin	394.42	0
+bin	394.44	0
+bin	394.46	0
+bin	394.48	0
+bin	394.5	0
+bin	394.52	0
+bin	394.54	0
+bin	394.56	0
+bin	394.58	0
+bin	394.6	0
+bin	394.62	0
+bin	394.64	0
+bin	394.66	0
+bin	394.68	0
+bin	394.7	0
+bin	394.72	0
+bin	394.74	0
+bin	394.76	0
+bin	394.78	5
+bin	394.8	0
+bin	394.82	0
+bin	394.84	0
+bin	394.86	0
+bin	394.88	0
+bin	394.9	0
+bin	394.92	0
+bin	394.94	0
+bin	394.96	0
+bin	394.98	0
+bin	395	0
+bin	395.02	0
+bin	395.04	0
+bin	395.06	0
+bin	395.08	0
+bin	395.1	0
+bin	395.12	0
+bin	395.14	0
+bin	395.16	0
+bin	395.18	0
+bin	395.2	0
+bin	395.22	0
+bin	395.24	0
+bin	395.26	0
+bin	395.28	0
+bin	395.3	0
+statistic Scenario.node[1].wlan[0].radio packetErrorRate:histogram
+field count 5
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	5
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic Scenario.node[1].wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Scenario.node[1].wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Scenario.node[1].wlan[0].radio transmissionState:count 22
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+scalar Scenario.node[1].wlan[0].radio receptionState:count 22
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar Scenario.node[1].wlan[0].radio radioMode:count 14
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, count"
+statistic Scenario.node[1].wlan[0].radio radioChannel:histogram
+field count 1
+field mean 3
+field stddev nan
+field min 3
+field max 3
+field sum 3
+field sqrsum 9
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, histogram"
+bin	-inf	0
+bin	2	0
+bin	3	1
+bin	4	0
+par Scenario.node[1].wlan[0] typename "\"inet.linklayer.ieee80211.Ieee80211Interface\""
+par Scenario.node[1].wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par Scenario.node[1].wlan[0] recordPcap false
+par Scenario.node[1].wlan[0] numPcapRecorders 0
+par Scenario.node[1].wlan[0] interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].wlan[0] energySourceModule "\"\""
+par Scenario.node[1].wlan[0] opMode "\"p\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Scenario.node[1].wlan[0] address "\"0A-AA-00-00-00-02\""
+attr mutable ""
+par Scenario.node[1].wlan[0] bitrate -1bps
+attr unit bps
+par Scenario.node[1].ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par Scenario.node[1].ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.HostAutoConfigurator\""
+par Scenario.node[1].ipv4.configurator interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].ipv4.configurator interfaces "\"wlan0\""
+par Scenario.node[1].ipv4.configurator addressBase "\"10.0.0.0\""
+par Scenario.node[1].ipv4.configurator netmask "\"255.0.0.0\""
+par Scenario.node[1].ipv4.configurator mcastGroups "\"224.0.0.1\""
+par Scenario.node[1].ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par Scenario.node[1].ipv4.routingTable interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].ipv4.routingTable routerId "\"auto\""
+par Scenario.node[1].ipv4.routingTable netmaskRoutes "\"*\""
+par Scenario.node[1].ipv4.routingTable forwarding true
+par Scenario.node[1].ipv4.routingTable multicastForwarding false
+par Scenario.node[1].ipv4.routingTable useAdminDist false
+par Scenario.node[1].ipv4.routingTable routingFile "\"\""
+par Scenario.node[1].ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par Scenario.node[1].ipv4.natTable networkProtocolModule "\"^.ip\""
+par Scenario.node[1].ipv4.natTable config "<config/> at content:1"
+par Scenario.node[1].ipv4.up typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[1].ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[1].ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par Scenario.node[1].ipv4.igmp interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].ipv4.igmp routingTableModule "\"Scenario.node[1].ipv4.routingTable\""
+par Scenario.node[1].ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[1].ipv4.igmp enabled true
+par Scenario.node[1].ipv4.igmp robustnessVariable 2
+par Scenario.node[1].ipv4.igmp queryInterval 125s
+attr unit s
+par Scenario.node[1].ipv4.igmp queryResponseInterval 10s
+attr unit s
+par Scenario.node[1].ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par Scenario.node[1].ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par Scenario.node[1].ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par Scenario.node[1].ipv4.igmp startupQueryCount 2
+par Scenario.node[1].ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par Scenario.node[1].ipv4.igmp lastMemberQueryCount 2
+par Scenario.node[1].ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par Scenario.node[1].ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par Scenario.node[1].ipv4.icmp interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].ipv4.icmp routingTableModule "\"Scenario.node[1].ipv4.routingTable\""
+par Scenario.node[1].ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par Scenario.node[1].ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par Scenario.node[1].ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[1].ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[1].ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par Scenario.node[1].ipv4.ip interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].ipv4.ip routingTableModule "\"Scenario.node[1].ipv4.routingTable\""
+par Scenario.node[1].ipv4.ip arpModule "\"Scenario.node[1].ipv4.arp\""
+par Scenario.node[1].ipv4.ip icmpModule "\"Scenario.node[1].ipv4.icmp\""
+par Scenario.node[1].ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[1].ipv4.ip timeToLive 32
+par Scenario.node[1].ipv4.ip multicastTimeToLive 32
+par Scenario.node[1].ipv4.ip fragmentTimeout 60s
+attr unit s
+par Scenario.node[1].ipv4.ip limitedBroadcast false
+par Scenario.node[1].ipv4.ip directBroadcastInterfaces "\"\""
+scalar Scenario.node[1].ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar Scenario.node[1].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar Scenario.node[1].ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar Scenario.node[1].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar Scenario.node[1].ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar Scenario.node[1].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar Scenario.node[1].ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar Scenario.node[1].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar Scenario.node[1].ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar Scenario.node[1].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar Scenario.node[1].ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar Scenario.node[1].ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par Scenario.node[1].ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par Scenario.node[1].ipv4.arp interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].ipv4.arp routingTableModule "\"Scenario.node[1].ipv4.routingTable\""
+par Scenario.node[1].ipv4.arp retryTimeout 1s
+attr unit s
+par Scenario.node[1].ipv4.arp retryCount 3
+par Scenario.node[1].ipv4.arp cacheTimeout 120s
+attr unit s
+par Scenario.node[1].ipv4.arp proxyArpInterfaces "\"\""
+scalar Scenario.node[1].ipv4.arp arpReplySent:count 1
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar Scenario.node[1].ipv4.arp arpReplySent:sum(packetBytes) 28
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar Scenario.node[1].ipv4.arp arpRequestSent:count 0
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar Scenario.node[1].ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar Scenario.node[1].ipv4.arp arpResolutionFailed:count 0
+attr title "ARP failed resolutions, count"
+scalar Scenario.node[1].ipv4.arp arpResolutionCompleted:count 1
+attr title "ARP completed resolutions, count"
+scalar Scenario.node[1].ipv4.arp arpResolutionInitiated:count 0
+attr title "ARP initiated resolutions, count"
+par Scenario.node[1].ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[1].ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[1].ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par Scenario.node[1].ipv4 forwarding true
+par Scenario.node[1].ipv4 multicastForwarding false
+par Scenario.node[1].ipv4 interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].ipv4 displayStringTextFormat "\"%i\""
+par Scenario.node[1].nl typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[1].nl displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[1].udp typename "\"inet.transportlayer.udp.Udp\""
+par Scenario.node[1].udp interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].udp icmpModule "\"^.ipv4.icmp\""
+par Scenario.node[1].udp icmpv6Module "\"^.ipv6.icmpv6\""
+par Scenario.node[1].udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+scalar Scenario.node[1].udp packetReceived:count 1
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar Scenario.node[1].udp packetReceived:sum(packetBytes) 28
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar Scenario.node[1].udp packetSent:count 2
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar Scenario.node[1].udp packetSent:sum(packetBytes) 10040
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar Scenario.node[1].udp passedUpPk:count 1
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar Scenario.node[1].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar Scenario.node[1].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par Scenario.node[1].tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par Scenario.node[1].tcp crcMode "\"declared\""
+attr enum declared,computed
+par Scenario.node[1].tcp advertisedWindow 7504
+par Scenario.node[1].tcp delayedAcksEnabled false
+par Scenario.node[1].tcp nagleEnabled true
+par Scenario.node[1].tcp limitedTransmitEnabled false
+par Scenario.node[1].tcp increasedIWEnabled false
+par Scenario.node[1].tcp sackSupport false
+par Scenario.node[1].tcp windowScalingSupport false
+par Scenario.node[1].tcp windowScalingFactor -1
+par Scenario.node[1].tcp timestampSupport false
+par Scenario.node[1].tcp mss 536
+par Scenario.node[1].tcp msl 120s
+attr unit s
+par Scenario.node[1].tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par Scenario.node[1].tcp useDataNotification false
+par Scenario.node[1].tcp dupthresh 3
+par Scenario.node[1].tcp initialSsthresh 4294967295
+par Scenario.node[1].tcp stopOperationExtraTime 0s
+attr unit s
+par Scenario.node[1].tcp stopOperationTimeout 2s
+attr unit s
+par Scenario.node[1].tcp ecnWillingness false
+par Scenario.node[1].tcp dctcpGamma 0.0625
+par Scenario.node[1].tn typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[1].tn displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[1].app[0] typename "\"inet.applications.udpapp.UdpBasicApp\""
+par Scenario.node[1].app[0] interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].app[0] clockModule "\"\""
+par Scenario.node[1].app[0] localPort -1
+par Scenario.node[1].app[0] destAddresses "\"node[*]\""
+par Scenario.node[1].app[0] localAddress "\"\""
+par Scenario.node[1].app[0] packetName "\"UDPData\""
+par Scenario.node[1].app[0] destPort 5000
+par Scenario.node[1].app[0] messageLength 10000B
+attr unit B
+par Scenario.node[1].app[0] startTime 0.00641861s
+attr unit s
+par Scenario.node[1].app[0] stopTime -1s
+attr unit s
+par Scenario.node[1].app[0] sendInterval exponential(12ms)
+attr unit s
+par Scenario.node[1].app[0] timeToLive -1
+par Scenario.node[1].app[0] dontFragment false
+par Scenario.node[1].app[0] dscp -1
+par Scenario.node[1].app[0] tos -1
+par Scenario.node[1].app[0] multicastInterface "\"\""
+par Scenario.node[1].app[0] receiveBroadcast false
+par Scenario.node[1].app[0] joinLocalMulticastGroups false
+par Scenario.node[1].app[0] stopOperationExtraTime -1s
+attr unit s
+par Scenario.node[1].app[0] stopOperationTimeout 2s
+attr unit s
+scalar Scenario.node[1].app[0] "packets sent" 1
+scalar Scenario.node[1].app[0] "packets received" 0
+scalar Scenario.node[1].app[0] packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar Scenario.node[1].app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic Scenario.node[1].app[0] rcvdPkLifetime:stats
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "received packet lifetime, stats"
+attr unit s
+scalar Scenario.node[1].app[0] packetSent:count 1
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar Scenario.node[1].app[0] packetSent:sum(packetBytes) 10000
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+par Scenario.node[1].at typename "\"inet.common.MessageDispatcher\""
+par Scenario.node[1].at displayStringTextFormat "\"processed %p pk (%l)\""
+par Scenario.node[1].routing typename "\"inet.routing.aodv.Aodv\""
+par Scenario.node[1].routing routingTableModule "\"^.ipv4.routingTable\""
+par Scenario.node[1].routing interfaceTableModule "\"Scenario.node[1].interfaceTable\""
+par Scenario.node[1].routing networkProtocolModule "\"^.ipv4.ip\""
+par Scenario.node[1].routing askGratuitousRREP false
+par Scenario.node[1].routing useHelloMessages false
+par Scenario.node[1].routing useLocalRepair false
+par Scenario.node[1].routing destinationOnlyFlag false
+par Scenario.node[1].routing udpPort 654
+par Scenario.node[1].routing interface "\"wlan0\""
+par Scenario.node[1].routing maxPeriodicJitter 0.25s
+attr unit s
+par Scenario.node[1].routing periodicJitter "uniform(0s, maxPeriodicJitter)"
+attr unit s
+par Scenario.node[1].routing maxJitter 0.005s
+attr unit s
+par Scenario.node[1].routing jitter "uniform(0ms, maxJitter)"
+attr unit s
+par Scenario.node[1].routing helloInterval 1s
+attr unit s
+par Scenario.node[1].routing allowedHelloLoss 2
+par Scenario.node[1].routing activeRouteTimeout 3s
+attr unit s
+par Scenario.node[1].routing netDiameter 35
+par Scenario.node[1].routing nodeTraversalTime 0.04s
+attr unit s
+par Scenario.node[1].routing rerrRatelimit 10
+par Scenario.node[1].routing rreqRetries 2
+par Scenario.node[1].routing rreqRatelimit 10
+par Scenario.node[1].routing timeoutBuffer 2
+par Scenario.node[1].routing ttlStart 2
+par Scenario.node[1].routing ttlIncrement 2
+par Scenario.node[1].routing ttlThreshold 7
+par Scenario.node[1].routing localAddTTL 2
+par Scenario.node[1].routing myRouteTimeout 6s
+attr unit s
+par Scenario.node[1].routing deletePeriod 15s
+attr unit s
+par Scenario.node[1].routing blacklistTimeout 5.6s
+attr unit s
+par Scenario.node[1].routing netTraversalTime 2.8s
+attr unit s
+par Scenario.node[1].routing nextHopWait 0.05s
+attr unit s
+par Scenario.node[1].routing pathDiscoveryTime 5.6s
+attr unit s
+par Scenario.node[1] typename "\"test.veins_inet.VeinsInetRoutingCar\""
+par Scenario.node[1] hasStatus false
+par Scenario.node[1] osgModel "\"\""
+par Scenario.node[1] osgModelColor "\"\""
+par Scenario.node[1] canvasImage "\"\""
+par Scenario.node[1] canvasImageColor "\"\""
+par Scenario.node[1] recordPcap false
+par Scenario.node[1] numPcapRecorders 0
+par Scenario.node[1] numLoInterfaces 1
+par Scenario.node[1] numWlanInterfaces 1
+par Scenario.node[1] numEthInterfaces 0
+par Scenario.node[1] numPppInterfaces 0
+par Scenario.node[1] numTunInterfaces 0
+par Scenario.node[1] numVirtInterfaces 0
+par Scenario.node[1] hasIpv4 true
+par Scenario.node[1] hasIpv6 false
+par Scenario.node[1] hasGn false
+par Scenario.node[1] forwarding true
+par Scenario.node[1] multicastForwarding false
+par Scenario.node[1] hasUdp true
+par Scenario.node[1] hasTcp true
+par Scenario.node[1] hasSctp false
+par Scenario.node[1] numApps 1
+par Scenario.node[1] router "\"Aodv\""
+par Scenario typename "\"test.simulations.veins_inet_thuy_loi_aodv.Scenario\""
+par Scenario useOsg false
+

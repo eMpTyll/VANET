@@ -1,0 +1,1599 @@
+version 3
+run plain-0-20231204-20:25:11-17352
+attr configname plain
+attr datetime 20231204-20:25:11
+attr datetimef 20231204-202511
+attr experiment plain
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Scenario
+attr processid 17352
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../../inet-4.3.5/inet-4.3.5/images;../../../../veins-5.2/veins-veins-5.2/images
+config network Scenario
+config sim-time-limit 600s
+config debug-on-errors true
+config cmdenv-express-mode true
+config image-path ../../../../images
+config *.node[*].numApps 1
+config *.node[*].app[0].typename UdpBasicApp
+config *.node[*].app[0].destAddresses "\"node[*]\""
+config *.node[*].app[0].destPort 5000
+config *.node[*].app[0].messageLength 10000B
+config *.node[*].app[0].sendInterval exponential(12ms)
+config *.node[*].app[0].packetName "\"UDPData\""
+config *.node[*].wlan[0].opMode "\"p\""
+config *.node[*].wlan[0].radio.typename Ieee80211DimensionalRadio
+config *.node[*].wlan[0].radio.bandName "\"5.9 GHz\""
+config *.node[*].wlan[0].radio.channelNumber 3
+config *.node[*].wlan[0].radio.transmitter.power 20mW
+config *.node[*].wlan[0].radio.bandwidth "10 MHz"
+config *.node[*].wlan[*].radio.antenna.mobility.typename AttachedMobility
+config *.node[*].wlan[*].radio.antenna.mobility.mobilityModule "\"^.^.^.^.mobility\""
+config *.node[*].wlan[*].radio.antenna.mobility.offsetX -2.5m
+config *.node[*].wlan[*].radio.antenna.mobility.offsetZ 1.5m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinZ 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxZ 0m
+config *.node[*].ipv4.configurator.typename HostAutoConfigurator
+config *.node[*].ipv4.configurator.interfaces "\"wlan0\""
+config *.node[*].ipv4.configurator.mcastGroups "\"224.0.0.1\""
+config *.node[*].mobility.typename VeinsInetMobility
+config *.manager.updateInterval 0.1s
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.autoShutdown true
+config *.manager.launchConfig "xmldoc(\"thuyloi.launchd.xml\")"
+config *.manager.moduleType "\"test.veins_inet.VeinsInetRoutingCar\""
+config *.physicalEnvironment.config "xmldoc(\"obstacles.xml\")"
+config *.radioMedium.obstacleLoss.typename IdealObstacleLoss
+config **.vector-recording true
+config **.router "\"Aodv\""
+
+vector 0 Scenario.node[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 1 Scenario.node[0].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 2 Scenario.node[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 3 Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr title "contention state changed, vector"
+attr type enum
+vector 4 Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+vector 5 Scenario.node[0].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 6 Scenario.node[0].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 7 Scenario.node[0].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 8 Scenario.node[0].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 9 Scenario.node[0].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 10 Scenario.node[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), vector(count)"
+vector 11 Scenario.node[1].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 12 Scenario.node[1].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 13 Scenario.node[1].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 14 Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr title "contention state changed, vector"
+attr type enum
+vector 15 Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+vector 16 Scenario.node[1].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 17 Scenario.node[1].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 18 Scenario.node[1].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from upper layer, vector(packetBytes)"
+vector 19 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 20 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, vector"
+attr type int
+vector 21 Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr title "backoff periods, vector"
+vector 22 Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active, vector"
+vector 23 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPulled:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pulled, vector(packetBytes)"
+vector 24 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPulled)
+attr title "queueing times, vector"
+attr unit s
+vector 25 Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, vector"
+vector 26 Scenario.node[1].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr title "datarates selected, vector"
+vector 27 Scenario.node[1].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 28 Scenario.node[1].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active, vector"
+vector 29 Scenario.node[1].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 30 Scenario.node[1].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent, vector(packetBytes)"
+vector 31 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, vector(packetBytes)"
+vector 32 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , vector(packetBytes)"
+vector 33 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, vector(packetBytes)"
+vector 34 Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, vector"
+vector 35 Scenario.node[0].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 36 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received, vector(packetBytes)"
+vector 37 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, vector(packetBytes)"
+vector 38 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, vector(packetBytes)"
+vector 39 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, vector(packetBytes)"
+vector 40 Scenario.node[0].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to upper layer, vector(packetBytes)"
+vector 41 Scenario.node[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 42 Scenario.node[0].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr source arpRequestSent
+attr title "ARP request sent, vector(packetBytes)"
+vector 43 Scenario.node[0].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from upper layer, vector(packetBytes)"
+vector 44 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 45 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetPushed) - count(packetPulled) - count(packetRemoved) - count(packetDropped))"
+attr title "queue length, vector"
+attr type int
+vector 46 Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr title "backoff periods, vector"
+vector 47 Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active, vector"
+vector 48 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue packetPulled:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pulled, vector(packetBytes)"
+vector 49 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPulled)
+attr title "queueing times, vector"
+attr unit s
+vector 50 Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, vector"
+vector 51 Scenario.node[0].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr title "datarates selected, vector"
+vector 52 Scenario.node[0].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 53 Scenario.node[0].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active, vector"
+vector 54 Scenario.node[0].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 55 Scenario.node[0].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent, vector(packetBytes)"
+vector 56 Scenario.node[0].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, vector(packetBytes)"
+vector 57 Scenario.node[0].wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , vector(packetBytes)"
+vector 58 Scenario.node[0].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, vector(packetBytes)"
+vector 59 Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, vector"
+vector 60 Scenario.node[1].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 61 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received, vector(packetBytes)"
+vector 62 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, vector(packetBytes)"
+vector 63 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, vector(packetBytes)"
+vector 64 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, vector(packetBytes)"
+vector 65 Scenario.node[1].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to upper layer, vector(packetBytes)"
+vector 66 Scenario.node[1].ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr source arpReplySent
+attr title "ARP replies sent, vector(packetBytes)"
+vector 67 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, vector(packetBytes)"
+vector 68 Scenario.node[1].wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr source navChanged
+attr title "network allocation vector, vector"
+vector 69 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, vector(packetBytes)"
+vector 70 Scenario.node[0].wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, vector(packetBytes)"
+vector 71 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, vector(packetBytes)"
+vector 72 Scenario.node[0].wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr source navChanged
+attr title "network allocation vector, vector"
+vector 73 Scenario.node[1].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 74 Scenario.node[1].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+0	2	0.1	0
+0	2	0.1	0
+0	2	0.1	2
+0	837	1.103009015797	3
+0	841	1.103097015797	2
+0	862	1.103303032907	3
+0	867	1.103359032907	2
+0	872	1.103560032907	3
+0	876	1.103656032907	2
+0	912	1.105066050017	3
+0	916	1.105122050017	2
+0	930	1.105804067127	3
+0	936	1.105860067127	2
+1	2	0.1	3
+2	2	0.1	1
+2	822	1.102834015797	3
+2	825	1.102938015797	1
+2	837	1.103009015797	0
+2	841	1.103097015797	1
+2	852	1.103183032907	3
+2	855	1.103271032907	1
+2	862	1.103303032907	0
+2	867	1.103359032907	1
+2	872	1.103560032907	0
+2	876	1.103656032907	1
+2	896	1.103690050017	3
+2	900	1.103746050017	1
+2	906	1.103986050017	3
+2	909	1.105034050017	1
+2	912	1.105066050017	0
+2	916	1.105122050017	1
+2	922	1.105156067127	3
+2	925	1.105772067127	1
+2	930	1.105804067127	0
+2	936	1.105860067127	1
+2	943	1.106037084237	3
+3	2	0.1	0
+3	2	0.1	0
+3	822	1.102834015797	0
+3	822	1.102834015797	0
+3	825	1.102938015797	0
+3	825	1.102938015797	0
+3	834	1.102938015797	0
+3	834	1.102938015797	2
+3	835	1.103009015797	2
+3	835	1.103009015797	0
+3	837	1.103009015797	0
+3	837	1.103009015797	0
+3	841	1.103097015797	0
+3	841	1.103097015797	0
+3	852	1.103183032907	0
+3	852	1.103183032907	0
+3	855	1.103271032907	0
+3	855	1.103271032907	0
+3	860	1.103271032907	0
+3	860	1.103271032907	2
+3	862	1.103303032907	2
+3	862	1.103303032907	1
+3	867	1.103359032907	1
+3	867	1.103359032907	2
+3	870	1.103560032907	2
+3	870	1.103560032907	0
+3	872	1.103560032907	0
+3	872	1.103560032907	0
+3	900	1.103746050017	0
+3	900	1.103746050017	0
+3	906	1.103986050017	0
+3	906	1.103986050017	0
+3	909	1.105034050017	0
+3	909	1.105034050017	0
+3	912	1.105066050017	0
+3	912	1.105066050017	0
+3	936	1.105860067127	0
+3	936	1.105860067127	0
+3	943	1.106037084237	0
+3	943	1.106037084237	0
+4	2	0.1	15
+5	5	0.1	10000
+5	16	0.123418544031	10000
+5	26	0.145966112681	10000
+5	36	0.157690189798	10000
+5	46	0.163511727763	10000
+5	56	0.167749637433	10000
+5	66	0.168450253462	10000
+5	76	0.172270527152	10000
+5	86	0.180063883331	10000
+5	97	0.200130417735	10000
+5	107	0.207977008542	10000
+5	117	0.21396347265	10000
+5	127	0.235663903821	10000
+5	137	0.240602839776	10000
+5	147	0.253138189876	10000
+5	157	0.258649167523	10000
+5	167	0.296451206667	10000
+5	177	0.298265976911	10000
+5	188	0.322756683502	10000
+5	198	0.330457193574	10000
+5	208	0.349825218473	10000
+5	218	0.358644791527	10000
+5	228	0.372276058828	10000
+5	238	0.387578791255	10000
+5	248	0.398046645596	10000
+5	259	0.407296661498	10000
+5	269	0.424353037659	10000
+5	279	0.425696391587	10000
+5	289	0.433396728011	10000
+5	299	0.435871167395	10000
+5	309	0.45189464961	10000
+5	319	0.454823231499	10000
+5	329	0.456566567827	10000
+5	339	0.461267817555	10000
+5	349	0.463213455428	10000
+5	359	0.466230758613	10000
+5	369	0.472093443205	10000
+5	380	0.500040403696	10000
+5	390	0.507213356618	10000
+5	400	0.51860729162	10000
+5	410	0.54652350436	10000
+5	420	0.547778239069	10000
+5	430	0.589780803282	10000
+5	441	0.60248681286	10000
+5	451	0.604735925652	10000
+5	461	0.610056773995	10000
+5	471	0.626725286272	10000
+5	481	0.637958024989	10000
+5	491	0.642675375677	10000
+5	501	0.643145573554	10000
+5	511	0.655216025616	10000
+5	521	0.693531385321	10000
+5	532	0.706225302281	10000
+5	542	0.718321533226	10000
+5	552	0.782642737429	10000
+5	562	0.793105727673	10000
+5	572	0.799526503798	10000
+5	583	0.807251875817	10000
+5	593	0.818974244706	10000
+5	603	0.823924259465	10000
+5	613	0.837402279083	10000
+5	623	0.841980949203	10000
+5	633	0.860060573202	10000
+5	643	0.895906851904	10000
+5	654	0.908942084475	10000
+5	664	0.909106059416	10000
+5	674	0.920807282626	10000
+5	684	0.934245055015	10000
+5	694	0.977128115483	10000
+5	705	1.002391971093	10000
+5	715	1.010942974213	10000
+5	725	1.01163089733	10000
+5	735	1.01883025997	10000
+5	745	1.019072541508	10000
+5	755	1.026067082174	10000
+5	765	1.072765923648	10000
+5	775	1.078110957191	10000
+5	785	1.085978712603	10000
+5	795	1.099981194922	10000
+6	7	0.1	10008
+6	17	0.123418544031	10008
+6	27	0.145966112681	10008
+6	37	0.157690189798	10008
+6	47	0.163511727763	10008
+6	57	0.167749637433	10008
+6	67	0.168450253462	10008
+6	77	0.172270527152	10008
+6	87	0.180063883331	10008
+6	98	0.200130417735	10008
+6	108	0.207977008542	10008
+6	118	0.21396347265	10008
+6	128	0.235663903821	10008
+6	138	0.240602839776	10008
+6	148	0.253138189876	10008
+6	158	0.258649167523	10008
+6	168	0.296451206667	10008
+6	178	0.298265976911	10008
+6	189	0.322756683502	10008
+6	199	0.330457193574	10008
+6	209	0.349825218473	10008
+6	219	0.358644791527	10008
+6	229	0.372276058828	10008
+6	239	0.387578791255	10008
+6	249	0.398046645596	10008
+6	260	0.407296661498	10008
+6	270	0.424353037659	10008
+6	280	0.425696391587	10008
+6	290	0.433396728011	10008
+6	300	0.435871167395	10008
+6	310	0.45189464961	10008
+6	320	0.454823231499	10008
+6	330	0.456566567827	10008
+6	340	0.461267817555	10008
+6	350	0.463213455428	10008
+6	360	0.466230758613	10008
+6	370	0.472093443205	10008
+6	381	0.500040403696	10008
+6	391	0.507213356618	10008
+6	401	0.51860729162	10008
+6	411	0.54652350436	10008
+6	421	0.547778239069	10008
+6	431	0.589780803282	10008
+6	442	0.60248681286	10008
+6	452	0.604735925652	10008
+6	462	0.610056773995	10008
+6	472	0.626725286272	10008
+6	482	0.637958024989	10008
+6	492	0.642675375677	10008
+6	502	0.643145573554	10008
+6	512	0.655216025616	10008
+6	522	0.693531385321	10008
+6	533	0.706225302281	10008
+6	543	0.718321533226	10008
+6	553	0.782642737429	10008
+6	563	0.793105727673	10008
+6	573	0.799526503798	10008
+6	584	0.807251875817	10008
+6	594	0.818974244706	10008
+6	604	0.823924259465	10008
+6	614	0.837402279083	10008
+6	624	0.841980949203	10008
+6	634	0.860060573202	10008
+6	644	0.895906851904	10008
+6	655	0.908942084475	10008
+6	665	0.909106059416	10008
+6	675	0.920807282626	10008
+6	685	0.934245055015	10008
+6	695	0.977128115483	10008
+6	706	1.002391971093	10008
+6	716	1.010942974213	10008
+6	726	1.01163089733	10008
+6	736	1.01883025997	10008
+6	746	1.019072541508	10008
+6	756	1.026067082174	10008
+6	766	1.072765923648	10008
+6	776	1.078110957191	10008
+6	786	1.085978712603	10008
+6	796	1.099981194922	10008
+6	831	1.102938015797	28
+7	9	0.1	4468
+7	10	0.1	4468
+7	11	0.1	1132
+7	19	0.123418544031	4468
+7	20	0.123418544031	4468
+7	21	0.123418544031	1132
+7	29	0.145966112681	4468
+7	30	0.145966112681	4468
+7	31	0.145966112681	1132
+7	39	0.157690189798	4468
+7	40	0.157690189798	4468
+7	41	0.157690189798	1132
+7	49	0.163511727763	4468
+7	50	0.163511727763	4468
+7	51	0.163511727763	1132
+7	59	0.167749637433	4468
+7	60	0.167749637433	4468
+7	61	0.167749637433	1132
+7	69	0.168450253462	4468
+7	70	0.168450253462	4468
+7	71	0.168450253462	1132
+7	79	0.172270527152	4468
+7	80	0.172270527152	4468
+7	81	0.172270527152	1132
+7	89	0.180063883331	4468
+7	90	0.180063883331	4468
+7	91	0.180063883331	1132
+7	100	0.200130417735	4468
+7	101	0.200130417735	4468
+7	102	0.200130417735	1132
+7	110	0.207977008542	4468
+7	111	0.207977008542	4468
+7	112	0.207977008542	1132
+7	120	0.21396347265	4468
+7	121	0.21396347265	4468
+7	122	0.21396347265	1132
+7	130	0.235663903821	4468
+7	131	0.235663903821	4468
+7	132	0.235663903821	1132
+7	140	0.240602839776	4468
+7	141	0.240602839776	4468
+7	142	0.240602839776	1132
+7	150	0.253138189876	4468
+7	151	0.253138189876	4468
+7	152	0.253138189876	1132
+7	160	0.258649167523	4468
+7	161	0.258649167523	4468
+7	162	0.258649167523	1132
+7	170	0.296451206667	4468
+7	171	0.296451206667	4468
+7	172	0.296451206667	1132
+7	180	0.298265976911	4468
+7	181	0.298265976911	4468
+7	182	0.298265976911	1132
+7	191	0.322756683502	4468
+7	192	0.322756683502	4468
+7	193	0.322756683502	1132
+7	201	0.330457193574	4468
+7	202	0.330457193574	4468
+7	203	0.330457193574	1132
+7	211	0.349825218473	4468
+7	212	0.349825218473	4468
+7	213	0.349825218473	1132
+7	221	0.358644791527	4468
+7	222	0.358644791527	4468
+7	223	0.358644791527	1132
+7	231	0.372276058828	4468
+7	232	0.372276058828	4468
+7	233	0.372276058828	1132
+7	241	0.387578791255	4468
+7	242	0.387578791255	4468
+7	243	0.387578791255	1132
+7	251	0.398046645596	4468
+7	252	0.398046645596	4468
+7	253	0.398046645596	1132
+7	262	0.407296661498	4468
+7	263	0.407296661498	4468
+7	264	0.407296661498	1132
+7	272	0.424353037659	4468
+7	273	0.424353037659	4468
+7	274	0.424353037659	1132
+7	282	0.425696391587	4468
+7	283	0.425696391587	4468
+7	284	0.425696391587	1132
+7	292	0.433396728011	4468
+7	293	0.433396728011	4468
+7	294	0.433396728011	1132
+7	302	0.435871167395	4468
+7	303	0.435871167395	4468
+7	304	0.435871167395	1132
+7	312	0.45189464961	4468
+7	313	0.45189464961	4468
+7	314	0.45189464961	1132
+7	322	0.454823231499	4468
+7	323	0.454823231499	4468
+7	324	0.454823231499	1132
+7	332	0.456566567827	4468
+7	333	0.456566567827	4468
+7	334	0.456566567827	1132
+7	342	0.461267817555	4468
+7	343	0.461267817555	4468
+7	344	0.461267817555	1132
+7	352	0.463213455428	4468
+7	353	0.463213455428	4468
+7	354	0.463213455428	1132
+7	362	0.466230758613	4468
+7	363	0.466230758613	4468
+7	364	0.466230758613	1132
+7	372	0.472093443205	4468
+7	373	0.472093443205	4468
+7	374	0.472093443205	1132
+7	383	0.500040403696	4468
+7	384	0.500040403696	4468
+7	385	0.500040403696	1132
+7	393	0.507213356618	4468
+7	394	0.507213356618	4468
+7	395	0.507213356618	1132
+7	403	0.51860729162	4468
+7	404	0.51860729162	4468
+7	405	0.51860729162	1132
+7	413	0.54652350436	4468
+7	414	0.54652350436	4468
+7	415	0.54652350436	1132
+7	423	0.547778239069	4468
+7	424	0.547778239069	4468
+7	425	0.547778239069	1132
+7	433	0.589780803282	4468
+7	434	0.589780803282	4468
+7	435	0.589780803282	1132
+7	444	0.60248681286	4468
+7	445	0.60248681286	4468
+7	446	0.60248681286	1132
+7	454	0.604735925652	4468
+7	455	0.604735925652	4468
+7	456	0.604735925652	1132
+7	464	0.610056773995	4468
+7	465	0.610056773995	4468
+7	466	0.610056773995	1132
+7	474	0.626725286272	4468
+7	475	0.626725286272	4468
+7	476	0.626725286272	1132
+7	484	0.637958024989	4468
+7	485	0.637958024989	4468
+7	486	0.637958024989	1132
+7	494	0.642675375677	4468
+7	495	0.642675375677	4468
+7	496	0.642675375677	1132
+7	504	0.643145573554	4468
+7	505	0.643145573554	4468
+7	506	0.643145573554	1132
+7	514	0.655216025616	4468
+7	515	0.655216025616	4468
+7	516	0.655216025616	1132
+7	524	0.693531385321	4468
+7	525	0.693531385321	4468
+7	526	0.693531385321	1132
+7	535	0.706225302281	4468
+7	536	0.706225302281	4468
+7	537	0.706225302281	1132
+7	545	0.718321533226	4468
+7	546	0.718321533226	4468
+7	547	0.718321533226	1132
+7	555	0.782642737429	4468
+7	556	0.782642737429	4468
+7	557	0.782642737429	1132
+7	565	0.793105727673	4468
+7	566	0.793105727673	4468
+7	567	0.793105727673	1132
+7	575	0.799526503798	4468
+7	576	0.799526503798	4468
+7	577	0.799526503798	1132
+7	586	0.807251875817	4468
+7	587	0.807251875817	4468
+7	588	0.807251875817	1132
+7	596	0.818974244706	4468
+7	597	0.818974244706	4468
+7	598	0.818974244706	1132
+7	606	0.823924259465	4468
+7	607	0.823924259465	4468
+7	608	0.823924259465	1132
+7	616	0.837402279083	4468
+7	617	0.837402279083	4468
+7	618	0.837402279083	1132
+7	626	0.841980949203	4468
+7	627	0.841980949203	4468
+7	628	0.841980949203	1132
+7	636	0.860060573202	4468
+7	637	0.860060573202	4468
+7	638	0.860060573202	1132
+7	646	0.895906851904	4468
+7	647	0.895906851904	4468
+7	648	0.895906851904	1132
+7	657	0.908942084475	4468
+7	658	0.908942084475	4468
+7	659	0.908942084475	1132
+7	667	0.909106059416	4468
+7	668	0.909106059416	4468
+7	669	0.909106059416	1132
+7	677	0.920807282626	4468
+7	678	0.920807282626	4468
+7	679	0.920807282626	1132
+7	687	0.934245055015	4468
+7	688	0.934245055015	4468
+7	689	0.934245055015	1132
+7	697	0.977128115483	4468
+7	698	0.977128115483	4468
+7	699	0.977128115483	1132
+7	708	1.002391971093	4468
+7	709	1.002391971093	4468
+7	710	1.002391971093	1132
+7	718	1.010942974213	4468
+7	719	1.010942974213	4468
+7	720	1.010942974213	1132
+7	728	1.01163089733	4468
+7	729	1.01163089733	4468
+7	730	1.01163089733	1132
+7	738	1.01883025997	4468
+7	739	1.01883025997	4468
+7	740	1.01883025997	1132
+7	748	1.019072541508	4468
+7	749	1.019072541508	4468
+7	750	1.019072541508	1132
+7	758	1.026067082174	4468
+7	759	1.026067082174	4468
+7	760	1.026067082174	1132
+7	768	1.072765923648	4468
+7	769	1.072765923648	4468
+7	770	1.072765923648	1132
+7	778	1.078110957191	4468
+7	779	1.078110957191	4468
+7	780	1.078110957191	1132
+7	788	1.085978712603	4468
+7	789	1.085978712603	4468
+7	790	1.085978712603	1132
+7	798	1.099981194922	4468
+7	799	1.099981194922	4468
+7	800	1.099981194922	1132
+8	9	0.1	4468
+8	10	0.1	4468
+8	11	0.1	1132
+8	19	0.123418544031	4468
+8	20	0.123418544031	4468
+8	21	0.123418544031	1132
+8	29	0.145966112681	4468
+8	30	0.145966112681	4468
+8	31	0.145966112681	1132
+8	39	0.157690189798	4468
+8	40	0.157690189798	4468
+8	41	0.157690189798	1132
+8	49	0.163511727763	4468
+8	50	0.163511727763	4468
+8	51	0.163511727763	1132
+8	59	0.167749637433	4468
+8	60	0.167749637433	4468
+8	61	0.167749637433	1132
+8	69	0.168450253462	4468
+8	70	0.168450253462	4468
+8	71	0.168450253462	1132
+8	79	0.172270527152	4468
+8	80	0.172270527152	4468
+8	81	0.172270527152	1132
+8	89	0.180063883331	4468
+8	90	0.180063883331	4468
+8	91	0.180063883331	1132
+8	100	0.200130417735	4468
+8	101	0.200130417735	4468
+8	102	0.200130417735	1132
+8	110	0.207977008542	4468
+8	111	0.207977008542	4468
+8	112	0.207977008542	1132
+8	120	0.21396347265	4468
+8	121	0.21396347265	4468
+8	122	0.21396347265	1132
+8	130	0.235663903821	4468
+8	131	0.235663903821	4468
+8	132	0.235663903821	1132
+8	140	0.240602839776	4468
+8	141	0.240602839776	4468
+8	142	0.240602839776	1132
+8	150	0.253138189876	4468
+8	151	0.253138189876	4468
+8	152	0.253138189876	1132
+8	160	0.258649167523	4468
+8	161	0.258649167523	4468
+8	162	0.258649167523	1132
+8	170	0.296451206667	4468
+8	171	0.296451206667	4468
+8	172	0.296451206667	1132
+8	180	0.298265976911	4468
+8	181	0.298265976911	4468
+8	182	0.298265976911	1132
+8	191	0.322756683502	4468
+8	192	0.322756683502	4468
+8	193	0.322756683502	1132
+8	201	0.330457193574	4468
+8	202	0.330457193574	4468
+8	203	0.330457193574	1132
+8	211	0.349825218473	4468
+8	212	0.349825218473	4468
+8	213	0.349825218473	1132
+8	221	0.358644791527	4468
+8	222	0.358644791527	4468
+8	223	0.358644791527	1132
+8	231	0.372276058828	4468
+8	232	0.372276058828	4468
+8	233	0.372276058828	1132
+8	241	0.387578791255	4468
+8	242	0.387578791255	4468
+8	243	0.387578791255	1132
+8	251	0.398046645596	4468
+8	252	0.398046645596	4468
+8	253	0.398046645596	1132
+8	262	0.407296661498	4468
+8	263	0.407296661498	4468
+8	264	0.407296661498	1132
+8	272	0.424353037659	4468
+8	273	0.424353037659	4468
+8	274	0.424353037659	1132
+8	282	0.425696391587	4468
+8	283	0.425696391587	4468
+8	284	0.425696391587	1132
+8	292	0.433396728011	4468
+8	293	0.433396728011	4468
+8	294	0.433396728011	1132
+8	302	0.435871167395	4468
+8	303	0.435871167395	4468
+8	304	0.435871167395	1132
+8	312	0.45189464961	4468
+8	313	0.45189464961	4468
+8	314	0.45189464961	1132
+8	322	0.454823231499	4468
+8	323	0.454823231499	4468
+8	324	0.454823231499	1132
+8	332	0.456566567827	4468
+8	333	0.456566567827	4468
+8	334	0.456566567827	1132
+8	342	0.461267817555	4468
+8	343	0.461267817555	4468
+8	344	0.461267817555	1132
+8	352	0.463213455428	4468
+8	353	0.463213455428	4468
+8	354	0.463213455428	1132
+8	362	0.466230758613	4468
+8	363	0.466230758613	4468
+8	364	0.466230758613	1132
+8	372	0.472093443205	4468
+8	373	0.472093443205	4468
+8	374	0.472093443205	1132
+8	383	0.500040403696	4468
+8	384	0.500040403696	4468
+8	385	0.500040403696	1132
+8	393	0.507213356618	4468
+8	394	0.507213356618	4468
+8	395	0.507213356618	1132
+8	403	0.51860729162	4468
+8	404	0.51860729162	4468
+8	405	0.51860729162	1132
+8	413	0.54652350436	4468
+8	414	0.54652350436	4468
+8	415	0.54652350436	1132
+8	423	0.547778239069	4468
+8	424	0.547778239069	4468
+8	425	0.547778239069	1132
+8	433	0.589780803282	4468
+8	434	0.589780803282	4468
+8	435	0.589780803282	1132
+8	444	0.60248681286	4468
+8	445	0.60248681286	4468
+8	446	0.60248681286	1132
+8	454	0.604735925652	4468
+8	455	0.604735925652	4468
+8	456	0.604735925652	1132
+8	464	0.610056773995	4468
+8	465	0.610056773995	4468
+8	466	0.610056773995	1132
+8	474	0.626725286272	4468
+8	475	0.626725286272	4468
+8	476	0.626725286272	1132
+8	484	0.637958024989	4468
+8	485	0.637958024989	4468
+8	486	0.637958024989	1132
+8	494	0.642675375677	4468
+8	495	0.642675375677	4468
+8	496	0.642675375677	1132
+8	504	0.643145573554	4468
+8	505	0.643145573554	4468
+8	506	0.643145573554	1132
+8	514	0.655216025616	4468
+8	515	0.655216025616	4468
+8	516	0.655216025616	1132
+8	524	0.693531385321	4468
+8	525	0.693531385321	4468
+8	526	0.693531385321	1132
+8	535	0.706225302281	4468
+8	536	0.706225302281	4468
+8	537	0.706225302281	1132
+8	545	0.718321533226	4468
+8	546	0.718321533226	4468
+8	547	0.718321533226	1132
+8	555	0.782642737429	4468
+8	556	0.782642737429	4468
+8	557	0.782642737429	1132
+8	565	0.793105727673	4468
+8	566	0.793105727673	4468
+8	567	0.793105727673	1132
+8	575	0.799526503798	4468
+8	576	0.799526503798	4468
+8	577	0.799526503798	1132
+8	586	0.807251875817	4468
+8	587	0.807251875817	4468
+8	588	0.807251875817	1132
+8	596	0.818974244706	4468
+8	597	0.818974244706	4468
+8	598	0.818974244706	1132
+8	606	0.823924259465	4468
+8	607	0.823924259465	4468
+8	608	0.823924259465	1132
+8	616	0.837402279083	4468
+8	617	0.837402279083	4468
+8	618	0.837402279083	1132
+8	626	0.841980949203	4468
+8	627	0.841980949203	4468
+8	628	0.841980949203	1132
+8	636	0.860060573202	4468
+8	637	0.860060573202	4468
+8	638	0.860060573202	1132
+8	646	0.895906851904	4468
+8	647	0.895906851904	4468
+8	648	0.895906851904	1132
+8	657	0.908942084475	4468
+8	658	0.908942084475	4468
+8	659	0.908942084475	1132
+8	667	0.909106059416	4468
+8	668	0.909106059416	4468
+8	669	0.909106059416	1132
+8	677	0.920807282626	4468
+8	678	0.920807282626	4468
+8	679	0.920807282626	1132
+8	687	0.934245055015	4468
+8	688	0.934245055015	4468
+8	689	0.934245055015	1132
+8	697	0.977128115483	4468
+8	698	0.977128115483	4468
+8	699	0.977128115483	1132
+8	708	1.002391971093	4468
+8	709	1.002391971093	4468
+8	710	1.002391971093	1132
+8	718	1.010942974213	4468
+8	719	1.010942974213	4468
+8	720	1.010942974213	1132
+8	728	1.01163089733	4468
+8	729	1.01163089733	4468
+8	730	1.01163089733	1132
+8	738	1.01883025997	4468
+8	739	1.01883025997	4468
+8	740	1.01883025997	1132
+8	748	1.019072541508	4468
+8	749	1.019072541508	4468
+8	750	1.019072541508	1132
+8	758	1.026067082174	4468
+8	759	1.026067082174	4468
+8	760	1.026067082174	1132
+8	768	1.072765923648	4468
+8	769	1.072765923648	4468
+8	770	1.072765923648	1132
+8	778	1.078110957191	4468
+8	779	1.078110957191	4468
+8	780	1.078110957191	1132
+8	788	1.085978712603	4468
+8	789	1.085978712603	4468
+8	790	1.085978712603	1132
+8	798	1.099981194922	4468
+8	799	1.099981194922	4468
+8	800	1.099981194922	1132
+9	15	0.1	10008
+9	25	0.123418544031	10008
+9	35	0.145966112681	10008
+9	45	0.157690189798	10008
+9	55	0.163511727763	10008
+9	65	0.167749637433	10008
+9	75	0.168450253462	10008
+9	85	0.172270527152	10008
+9	95	0.180063883331	10008
+9	106	0.200130417735	10008
+9	116	0.207977008542	10008
+9	126	0.21396347265	10008
+9	136	0.235663903821	10008
+9	146	0.240602839776	10008
+9	156	0.253138189876	10008
+9	166	0.258649167523	10008
+9	176	0.296451206667	10008
+9	186	0.298265976911	10008
+9	197	0.322756683502	10008
+9	207	0.330457193574	10008
+9	217	0.349825218473	10008
+9	227	0.358644791527	10008
+9	237	0.372276058828	10008
+9	247	0.387578791255	10008
+9	257	0.398046645596	10008
+9	268	0.407296661498	10008
+9	278	0.424353037659	10008
+9	288	0.425696391587	10008
+9	298	0.433396728011	10008
+9	308	0.435871167395	10008
+9	318	0.45189464961	10008
+9	328	0.454823231499	10008
+9	338	0.456566567827	10008
+9	348	0.461267817555	10008
+9	358	0.463213455428	10008
+9	368	0.466230758613	10008
+9	378	0.472093443205	10008
+9	389	0.500040403696	10008
+9	399	0.507213356618	10008
+9	409	0.51860729162	10008
+9	419	0.54652350436	10008
+9	429	0.547778239069	10008
+9	439	0.589780803282	10008
+9	450	0.60248681286	10008
+9	460	0.604735925652	10008
+9	470	0.610056773995	10008
+9	480	0.626725286272	10008
+9	490	0.637958024989	10008
+9	500	0.642675375677	10008
+9	510	0.643145573554	10008
+9	520	0.655216025616	10008
+9	530	0.693531385321	10008
+9	541	0.706225302281	10008
+9	551	0.718321533226	10008
+9	561	0.782642737429	10008
+9	571	0.793105727673	10008
+9	581	0.799526503798	10008
+9	592	0.807251875817	10008
+9	602	0.818974244706	10008
+9	612	0.823924259465	10008
+9	622	0.837402279083	10008
+9	632	0.841980949203	10008
+9	642	0.860060573202	10008
+9	652	0.895906851904	10008
+9	663	0.908942084475	10008
+9	673	0.909106059416	10008
+9	683	0.920807282626	10008
+9	693	0.934245055015	10008
+9	703	0.977128115483	10008
+9	714	1.002391971093	10008
+9	724	1.010942974213	10008
+9	734	1.01163089733	10008
+9	744	1.01883025997	10008
+9	754	1.019072541508	10008
+9	764	1.026067082174	10008
+9	774	1.072765923648	10008
+9	784	1.078110957191	10008
+9	794	1.085978712603	10008
+9	804	1.099981194922	10008
+9	829	1.102938015797	32
+10	15	0.1	1
+10	25	0.123418544031	2
+10	35	0.145966112681	3
+10	45	0.157690189798	4
+10	55	0.163511727763	5
+10	65	0.167749637433	6
+10	75	0.168450253462	7
+10	85	0.172270527152	8
+10	95	0.180063883331	9
+10	106	0.200130417735	10
+10	116	0.207977008542	11
+10	126	0.21396347265	12
+10	136	0.235663903821	13
+10	146	0.240602839776	14
+10	156	0.253138189876	15
+10	166	0.258649167523	16
+10	176	0.296451206667	17
+10	186	0.298265976911	18
+10	197	0.322756683502	19
+10	207	0.330457193574	20
+10	217	0.349825218473	21
+10	227	0.358644791527	22
+10	237	0.372276058828	23
+10	247	0.387578791255	24
+10	257	0.398046645596	25
+10	268	0.407296661498	26
+10	278	0.424353037659	27
+10	288	0.425696391587	28
+10	298	0.433396728011	29
+10	308	0.435871167395	30
+10	318	0.45189464961	31
+10	328	0.454823231499	32
+10	338	0.456566567827	33
+10	348	0.461267817555	34
+10	358	0.463213455428	35
+10	368	0.466230758613	36
+10	378	0.472093443205	37
+10	389	0.500040403696	38
+10	399	0.507213356618	39
+10	409	0.51860729162	40
+10	419	0.54652350436	41
+10	429	0.547778239069	42
+10	439	0.589780803282	43
+10	450	0.60248681286	44
+10	460	0.604735925652	45
+10	470	0.610056773995	46
+10	480	0.626725286272	47
+10	490	0.637958024989	48
+10	500	0.642675375677	49
+10	510	0.643145573554	50
+10	520	0.655216025616	51
+10	530	0.693531385321	52
+10	541	0.706225302281	53
+10	551	0.718321533226	54
+10	561	0.782642737429	55
+10	571	0.793105727673	56
+10	581	0.799526503798	57
+10	592	0.807251875817	58
+10	602	0.818974244706	59
+10	612	0.823924259465	60
+10	622	0.837402279083	61
+10	632	0.841980949203	62
+10	642	0.860060573202	63
+10	652	0.895906851904	64
+10	663	0.908942084475	65
+10	673	0.909106059416	66
+10	683	0.920807282626	67
+10	693	0.934245055015	68
+10	703	0.977128115483	69
+10	714	1.002391971093	70
+10	724	1.010942974213	71
+10	734	1.01163089733	72
+10	744	1.01883025997	73
+10	754	1.019072541508	74
+10	764	1.026067082174	75
+10	774	1.072765923648	76
+10	784	1.078110957191	77
+10	794	1.085978712603	78
+10	804	1.099981194922	79
+11	806	1.1	0
+11	806	1.1	0
+11	806	1.1	2
+11	820	1.102833007242	3
+11	824	1.102937007242	2
+11	850	1.103182024352	3
+11	854	1.103270024352	2
+11	894	1.103689041462	3
+11	899	1.103745041462	2
+11	904	1.103985041462	3
+11	908	1.105033041462	2
+11	920	1.105155058572	3
+11	924	1.105771058572	2
+11	941	1.106036075682	3
+12	806	1.1	3
+13	806	1.1	1
+13	820	1.102833007242	0
+13	824	1.102937007242	1
+13	839	1.103010024352	3
+13	842	1.103098024352	1
+13	850	1.103182024352	0
+13	854	1.103270024352	1
+13	864	1.103304041462	3
+13	868	1.103360041462	1
+13	874	1.103561041462	3
+13	877	1.103657041462	1
+13	894	1.103689041462	0
+13	899	1.103745041462	1
+13	904	1.103985041462	0
+13	908	1.105033041462	1
+13	914	1.105067058572	3
+13	917	1.105123058572	1
+13	920	1.105155058572	0
+13	924	1.105771058572	1
+13	932	1.105805075682	3
+13	937	1.105861075682	1
+13	941	1.106036075682	0
+14	806	1.1	0
+14	806	1.1	0
+14	817	1.102833007242	0
+14	817	1.102833007242	2
+14	818	1.102833007242	2
+14	818	1.102833007242	0
+14	820	1.102833007242	0
+14	820	1.102833007242	0
+14	824	1.102937007242	0
+14	824	1.102937007242	0
+14	839	1.103010024352	0
+14	839	1.103010024352	0
+14	842	1.103098024352	0
+14	842	1.103098024352	0
+14	847	1.103098024352	0
+14	847	1.103098024352	2
+14	848	1.103182024352	2
+14	848	1.103182024352	0
+14	850	1.103182024352	0
+14	850	1.103182024352	0
+14	868	1.103360041462	0
+14	868	1.103360041462	0
+14	874	1.103561041462	0
+14	874	1.103561041462	0
+14	877	1.103657041462	0
+14	877	1.103657041462	0
+14	888	1.103657041462	0
+14	888	1.103657041462	2
+14	894	1.103689041462	2
+14	894	1.103689041462	1
+14	899	1.103745041462	1
+14	899	1.103745041462	2
+14	902	1.103985041462	2
+14	902	1.103985041462	0
+14	904	1.103985041462	0
+14	904	1.103985041462	0
+14	937	1.105861075682	0
+14	937	1.105861075682	0
+14	938	1.105861075682	0
+14	938	1.105861075682	2
+14	939	1.106036075682	2
+14	939	1.106036075682	0
+14	941	1.106036075682	0
+14	941	1.106036075682	0
+15	806	1.1	15
+16	809	1.1	10000
+17	811	1.1	10008
+17	814	1.102833007242	32
+18	817	1.102833007242	54
+18	847	1.103098024352	30
+18	888	1.103657041462	2302
+18	889	1.103657041462	2302
+18	890	1.103657041462	2302
+18	891	1.103657041462	2302
+18	892	1.103657041462	910
+19	817	1.102833007242	82
+19	847	1.103098024352	58
+19	888	1.103657041462	2330
+19	889	1.103657041462	2330
+19	890	1.103657041462	2330
+19	891	1.103657041462	2330
+19	892	1.103657041462	938
+20	817	1.102833007242	1
+20	819	1.102833007242	0
+20	847	1.103098024352	1
+20	849	1.103182024352	0
+20	888	1.103657041462	1
+20	889	1.103657041462	2
+20	890	1.103657041462	3
+20	891	1.103657041462	4
+20	892	1.103657041462	5
+20	903	1.103985041462	4
+20	918	1.105123058572	3
+21	817	1.102833007242	4
+21	847	1.103098024352	2
+21	888	1.103657041462	14
+21	938	1.105861075682	9
+22	817	1.102833007242	1
+22	818	1.102833007242	0
+22	847	1.103098024352	1
+22	848	1.103182024352	0
+22	888	1.103657041462	1
+22	894	1.103689041462	0
+22	899	1.103745041462	1
+22	902	1.103985041462	0
+22	938	1.105861075682	1
+22	939	1.106036075682	0
+23	819	1.102833007242	82
+23	849	1.103182024352	58
+23	903	1.103985041462	2330
+23	918	1.105123058572	2330
+24	819	1.102833007242	0
+24	849	1.103182024352	8.4e-05
+24	903	1.103985041462	0.000328
+24	918	1.105123058572	0.00146601711
+25	819	1.102833007242	1
+25	823	1.102937007242	0
+25	849	1.103182024352	1
+25	869	1.103360041462	0
+25	903	1.103985041462	1
+25	903	1.103985041462	2
+25	918	1.105123058572	1
+25	918	1.105123058572	2
+25	918	1.105123058572	3
+25	938	1.105861075682	2
+26	819	1.102833007242	12000000
+26	849	1.103182024352	12000000
+26	878	1.103657041462	12000000
+26	903	1.103985041462	12000000
+26	918	1.105123058572	12000000
+26	940	1.106036075682	12000000
+27	819	1.102833007242	82
+27	849	1.103182024352	58
+27	893	1.103689041462	14
+27	903	1.103985041462	1500
+27	919	1.105155058572	858
+27	940	1.106036075682	1500
+28	819	1.102833007242	1
+28	823	1.102937007242	0
+28	849	1.103182024352	1
+28	869	1.103360041462	0
+28	903	1.103985041462	1
+28	938	1.105861075682	0
+28	940	1.106036075682	1
+29	820	1.102833007242	1
+29	821	1.102833007242	2
+29	823	1.102937007242	1
+29	824	1.102937007242	0
+29	850	1.103182024352	1
+29	851	1.103182024352	2
+29	853	1.103270024352	1
+29	854	1.103270024352	0
+29	894	1.103689041462	1
+29	895	1.103689041462	2
+29	898	1.103745041462	1
+29	899	1.103745041462	0
+29	904	1.103985041462	1
+29	905	1.103985041462	2
+29	907	1.105033041462	1
+29	908	1.105033041462	0
+29	920	1.105155058572	1
+29	921	1.105155058572	2
+29	923	1.105771058572	1
+29	924	1.105771058572	0
+29	941	1.106036075682	1
+29	942	1.106036075682	2
+30	823	1.102937007242	82
+30	853	1.103270024352	58
+30	898	1.103745041462	14
+30	907	1.105033041462	1500
+30	923	1.105771058572	858
+31	823	1.102937007242	82
+32	823	1.102937007242	82
+33	823	1.102937007242	82
+33	853	1.103270024352	58
+33	898	1.103745041462	14
+33	907	1.105033041462	1500
+33	923	1.105771058572	858
+34	823	1.102937007242	0.000104
+34	869	1.103360041462	0.00017801711
+34	918	1.105123058572	0.00113801711
+34	938	1.105861075682	0.00187603422
+35	826	1.102938015797	82
+35	856	1.103271032907	58
+35	901	1.103746050017	14
+35	910	1.105034050017	1500
+35	926	1.105772067127	858
+36	826	1.102938015797	82
+36	856	1.103271032907	58
+36	901	1.103746050017	14
+36	910	1.105034050017	1500
+36	926	1.105772067127	858
+37	826	1.102938015797	82
+38	826	1.102938015797	82
+39	826	1.102938015797	82
+39	856	1.103271032907	58
+39	901	1.103746050017	14
+39	910	1.105034050017	1500
+39	926	1.105772067127	858
+40	826	1.102938015797	54
+40	856	1.103271032907	30
+40	926	1.105772067127	2302
+41	829	1.102938015797	1
+42	832	1.102938015797	28
+43	834	1.102938015797	30
+43	860	1.103271032907	50
+44	834	1.102938015797	58
+44	860	1.103271032907	78
+45	834	1.102938015797	1
+45	836	1.103009015797	0
+45	860	1.103271032907	1
+45	871	1.103560032907	0
+46	834	1.102938015797	1
+46	860	1.103271032907	11
+47	834	1.102938015797	1
+47	835	1.103009015797	0
+47	860	1.103271032907	1
+47	862	1.103303032907	0
+47	867	1.103359032907	1
+47	870	1.103560032907	0
+48	836	1.103009015797	58
+48	871	1.103560032907	78
+49	836	1.103009015797	7.1e-05
+49	871	1.103560032907	0.000289
+50	836	1.103009015797	1
+50	840	1.103097015797	0
+50	871	1.103560032907	1
+50	901	1.103746050017	0
+51	836	1.103009015797	12000000
+51	856	1.103271032907	12000000
+51	871	1.103560032907	12000000
+51	910	1.105034050017	12000000
+51	926	1.105772067127	12000000
+52	836	1.103009015797	58
+52	861	1.103303032907	14
+52	871	1.103560032907	78
+52	911	1.105066050017	14
+52	929	1.105804067127	14
+53	836	1.103009015797	1
+53	840	1.103097015797	0
+53	871	1.103560032907	1
+53	901	1.103746050017	0
+54	837	1.103009015797	1
+54	838	1.103009015797	2
+54	840	1.103097015797	1
+54	841	1.103097015797	0
+54	862	1.103303032907	1
+54	863	1.103303032907	2
+54	866	1.103359032907	1
+54	867	1.103359032907	0
+54	872	1.103560032907	1
+54	873	1.103560032907	2
+54	875	1.103656032907	1
+54	876	1.103656032907	0
+54	912	1.105066050017	1
+54	913	1.105066050017	2
+54	915	1.105122050017	1
+54	916	1.105122050017	0
+54	930	1.105804067127	1
+54	931	1.105804067127	2
+54	935	1.105860067127	1
+54	936	1.105860067127	0
+55	840	1.103097015797	58
+55	866	1.103359032907	14
+55	875	1.103656032907	78
+55	915	1.105122050017	14
+55	935	1.105860067127	14
+56	840	1.103097015797	58
+57	840	1.103097015797	58
+58	840	1.103097015797	58
+58	866	1.103359032907	14
+58	875	1.103656032907	78
+58	915	1.105122050017	14
+58	935	1.105860067127	14
+59	840	1.103097015797	8.8e-05
+59	901	1.103746050017	0.00018601711
+60	843	1.103098024352	58
+60	869	1.103360041462	14
+60	878	1.103657041462	78
+60	918	1.105123058572	14
+60	938	1.105861075682	14
+61	843	1.103098024352	58
+61	869	1.103360041462	14
+61	878	1.103657041462	78
+61	918	1.105123058572	14
+61	938	1.105861075682	14
+62	843	1.103098024352	58
+63	843	1.103098024352	58
+64	843	1.103098024352	58
+64	869	1.103360041462	14
+64	878	1.103657041462	78
+64	918	1.105123058572	14
+64	938	1.105861075682	14
+65	843	1.103098024352	30
+65	878	1.103657041462	50
+66	845	1.103098024352	28
+67	853	1.103270024352	58
+67	898	1.103745041462	14
+67	907	1.105033041462	1500
+67	923	1.105771058572	858
+68	853	1.103270024352	0
+68	853	1.103270024352	8.8e-05
+68	865	1.103358024352	0
+68	907	1.105033041462	0
+68	907	1.105033041462	0.000824
+68	923	1.105771058572	8.598289e-05
+68	923	1.105771058572	8.8e-05
+68	934	1.105859058572	0
+69	856	1.103271032907	58
+69	901	1.103746050017	14
+69	910	1.105034050017	1500
+69	926	1.105772067127	858
+70	866	1.103359032907	14
+70	875	1.103656032907	78
+70	915	1.105122050017	14
+70	935	1.105860067127	14
+71	869	1.103360041462	14
+71	878	1.103657041462	78
+71	918	1.105123058572	14
+71	938	1.105861075682	14
+72	875	1.103656032907	0
+72	875	1.103656032907	8.8e-05
+72	897	1.103744032907	0
+72	915	1.105122050017	0
+72	915	1.105122050017	0.000736
+72	933	1.105858050017	0
+73	881	1.103657041462	28
+74	881	1.103657041462	1
+vector 75 Scenario.node[0].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+vector 76 Scenario.node[1].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+75	943	0.1	0
+75	943	0.2	0
+75	943	0.3	0
+75	943	0.4	0
+75	943	0.5	0
+75	943	0.6	0
+75	943	0.7	0
+75	943	0.8	0
+75	943	0.9	0
+75	943	1	0
+75	943	1.1	0
+75	943	1.10679331353	0
+76	943	0.1	0
+76	943	0.2	0
+76	943	0.3	0
+76	943	0.4	0
+76	943	0.5	0
+76	943	0.6	0
+76	943	0.7	0
+76	943	0.8	0
+76	943	0.9	0
+76	943	1	0
+76	943	1.1	0
+76	943	1.10679331353	0
+
